@@ -5,7 +5,12 @@ export const metadata: Metadata = {
   title: "SOP | Student Operations Portal — UPES Dehradun",
   description: "Tactile Dark Neumorphic Student Dashboard & Bunk Simulator for UPES Dehradun students.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/icon.svg",
   },
 };
 

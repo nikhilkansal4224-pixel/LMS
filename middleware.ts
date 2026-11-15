@@ -11,6 +11,7 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/api/avatar") ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/favicon.ico") ||
+    pathname.startsWith("/icon") ||
     pathname.startsWith("/api/proxy")
   ) {
     return NextResponse.next();
