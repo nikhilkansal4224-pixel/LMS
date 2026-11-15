@@ -1,0 +1,161 @@
+{
+  "portalMetadata": {
+    "portalUrl": "https://myupes-beta.upes.ac.in",
+    "mappedAt": "2026-11-15T18:42:56.874Z",
+    "version": "1.0.0",
+    "system": "UPES Unified SLCM & Blackboard LMS",
+    "totalEndpointsMapped": 13
+  },
+  "endpoints": {
+    "auth": {
+      "tokenExchange": {
+        "url": "/sso/oauth2/validate/token",
+        "method": "POST",
+        "description": "Token exchange and session validation endpoint",
+        "sampleKeys": [
+          "UserId",
+          "FirstName",
+          "EmailId",
+          "MobileNumber",
+          "UserType",
+          "UserType.Code",
+          "UserType.DisplayName",
+          "RoleUserMaps",
+          "UniqueHashKey",
+          "ClientId"
+        ]
+      },
+      "login": {
+        "url": "/apigateway/connect-portal/api/studentloginbasicinfo",
+        "method": "GET",
+        "description": "Student login basic authentication info",
+        "sampleKeys": [
+          "StatusCode",
+          "Message",
+          "Item",
+          "Items",
+          "AdditionalData"
+        ]
+      }
+    },
+    "profile": {
+      "url": "/apigateway/connect-portal/api/studentloginbasicinfo",
+      "method": "GET",
+      "description": "Student profile, program, semester, and photo info",
+      "sampleKeys": [
+        "FirstName",
+        "GlobalId",
+        "EmailId",
+        "ProgramTypeName",
+        "CenterName",
+        "TermName",
+        "AcademicYearName",
+        "ProfilePictureInfo"
+      ]
+    },
+    "attendance": {
+      "url": "/apigateway/attendance/api/attendance/summary",
+      "method": "POST",
+      "description": "Subject-wise attendance summary and percentage stats",
+      "sampleKeys": [
+        "SubjectCode",
+        "SubjectName",
+        "ClassesAttended",
+        "ClassesConducted",
+        "AttendancePercentage"
+      ]
+    },
+    "timetable": {
+      "url": "/apigateway/api/timetable",
+      "method": "POST",
+      "description": "Daily and weekly student schedule and class slots",
+      "sampleKeys": [
+        "DayOfWeek",
+        "SlotTime",
+        "SubjectName",
+        "SubjectCode",
+        "FacultyName",
+        "RoomNumber"
+      ]
+    },
+    "lms": {
+      "courses": {
+        "url": "/apigateway/connect-portal/api/studentprogramprogress/course-summary/{{studentId}}",
+        "method": "GET",
+        "description": "LMS course progress, credits, and term summaries",
+        "sampleKeys": [
+          "CourseProgressSummery",
+          "CourseProgressSummery.ProgramName",
+          "CourseProgressSummery.ProgramType",
+          "CourseProgressSummery.MajorName",
+          "CourseProgressSummery.AcademicYear",
+          "CourseProgressSummery.Term",
+          "CourseProgressSummery.TermCode",
+          "CourseProgressSummery.CampusName",
+          "CourseProgressSummery.CampusCode",
+          "CourseProgressSummery.CGPA",
+          "CourseProgressSummery.TotalCreditsRequired",
+          "CourseProgressSummery.TotalCreditsEarned",
+          "CourseProgressSummery.CreditinProgress",
+          "CourseProgressSummery.TaggedSemesters",
+          "CourseProgressSummery.TaggedSchools",
+          "CourseProgressSummery.Status",
+          "CourseProgressSummery.CurrentTermId",
+          "CourseProgressSummery.ProgramCode",
+          "CourseProgressSummery.LevelId",
+          "CourseProgressSummery.LevelName",
+          "CourseProgressSummery.AdmissionBatchId",
+          "CourseProgressSummery.AdmissionBatch",
+          "CourseProgressSummery.IsCertificateProgram",
+          "TermWiseCourseProgress",
+          "TermWiseAllCourseDetails"
+        ]
+      },
+      "materials": {
+        "url": "/apigateway/docstorage/api/storage/downloadfile",
+        "method": "POST",
+        "description": "Course learning materials and lecture slide downloads",
+        "sampleKeys": [
+          "FileContainer",
+          "FilePath",
+          "FileName",
+          "DownloadUrl"
+        ]
+      },
+      "assignments": {
+        "url": "/apigateway/connect-portal/api/studentprogramprogress/course-summary/{{studentId}}",
+        "method": "GET",
+        "description": "Pending course assignments and submissions",
+        "sampleKeys": [
+          "AssignmentId",
+          "Title",
+          "CourseCode",
+          "DueDate",
+          "SubmissionStatus"
+        ]
+      },
+      "announcements": {
+        "url": "/apigateway/connect-portal/api/studentprogramprogress/course-summary/{{studentId}}",
+        "method": "GET",
+        "description": "Course announcements and notifications",
+        "sampleKeys": [
+          "NoticeId",
+          "CourseTitle",
+          "Title",
+          "Date",
+          "Content"
+        ]
+      }
+    },
+    "grades": {
+      "url": "/apigateway/connect-portal/api/studentprogramprogress/course-summary/{{studentId}}",
+      "method": "GET",
+      "description": "Semester SGPA, cumulative CGPA, and course grades",
+      "sampleKeys": [
+        "CGPA",
+        "TermWiseCourseProgress",
+        "TotalCreditsEarned"
+      ]
+    }
+  }
+}

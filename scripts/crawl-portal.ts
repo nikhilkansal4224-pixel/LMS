@@ -68,8 +68,9 @@ function categorizeUrl(urlStr: string): EndpointDefinition["category"] {
 function sanitizeUrl(rawUrl: string): string {
   try {
     const u = new URL(rawUrl);
-    // Replace numeric IDs and emails with templates
+    // Replace numeric IDs, UUIDs, and emails with templates
     let cleanPath = u.pathname
+      .replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi, "{{studentId}}")
       .replace(/\/\d{5,10}/g, "/{{studentId}}")
       .replace(/[a-zA-Z0-9._%+-]+@stu\.upes\.ac\.in/gi, "{{emailId}}")
       .replace(/[a-zA-Z0-9._%+-]+@ddn\.upes\.ac\.in/gi, "{{emailId}}");
@@ -77,7 +78,9 @@ function sanitizeUrl(rawUrl: string): string {
     // Replace query values with placeholders
     const params = new URLSearchParams(u.search);
     params.forEach((value, key) => {
-      if (/^\d{5,}$/.test(value)) {
+      if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value)) {
+        params.set(key, "{{studentId}}");
+      } else if (/^\d{5,}$/.test(value)) {
         params.set(key, "{{studentId}}");
       } else if (/@/.test(value)) {
         params.set(key, "{{emailId}}");
@@ -108,16 +111,68 @@ function extractSchemaKeys(obj: any): string[] {
   return keys.slice(0, 25);
 }
 
-async function promptForEnter(query: string): Promise<void> {
+async function promptForEnterOrDashboard(query: string, page: any): Promise<void> {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
   });
+
   return new Promise((resolve) => {
+    let resolved = false;
+
+    const finish = (reason: string) => {
+      if (!resolved) {
+        resolved = true;
+        console.log(`\n⚡ Proceeding: ${reason}`);
+        rl.close();
+        resolve();
+      }
+    };
+
+    // Option A: User presses ENTER in the terminal
     rl.question(query, () => {
-      rl.close();
-      resolve();
+      finish("ENTER key detected in terminal");
     });
+
+    // Option B: Auto-detect when the user reaches the authenticated portal dashboard
+    const pollInterval = setInterval(async () => {
+      if (resolved) {
+        clearInterval(pollInterval);
+        return;
+      }
+
+      try {
+        const currentUrl = page.url();
+        const hasLeftLogin = !currentUrl.includes("login") && !currentUrl.includes("signin") && !currentUrl.includes("oauth");
+        const isPortalDomain = currentUrl.includes("upes.ac.in");
+
+        if (hasLeftLogin && isPortalDomain) {
+          const hasDashboardContent = await page.evaluate(() => {
+            const bodyText = document.body ? document.body.innerText.toLowerCase() : "";
+            return (
+              bodyText.includes("logout") ||
+              bodyText.includes("sign out") ||
+              bodyText.includes("attendance") ||
+              bodyText.includes("timetable") ||
+              bodyText.includes("semester") ||
+              bodyText.includes("sap") ||
+              bodyText.includes("cgpa")
+            );
+          }).catch(() => false);
+
+          if (hasDashboardContent) {
+            clearInterval(pollInterval);
+            console.log("\n🎉 Detected authenticated UPES student dashboard in WebKit!");
+            console.log("⏳ Waiting 3 seconds for session and cookies to settle...");
+            setTimeout(() => {
+              finish("Dashboard automatically detected in WebKit");
+            }, 3000);
+          }
+        }
+      } catch {
+        // Ignore transient evaluation errors while page redirects
+      }
+    }, 2000);
   });
 }
 
@@ -195,7 +250,7 @@ async function main() {
   console.log("👉 Once you reach the main dashboard, press [ENTER] in this terminal to start auto-mapping!");
   console.log("-------------------------------------------------------\n");
 
-  await promptForEnter("Press [ENTER] after logging in and viewing your dashboard... ");
+  await promptForEnterOrDashboard("Press [ENTER] after logging in and viewing your dashboard... ", page);
 
   console.log("\n🔍 Mapping portal navigation tabs, courses, and LMS sidebar...");
 
