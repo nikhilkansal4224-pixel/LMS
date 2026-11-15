@@ -5,6 +5,7 @@ import {
   extractStudentDetailsFromEmail,
   UpesIdentityResponse,
 } from "@/lib/upes-auth";
+import portalBlueprint from "@/config/portal-blueprint.json";
 
 export async function POST(request: NextRequest) {
   try {
@@ -60,12 +61,25 @@ export async function POST(request: NextRequest) {
     const normalizedEmail = normalizeUpesEmail(username);
     const { firstName, sapId } = extractStudentDetailsFromEmail(normalizedEmail);
 
-    const upesAuthUrl = process.env.UPES_AUTH_URL;
-    const tokenExchangeUrl = process.env.UPES_TOKEN_EXCHANGE_URL;
+    // Default to blueprint URLs if process.env is not configured
+    const upesAuthUrl =
+      process.env.UPES_AUTH_URL ||
+      portalBlueprint.endpoints.auth.login.url ||
+      "https://myupes-beta.upes.ac.in/sso/api/account/oauth2/token";
+    const tokenExchangeUrl =
+      process.env.UPES_TOKEN_EXCHANGE_URL ||
+      portalBlueprint.endpoints.auth.tokenExchange.url ||
+      "https://myupes-beta.upes.ac.in/sso/oauth2/validate/token";
+    const profileUrl =
+      process.env.UPES_PROFILE_URL ||
+      portalBlueprint.endpoints.profile.url ||
+      "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentloginbasicinfo";
 
     let accessToken: string | null = null;
     let userInfo: any = null;
     let rawResponseData: any = null;
+    let studentId: string | null = null;
+    let termCode: string = "SEM_01";
 
     if (upesAuthUrl) {
       const payload = mapLoginPayload({
@@ -76,14 +90,17 @@ export async function POST(request: NextRequest) {
 
       try {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 6000);
+        const timeoutId = setTimeout(() => controller.abort(), 8000);
 
         const authResponse = await fetch(upesAuthUrl, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Accept: "application/json",
-            "User-Agent": "Mozilla/5.0 SOP-UPES-Student-Dashboard/1.0",
+            Accept: "application/json, text/plain, */*",
+            Origin: "https://myupes-beta.upes.ac.in",
+            Referer: "https://myupes-beta.upes.ac.in/",
+            "User-Agent":
+              "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
           },
           body: JSON.stringify(payload),
           signal: controller.signal,
@@ -98,17 +115,31 @@ export async function POST(request: NextRequest) {
           if (rawResponseData?.Item?.Identity?.AccessToken) {
             accessToken = rawResponseData.Item.Identity.AccessToken;
             userInfo = rawResponseData.Item.UserInfo;
+          } else if (rawResponseData?.AccessToken) {
+            accessToken = rawResponseData.AccessToken;
+            userInfo = rawResponseData.UserInfo || rawResponseData.User;
           }
-          // If response has a one-time authorization code, exchange it at tokenExchangeUrl
-          else if (
-            (rawResponseData?.Item?.Code || rawResponseData?.code) &&
-            tokenExchangeUrl
-          ) {
-            const code = rawResponseData?.Item?.Code || rawResponseData?.code;
+
+          // If response has a redirectUrl with code or Item.Code
+          const redirectUrl = rawResponseData?.Item?.redirectUrl || rawResponseData?.redirectUrl;
+          let authCode = rawResponseData?.Item?.Code || rawResponseData?.code;
+          if (!authCode && redirectUrl) {
+            const match = redirectUrl.match(/[?&]code=([^&]+)/);
+            if (match) {
+              authCode = decodeURIComponent(match[1]);
+            }
+          }
+
+          if (!accessToken && authCode && tokenExchangeUrl) {
             const exchangeRes = await fetch(tokenExchangeUrl, {
               method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ code, clientId: 3 }),
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json, text/plain, */*",
+                Origin: "https://myupes-beta.upes.ac.in",
+                Referer: "https://myupes-beta.upes.ac.in/",
+              },
+              body: JSON.stringify({ code: authCode, clientId: 3 }),
             });
 
             if (exchangeRes.ok) {
@@ -116,7 +147,49 @@ export async function POST(request: NextRequest) {
               if (exchangeData?.Item?.Identity?.AccessToken) {
                 accessToken = exchangeData.Item.Identity.AccessToken;
                 userInfo = exchangeData.Item.UserInfo;
+              } else if (exchangeData?.AccessToken) {
+                accessToken = exchangeData.AccessToken;
+                userInfo = exchangeData.UserInfo;
               }
+            }
+          }
+
+          // Step 2: Fetch Student Profile immediately to extract real StudentId UUID & TermCode
+          if (accessToken && profileUrl) {
+            try {
+              const profileRes = await fetch(profileUrl, {
+                method: "GET",
+                headers: {
+                  Authorization: `Bearer ${accessToken}`,
+                  Origin: "https://myupes-beta.upes.ac.in",
+                  Referer: "https://myupes-beta.upes.ac.in/",
+                  Accept: "application/json, text/plain, */*",
+                  "User-Agent":
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
+                },
+              });
+
+              if (profileRes.ok) {
+                const profileJson = await profileRes.json();
+                const pItem = profileJson?.Item || profileJson?.data || profileJson;
+                if (pItem) {
+                  studentId =
+                    pItem.StudentId ||
+                    pItem.StudentGuid ||
+                    pItem.Id ||
+                    pItem.UserId ||
+                    null;
+                  termCode =
+                    pItem.CurrentTermCode ||
+                    pItem.TermCode ||
+                    pItem.TermName ||
+                    "SEM_01";
+                  if (!userInfo) userInfo = pItem;
+                  else Object.assign(userInfo, pItem);
+                }
+              }
+            } catch (err: any) {
+              console.warn("Could not pre-fetch student profile during login:", err.message);
             }
           }
         }
@@ -128,8 +201,10 @@ export async function POST(request: NextRequest) {
     // Fallback for development/testing when UPES server is not reachable
     if (!accessToken) {
       accessToken = `upes-token-${Buffer.from(normalizedEmail).toString("base64")}-${Date.now()}`;
+      studentId = studentId || "6349e408-1096-483e-82d0-64587e70b025";
       userInfo = {
         UserId: 89466,
+        StudentId: studentId,
         EmailId: normalizedEmail,
         FirstName: firstName,
         LastName: "Sharma",
@@ -137,12 +212,14 @@ export async function POST(request: NextRequest) {
         UserTypeInfo: { Code: "ST", DisplayName: "Student" },
       };
     } else if (userInfo) {
-      // Ensure normalized email is reflected in the user info payload
       if (!userInfo.EmailId) {
         userInfo.EmailId = normalizedEmail;
       }
       if (!userInfo.GlobalId) {
         userInfo.GlobalId = sapId;
+      }
+      if (studentId) {
+        userInfo.StudentId = studentId;
       }
     }
 
@@ -152,7 +229,9 @@ export async function POST(request: NextRequest) {
       user: userInfo,
       emailId: normalizedEmail,
       sapId: userInfo?.GlobalId || sapId,
-      hasLiveToken: Boolean(rawResponseData?.Item?.Identity?.AccessToken),
+      studentId: studentId || userInfo?.StudentId || "",
+      termCode,
+      hasLiveToken: Boolean(rawResponseData?.Item?.Identity?.AccessToken || rawResponseData?.AccessToken),
     });
 
     // Save secure httpOnly cookie
@@ -164,8 +243,22 @@ export async function POST(request: NextRequest) {
       maxAge: 60 * 60 * 24 * 7, // 7 days
     });
 
-    // Set sapId and student email cookies for client hydration
+    // Set student UUID, sapId, termCode, and email cookies for client hydration & proxy chaining
+    if (studentId) {
+      response.cookies.set("sop_student_id", studentId, {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+    }
+
     response.cookies.set("sop_sap_id", userInfo?.GlobalId || sapId, {
+      httpOnly: false,
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7,
+    });
+
+    response.cookies.set("sop_term_code", termCode, {
       httpOnly: false,
       path: "/",
       maxAge: 60 * 60 * 24 * 7,

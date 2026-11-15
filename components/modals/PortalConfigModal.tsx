@@ -57,7 +57,7 @@ export function PortalConfigModal({
         headers: {
           "x-session-token": profile.SessionToken || "sample-session-token-upes",
           "x-sap-id": profile.GlobalId,
-          "x-target-url": profile.PortalApiUrl || "https://slcm.upes.ac.in/api/v1",
+          "x-target-url": profile.PortalApiUrl || "https://myupes-beta.upes.ac.in",
         },
       });
       const json = await res.json();
@@ -320,7 +320,7 @@ export function PortalConfigModal({
                 </label>
                 <input
                   type="text"
-                  value={profile.PortalApiUrl || "https://slcm.upes.ac.in/api/v1"}
+                  value={profile.PortalApiUrl || "https://myupes-beta.upes.ac.in"}
                   onChange={(e) => handleProfileChange("PortalApiUrl", e.target.value)}
                   className="w-full px-3 py-2 rounded-xl neu-inset-well text-xs font-mono text-slate-300 focus:outline-none focus:border-amber-500/50"
                 />

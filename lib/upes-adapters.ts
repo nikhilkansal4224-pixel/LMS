@@ -127,15 +127,27 @@ export function adaptProfilePayload(raw: any, fallbackEmail?: string): StudentPr
 export function adaptAttendancePayload(raw: any): AttendanceSubject[] {
   if (!raw) return [];
 
-  // UPES often returns { Item: [ ... ] } or { data: [ ... ] } or array directly
+  // UPES often returns { Item: [ ... ] }, { Items: [ ... ] }, { data: [ ... ] }, or nested within Item
   const list = Array.isArray(raw)
     ? raw
     : Array.isArray(raw.Item)
     ? raw.Item
+    : Array.isArray(raw.Items)
+    ? raw.Items
     : Array.isArray(raw.data)
     ? raw.data
     : Array.isArray(raw.AttendanceList)
     ? raw.AttendanceList
+    : Array.isArray(raw.Summary)
+    ? raw.Summary
+    : Array.isArray(raw.SubjectWiseAttendance)
+    ? raw.SubjectWiseAttendance
+    : Array.isArray(raw.Item?.AttendanceList)
+    ? raw.Item.AttendanceList
+    : Array.isArray(raw.Item?.SubjectWiseAttendance)
+    ? raw.Item.SubjectWiseAttendance
+    : Array.isArray(raw.Item?.Summary)
+    ? raw.Item.Summary
     : [];
 
   return list.map((item: any, idx: number) => {
@@ -213,10 +225,18 @@ export function adaptTimetablePayload(raw: any): TimetableSlot[] {
     ? raw
     : Array.isArray(raw.Item)
     ? raw.Item
+    : Array.isArray(raw.Items)
+    ? raw.Items
     : Array.isArray(raw.data)
     ? raw.data
     : Array.isArray(raw.TimetableList)
     ? raw.TimetableList
+    : Array.isArray(raw.Schedule)
+    ? raw.Schedule
+    : Array.isArray(raw.Item?.TimetableList)
+    ? raw.Item.TimetableList
+    : Array.isArray(raw.Item?.Schedule)
+    ? raw.Item.Schedule
     : [];
 
   const validDays = [
@@ -297,17 +317,22 @@ export function adaptGradesPayload(raw: any): {
   }
 
   const data = raw.Item || raw.data || raw;
+  const summery = data.CourseProgressSummery || data;
 
-  const cgpa = Number(data.CGPA || data.cgpa || data.CumulativeGpa || 0);
-  const currentSgpa = Number(data.SGPA || data.currentSgpa || data.Sgpa || cgpa);
-  const totalEarnedCredits = Number(data.TotalEarnedCredits || data.EarnedCredits || data.totalEarnedCredits || 0);
-  const totalCreditsRequired = Number(data.TotalCreditsRequired || data.TotalCredits || 160);
+  const cgpa = Number(summery.CGPA || summery.cgpa || data.CGPA || data.cgpa || data.CumulativeGpa || 0);
+  const currentSgpa = Number(summery.SGPA || summery.currentSgpa || data.SGPA || data.currentSgpa || data.Sgpa || cgpa);
+  const totalEarnedCredits = Number(summery.TotalCreditsEarned || summery.EarnedCredits || data.TotalEarnedCredits || data.EarnedCredits || 0);
+  const totalCreditsRequired = Number(summery.TotalCreditsRequired || summery.TotalCredits || data.TotalCreditsRequired || 160);
 
   // Semesters array
   const rawSemesters = Array.isArray(data.Semesters)
     ? data.Semesters
     : Array.isArray(data.semesters)
     ? data.semesters
+    : Array.isArray(data.TermWiseCourseProgress)
+    ? data.TermWiseCourseProgress
+    : Array.isArray(data.TermWiseAllCourseDetails)
+    ? data.TermWiseAllCourseDetails
     : Array.isArray(data.Courses)
     ? [
         {
@@ -386,13 +411,35 @@ export function adaptLmsPayload(raw: any): LmsData {
   }
 
   const data = raw.Item || raw.data || raw;
-  const rawCourses = Array.isArray(data.courses)
+  let rawCourses = Array.isArray(data.courses)
     ? data.courses
     : Array.isArray(data.Courses)
     ? data.Courses
     : Array.isArray(data)
     ? data
     : [];
+
+  if (rawCourses.length === 0 && Array.isArray(data.TermWiseAllCourseDetails)) {
+    for (const term of data.TermWiseAllCourseDetails) {
+      if (Array.isArray(term.CourseDetails)) {
+        rawCourses.push(...term.CourseDetails);
+      } else if (Array.isArray(term.Courses)) {
+        rawCourses.push(...term.Courses);
+      } else if (term.CourseCode || term.CourseName) {
+        rawCourses.push(term);
+      }
+    }
+  } else if (rawCourses.length === 0 && Array.isArray(data.TermWiseCourseProgress)) {
+    for (const term of data.TermWiseCourseProgress) {
+      if (Array.isArray(term.CourseDetails)) {
+        rawCourses.push(...term.CourseDetails);
+      } else if (Array.isArray(term.Courses)) {
+        rawCourses.push(...term.Courses);
+      } else if (term.CourseCode || term.CourseName) {
+        rawCourses.push(term);
+      }
+    }
+  }
 
   const rawMaterials = Array.isArray(data.materials)
     ? data.materials

@@ -11,6 +11,7 @@ import {
   adaptGradesPayload,
   adaptLmsPayload,
 } from "./upes-adapters";
+import { EndpointDiagnosticInfo } from "@/components/bento/EmptyEndpointCard";
 
 const STORAGE_KEY = "sop_upes_student_data_v3";
 const SWR_CACHE_KEY = "sop_swr_cache_v3";
@@ -22,6 +23,15 @@ export function useStudentData() {
 
   // Raw API payloads for the Raw API Inspector drawer
   const [rawPayloads, setRawPayloads] = useState<Record<string, any>>({});
+
+  // Live diagnostic metadata for each endpoint
+  const [diagnostics, setDiagnostics] = useState<Record<string, EndpointDiagnosticInfo>>({
+    profile: {},
+    attendance: {},
+    timetable: {},
+    lms: {},
+    grades: {},
+  });
 
   // Endpoint configuration statuses
   const [endpointStatus, setEndpointStatus] = useState<Record<string, boolean>>({
@@ -109,20 +119,50 @@ export function useStudentData() {
     setIsFetchingLive(true);
     const parallelStartTime = performance.now();
 
-    // Helper to fetch single endpoint and record duration
+    // Helper to fetch single endpoint and record duration and diagnostics
     const fetchWithTiming = async (url: string) => {
       const t0 = performance.now();
       try {
         const res = await fetch(url);
         const durationMs = Math.max(1, Math.round(performance.now() - t0));
-        if (res.ok) {
-          const json = await res.json();
-          return { ok: true, data: json, durationMs };
+        let json: any = null;
+        try {
+          json = await res.json();
+        } catch {
+          // not json
         }
-        return { ok: false, data: null, durationMs };
+
+        const diagnostic: EndpointDiagnosticInfo = json?.diagnostic || {
+          targetUrl: json?.targetUrl || url,
+          statusCode: json?.statusCode || res.status,
+          statusText: json?.statusText || res.statusText,
+          rawSnippet:
+            json?.rawSnippet ||
+            (typeof json === "string"
+              ? json
+              : JSON.stringify(json || {}).slice(0, 300)),
+          method: json?.method || "GET",
+        };
+
+        if (res.ok && json && !json.error && json.isConfigured !== false && json.diagnostic?.statusCode !== 504) {
+          return { ok: true, data: json, durationMs, diagnostic };
+        }
+        return { ok: false, data: json, durationMs, diagnostic };
       } catch (err: any) {
         const durationMs = Math.max(1, Math.round(performance.now() - t0));
-        return { ok: false, data: null, durationMs, error: err.message };
+        return {
+          ok: false,
+          data: null,
+          durationMs,
+          error: err.message,
+          diagnostic: {
+            targetUrl: url,
+            statusCode: 504,
+            statusText: "Network Timeout",
+            rawSnippet: err.message || "Failed to fetch live UPES endpoint",
+            method: "GET",
+          },
+        };
       }
     };
 
@@ -224,6 +264,15 @@ export function useStudentData() {
         timetable: ttRes?.data,
         lms: lmsRes?.data,
         grades: gradesRes?.data,
+      });
+
+      // Update Diagnostics
+      setDiagnostics({
+        profile: profileRes?.diagnostic || {},
+        attendance: attRes?.diagnostic || {},
+        timetable: ttRes?.diagnostic || {},
+        lms: lmsRes?.diagnostic || {},
+        grades: gradesRes?.diagnostic || {},
       });
 
       // Update Endpoint Status
@@ -350,6 +399,7 @@ export function useStudentData() {
     rawPayloads,
     endpointStatus,
     telemetry,
+    diagnostics,
     fetchLiveData,
     updateData,
     updateAttendance,

@@ -26,6 +26,7 @@ export default function DashboardPage() {
     rawPayloads,
     endpointStatus,
     telemetry,
+    diagnostics,
     fetchLiveData,
     updateData,
     updateAttendance,
@@ -124,7 +125,8 @@ export default function DashboardPage() {
                         title="Overall Attendance Ring"
                         moduleName="Attendance Sentinel"
                         envKey="UPES_ATTENDANCE_URL"
-                        exampleUrl="https://slcm.upes.ac.in/api/v1/student/attendance"
+                        exampleUrl="https://myupes-beta.upes.ac.in/apigateway/attendance/api/attendance/summary"
+                        diagnostic={diagnostics?.attendance}
                         onOpenConfig={() => setIsConfigOpen(true)}
                         onOpenInspector={() => setInspectorModule("attendance")}
                       />
@@ -143,7 +145,8 @@ export default function DashboardPage() {
                         title="Today's Timetable & Up Next"
                         moduleName="Academic Schedule"
                         envKey="UPES_TIMETABLE_URL"
-                        exampleUrl="https://slcm.upes.ac.in/api/v1/student/timetable"
+                        exampleUrl="https://myupes-beta.upes.ac.in/apigateway/api/timetable"
+                        diagnostic={diagnostics?.timetable}
                         onOpenConfig={() => setIsConfigOpen(true)}
                         onOpenInspector={() => setInspectorModule("timetable")}
                       />
@@ -163,7 +166,8 @@ export default function DashboardPage() {
                         title="Subject-Wise Attendance & Bunk Radar"
                         moduleName="Continuous Attendance Engine"
                         envKey="UPES_ATTENDANCE_URL"
-                        exampleUrl="https://slcm.upes.ac.in/api/v1/student/attendance"
+                        exampleUrl="https://myupes-beta.upes.ac.in/apigateway/attendance/api/attendance/summary"
+                        diagnostic={diagnostics?.attendance}
                         onOpenConfig={() => setIsConfigOpen(true)}
                         onOpenInspector={() => setInspectorModule("attendance")}
                       />
@@ -186,7 +190,8 @@ export default function DashboardPage() {
                         title="Academics, Marks & CGPA"
                         moduleName="Evaluation Transcript"
                         envKey="UPES_GRADES_URL"
-                        exampleUrl="https://slcm.upes.ac.in/api/v1/student/grades"
+                        exampleUrl="https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/course-summary/{{studentId}}"
+                        diagnostic={diagnostics?.grades}
                         onOpenConfig={() => setIsConfigOpen(true)}
                         onOpenInspector={() => setInspectorModule("grades")}
                       />
@@ -217,7 +222,8 @@ export default function DashboardPage() {
                       title="Attendance & Bunk Simulator"
                       moduleName="Attendance Sentinel"
                       envKey="UPES_ATTENDANCE_URL"
-                      exampleUrl="https://slcm.upes.ac.in/api/v1/student/attendance"
+                      exampleUrl="https://myupes-beta.upes.ac.in/apigateway/attendance/api/attendance/summary"
+                      diagnostic={diagnostics?.attendance}
                       onOpenConfig={() => setIsConfigOpen(true)}
                       onOpenInspector={() => setInspectorModule("attendance")}
                     />
@@ -243,7 +249,8 @@ export default function DashboardPage() {
                       title="Weekly Academic Timetable"
                       moduleName="Schedule Routing"
                       envKey="UPES_TIMETABLE_URL"
-                      exampleUrl="https://slcm.upes.ac.in/api/v1/student/timetable"
+                      exampleUrl="https://myupes-beta.upes.ac.in/apigateway/api/timetable"
+                      diagnostic={diagnostics?.timetable}
                       onOpenConfig={() => setIsConfigOpen(true)}
                       onOpenInspector={() => setInspectorModule("timetable")}
                     />
@@ -261,7 +268,24 @@ export default function DashboardPage() {
                 animate="animate"
                 exit="exit"
               >
-                <LmsTab lms={data.lms} />
+                {data.lms && data.lms.courses && data.lms.courses.length > 0 ? (
+                  <LmsTab lms={data.lms} />
+                ) : (
+                  <div className="space-y-6">
+                    <div className="max-w-xl mx-auto min-h-[350px]">
+                      <EmptyEndpointCard
+                        title="Course Progress & Blackboard LMS"
+                        moduleName="LMS Portal"
+                        envKey="UPES_LMS_URL"
+                        exampleUrl="https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/course-summary/{{studentId}}"
+                        diagnostic={diagnostics?.lms}
+                        onOpenConfig={() => setIsConfigOpen(true)}
+                        onOpenInspector={() => setInspectorModule("lms")}
+                      />
+                    </div>
+                    {data.lms && <LmsTab lms={data.lms} />}
+                  </div>
+                )}
               </motion.div>
             )}
 
@@ -282,7 +306,8 @@ export default function DashboardPage() {
                       title="Continuous Evaluation Matrix & Transcript"
                       moduleName="Grades Sentinel"
                       envKey="UPES_GRADES_URL"
-                      exampleUrl="https://slcm.upes.ac.in/api/v1/student/grades"
+                      exampleUrl="https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/course-summary/{{studentId}}"
+                      diagnostic={diagnostics?.grades}
                       onOpenConfig={() => setIsConfigOpen(true)}
                       onOpenInspector={() => setInspectorModule("grades")}
                     />
