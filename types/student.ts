@@ -66,6 +66,53 @@ export interface AcademicSemester {
   }[];
 }
 
+export interface LmsCourse {
+  id: string;
+  code: string;
+  title: string;
+  instructor: string;
+  semester?: string;
+  progress?: number;
+  credits?: number;
+  department?: string;
+}
+
+export interface LmsMaterial {
+  id: string;
+  courseCode: string;
+  title: string;
+  fileUrl?: string;
+  uploadedDate: string;
+  fileType: "pdf" | "slides" | "doc" | "video" | "code";
+  fileSize?: string;
+}
+
+export interface LmsAssignment {
+  id: string;
+  courseCode: string;
+  title: string;
+  dueDate: string;
+  totalMarks: number;
+  status: "Pending" | "Submitted" | "Overdue";
+  isSubmitted: boolean;
+}
+
+export interface LmsAnnouncement {
+  id: string;
+  title: string;
+  content: string;
+  postedBy: string;
+  date: string;
+  priority: "High" | "Normal";
+}
+
+export interface LmsData {
+  courses: LmsCourse[];
+  materials: LmsMaterial[];
+  assignments: LmsAssignment[];
+  announcements: LmsAnnouncement[];
+}
+
 export interface NotificationItem {
   id: string;
   type: "warning" | "alert" | "info" | "success" | "critical";
@@ -86,5 +133,6 @@ export interface StudentDashboardData {
     totalCreditsRequired: number;
     semesters: AcademicSemester[];
   };
+  lms?: LmsData;
   notifications: NotificationItem[];
 }

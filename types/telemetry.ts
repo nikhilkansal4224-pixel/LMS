@@ -11,11 +11,19 @@ export interface EndpointLatency {
   envKey: string;
 }
 
+export interface SpeedComparison {
+  parallelMs: number;
+  sequentialEstimateMs: number;
+  speedupMultiplier: string;
+  isCached: boolean;
+}
+
 export interface TelemetrySummary {
   ttfb: number;
   avgLatency: number;
   fastestMs: number;
   slowestMs: number;
   lastUpdated: string;
+  speedComparison?: SpeedComparison;
   endpoints: Record<string, EndpointLatency>;
 }

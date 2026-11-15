@@ -65,6 +65,9 @@ async function handleProxy(request: NextRequest, pathSegments: string[], method:
   } else if (path.includes("grades") || path.includes("marks")) {
     envKey = "UPES_GRADES_URL";
     targetUrl = process.env.UPES_GRADES_URL || null;
+  } else if (path.includes("lms") || path.includes("courses")) {
+    envKey = "UPES_LMS_URL";
+    targetUrl = process.env.UPES_LMS_URL || null;
   }
 
   // Fallback to custom target header/query or UPES_API_BASE_URL

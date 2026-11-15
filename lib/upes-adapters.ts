@@ -4,6 +4,7 @@ import {
   TimetableSlot,
   AcademicSemester,
   UpesProfilePictureInfo,
+  LmsData,
 } from "@/types/student";
 
 /**
@@ -368,5 +369,93 @@ export function adaptGradesPayload(raw: any): {
     totalEarnedCredits,
     totalCreditsRequired,
     semesters,
+  };
+}
+
+/**
+ * Defensive adapter to map UPES live LMS / Blackboard Courses JSON into LmsData
+ */
+export function adaptLmsPayload(raw: any): LmsData {
+  if (!raw) {
+    return {
+      courses: [],
+      materials: [],
+      assignments: [],
+      announcements: [],
+    };
+  }
+
+  const data = raw.Item || raw.data || raw;
+  const rawCourses = Array.isArray(data.courses)
+    ? data.courses
+    : Array.isArray(data.Courses)
+    ? data.Courses
+    : Array.isArray(data)
+    ? data
+    : [];
+
+  const rawMaterials = Array.isArray(data.materials)
+    ? data.materials
+    : Array.isArray(data.Materials)
+    ? data.Materials
+    : [];
+
+  const rawAssignments = Array.isArray(data.assignments)
+    ? data.assignments
+    : Array.isArray(data.Assignments)
+    ? data.Assignments
+    : [];
+
+  const rawAnnouncements = Array.isArray(data.announcements)
+    ? data.announcements
+    : Array.isArray(data.Announcements)
+    ? data.Announcements
+    : [];
+
+  const courses = rawCourses.map((c: any, idx: number) => ({
+    id: String(c.CourseId || c.id || `lms-crs-${idx}`),
+    code: String(c.CourseCode || c.code || `CSEN${1001 + idx}`),
+    title: String(c.Title || c.CourseName || c.title || `Module ${idx + 1}`),
+    instructor: String(c.Instructor || c.Faculty || "UPES Faculty"),
+    semester: String(c.Semester || "SEM 01"),
+    progress: Number(c.ProgressPercentage || c.progress || 75),
+    credits: Number(c.Credits || c.credits || 4),
+    department: String(c.Department || "Computer Science"),
+  }));
+
+  const materials = rawMaterials.map((m: any, idx: number) => ({
+    id: String(m.MaterialId || m.id || `mat-${idx}`),
+    courseCode: String(m.CourseCode || m.courseCode || "CSEN1001"),
+    title: String(m.Title || m.title || "Lecture Notes"),
+    fileUrl: m.FileUrl || m.url || "",
+    uploadedDate: String(m.UploadedDate || m.date || "Recent"),
+    fileType: (m.FileType || m.type || "pdf") as any,
+    fileSize: m.FileSize || m.size || "2.4 MB",
+  }));
+
+  const assignments = rawAssignments.map((a: any, idx: number) => ({
+    id: String(a.AssignmentId || a.id || `asg-${idx}`),
+    courseCode: String(a.CourseCode || a.courseCode || "CSEN1001"),
+    title: String(a.Title || a.title || "Lab Assignment"),
+    dueDate: String(a.DueDate || a.dueDate || "Upcoming"),
+    totalMarks: Number(a.TotalMarks || a.marks || 20),
+    status: (a.Status || (a.IsSubmitted ? "Submitted" : "Pending")) as any,
+    isSubmitted: Boolean(a.IsSubmitted || a.submitted),
+  }));
+
+  const announcements = rawAnnouncements.map((an: any, idx: number) => ({
+    id: String(an.NoticeId || an.id || `notice-${idx}`),
+    title: String(an.Title || an.title || "Course Announcement"),
+    content: String(an.Content || an.content || ""),
+    postedBy: String(an.PostedBy || an.author || "Course Coordinator"),
+    date: String(an.Date || an.date || "Today"),
+    priority: (an.Priority || "Normal") as any,
+  }));
+
+  return {
+    courses,
+    materials,
+    assignments,
+    announcements,
   };
 }

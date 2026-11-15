@@ -14,6 +14,7 @@ import { EmptyEndpointCard } from "@/components/bento/EmptyEndpointCard";
 import { AttendanceTab } from "@/components/tabs/AttendanceTab";
 import { TimetableTab } from "@/components/tabs/TimetableTab";
 import { AcademicsTab } from "@/components/tabs/AcademicsTab";
+import { LmsTab } from "@/components/tabs/LmsTab";
 import { PortalConfigModal } from "@/components/modals/PortalConfigModal";
 import { RawApiInspectorModal } from "@/components/modals/RawApiInspectorModal";
 
@@ -251,7 +252,20 @@ export default function DashboardPage() {
               </motion.div>
             )}
 
-            {/* VIEW 4: Academics & Grades */}
+            {/* VIEW 4: LMS & Courses */}
+            {activeTab === "lms" && (
+              <motion.div
+                key="lms"
+                variants={tabVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <LmsTab lms={data.lms} />
+              </motion.div>
+            )}
+
+            {/* VIEW 5: Academics & Grades */}
             {activeTab === "academics" && (
               <motion.div
                 key="academics"
@@ -307,6 +321,8 @@ export default function DashboardPage() {
             ? "Attendance & Bunk Radar"
             : inspectorModule === "timetable"
             ? "Weekly Timetable"
+            : inspectorModule === "lms"
+            ? "LMS & Courses Engine"
             : "Academics & Grades"
         }
         endpointUrl={
@@ -316,6 +332,8 @@ export default function DashboardPage() {
             ? process.env.UPES_ATTENDANCE_URL || "/api/proxy/student/attendance"
             : inspectorModule === "timetable"
             ? process.env.UPES_TIMETABLE_URL || "/api/proxy/student/timetable"
+            : inspectorModule === "lms"
+            ? process.env.UPES_LMS_URL || "/api/proxy/student/lms"
             : process.env.UPES_GRADES_URL || "/api/proxy/student/grades"
         }
         payload={
