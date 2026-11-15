@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-obsidian: #161920;
+  --surface-card: #1B1F28;
+  --accent-amber: #F59E0B;
+  --accent-glow: #FBBF24;
+  --font-jakarta: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-obsidian);
+  color: #E2E8F0;
+  font-family: var(--font-jakarta);
+  min-height: 100vh;
+  overflow-x: hidden;
+  selection-background-color: #F59E0B;
+  selection-color: #161920;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #161920;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A303F;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F59E0B;
+}
+
+/* Deep Soft-UI Neumorphic Utilities */
+.neu-card {
+  background-color: #1B1F28;
+  border-radius: 26px;
+  box-shadow: -8px -8px 18px rgba(255, 255, 255, 0.04), 10px 10px 22px rgba(8, 10, 14, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neu-card-hover:hover {
+  box-shadow: -10px -10px 24px rgba(255, 255, 255, 0.05), 14px 14px 28px rgba(8, 10, 14, 0.85);
+  transform: translateY(-2px);
+  border-color: rgba(245, 158, 11, 0.15);
+}
+
+.neu-raised-sm {
+  background-color: #1E222D;
+  box-shadow: -4px -4px 10px rgba(255, 255, 255, 0.04), 5px 5px 12px rgba(8, 10, 14, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.neu-raised-btn {
+  background: linear-gradient(135deg, #222734 0%, #1A1E27 100%);
+  box-shadow: -4px -4px 10px rgba(255, 255, 255, 0.045), 5px 5px 12px rgba(7, 9, 13, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neu-raised-btn:hover {
+  box-shadow: -5px -5px 12px rgba(255, 255, 255, 0.06), 7px 7px 15px rgba(7, 9, 13, 0.85);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.neu-raised-btn:active, .neu-raised-btn-active {
+  box-shadow: inset 4px 4px 8px rgba(6, 8, 12, 0.85), inset -3px -3px 6px rgba(255, 255, 255, 0.035) !important;
+  transform: scale(0.98);
+}
+
+.neu-inset-well {
+  background-color: #14171E;
+  box-shadow: inset 5px 5px 10px rgba(7, 9, 13, 0.85), inset -4px -4px 8px rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.neu-inset-track {
+  background-color: #13161C;
+  box-shadow: inset 3px 3px 6px rgba(5, 7, 10, 0.9), inset -2px -2px 4px rgba(255, 255, 255, 0.03);
+}
+
+.neu-amber-glow {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.28), 0 0 40px rgba(245, 158, 11, 0.12);
+}
+
+.neu-amber-pill {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(217, 119, 6, 0.1) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.15), inset 1px 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Background atmospheric amber gradient orbs */
+.bg-ambient-glow {
+  background: radial-gradient(circle 500px at 15% 15%, rgba(245, 158, 11, 0.035), transparent 70%),
+              radial-gradient(circle 600px at 85% 85%, rgba(245, 158, 11, 0.025), transparent 70%);
+}
