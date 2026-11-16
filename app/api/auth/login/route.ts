@@ -56,6 +56,31 @@ export async function POST(request: NextRequest) {
         path: "/",
         maxAge: 60 * 60 * 24 * 7,
       });
+      response.cookies.set("sop_student_id", "6349e408-1096-483e-82d0-64587e70b025", {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+      response.cookies.set("sop_academic_year", "AY 2026-27", {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+      response.cookies.set("sop_course_family_id", "0", {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+      response.cookies.set("sop_center_id", "1", {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+      response.cookies.set("sop_user_id", "89466", {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
 
       return response;
     }
@@ -369,6 +394,38 @@ export async function POST(request: NextRequest) {
       path: "/",
       maxAge: 60 * 60 * 24 * 7,
     });
+
+    if (userInfo?.AcademicYearName || userInfo?.AcademicYearCode) {
+      response.cookies.set("sop_academic_year", userInfo.AcademicYearCode || userInfo.AcademicYearName || "AY 2026-27", {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+    }
+
+    if (userInfo?.CourseFamilyId) {
+      response.cookies.set("sop_course_family_id", String(userInfo.CourseFamilyId), {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+    }
+
+    if (userInfo?.CenterId) {
+      response.cookies.set("sop_center_id", String(userInfo.CenterId), {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+    }
+
+    if (userInfo?.UserId) {
+      response.cookies.set("sop_user_id", String(userInfo.UserId), {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+    }
 
     return response;
   } catch (error: any) {

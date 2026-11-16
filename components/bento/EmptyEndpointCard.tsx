@@ -19,6 +19,8 @@ export interface EndpointDiagnosticInfo {
   statusText?: string;
   rawSnippet?: string;
   method?: string;
+  sentBody?: any;
+  expectedSchemaFromBlueprint?: any;
 }
 
 interface EmptyEndpointCardProps {
@@ -194,6 +196,58 @@ export function EmptyEndpointCard({
                     "No server response received yet. Ensure you are signed in with your UPES student account."}
                 </pre>
               </div>
+
+              {diagnostic?.sentBody && (
+                <div className="pt-1 border-t border-white/5">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-amber-400/80 text-[10px] uppercase tracking-wider font-bold">
+                      Sent Payload (JSON):
+                    </span>
+                    <button
+                      onClick={() =>
+                        copySnippet(
+                          typeof diagnostic.sentBody === "string"
+                            ? diagnostic.sentBody
+                            : JSON.stringify(diagnostic.sentBody, null, 2)
+                        )
+                      }
+                      className="text-[10px] text-slate-400 hover:text-amber-400 flex items-center gap-1"
+                    >
+                      <Copy className="w-3 h-3" />
+                      <span>Copy Payload</span>
+                    </button>
+                  </div>
+                  <pre className="p-2.5 rounded-lg bg-black/60 text-[10px] text-amber-200/90 overflow-x-auto whitespace-pre-wrap font-mono border border-amber-500/20 select-all leading-relaxed">
+                    {typeof diagnostic.sentBody === "string"
+                      ? diagnostic.sentBody
+                      : JSON.stringify(diagnostic.sentBody, null, 2)}
+                  </pre>
+                </div>
+              )}
+
+              {diagnostic?.expectedSchemaFromBlueprint && (
+                <div className="pt-1 border-t border-white/5">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-sky-400/80 text-[10px] uppercase tracking-wider font-bold">
+                      Expected Blueprint Schema:
+                    </span>
+                    <button
+                      onClick={() =>
+                        copySnippet(
+                          JSON.stringify(diagnostic.expectedSchemaFromBlueprint, null, 2)
+                        )
+                      }
+                      className="text-[10px] text-slate-400 hover:text-sky-400 flex items-center gap-1"
+                    >
+                      <Copy className="w-3 h-3" />
+                      <span>Copy Schema</span>
+                    </button>
+                  </div>
+                  <pre className="p-2.5 rounded-lg bg-black/60 text-[10px] text-sky-200/90 overflow-x-auto whitespace-pre-wrap font-mono border border-sky-500/20 select-all leading-relaxed">
+                    {JSON.stringify(diagnostic.expectedSchemaFromBlueprint, null, 2)}
+                  </pre>
+                </div>
+              )}
             </div>
           )}
         </div>

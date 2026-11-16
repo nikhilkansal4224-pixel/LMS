@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import portalBlueprint from "@/config/portal-blueprint.json";
+import upesFullBlueprint from "@/config/upes-full-blueprint.json";
 
 // Live CORS & Auth Proxy for UPES Portal & SLCM/LMS endpoints
 export async function GET(request: NextRequest, { params }: { params: { path: string[] } }) {
@@ -76,6 +77,27 @@ async function revalidateSsoToken(
   return null;
 }
 
+/**
+ * Look up the expected request payload template from upes-full-blueprint.json for accurate diagnostics
+ */
+function getExpectedSchemaFromBlueprint(url: string, method: string): any {
+  try {
+    const cleanUrl = url.split("?")[0].toLowerCase();
+    const endpoints = (upesFullBlueprint as any).endpoints || [];
+    const match = endpoints.find((ep: any) => {
+      const epClean = (ep.url || "").split("?")[0].toLowerCase();
+      const epOriginal = (ep.originalPath || "").toLowerCase();
+      return (
+        ep.method?.toUpperCase() === method.toUpperCase() &&
+        (cleanUrl === epClean || (epOriginal && cleanUrl.endsWith(epOriginal)))
+      );
+    });
+    return match?.requestPayloadTemplate || null;
+  } catch {
+    return null;
+  }
+}
+
 async function handleProxy(request: NextRequest, pathSegments: string[], incomingMethod: string) {
   const startTime = performance.now();
   const path = pathSegments.join("/");
@@ -136,6 +158,18 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
     request.headers.get("x-client-id") ||
     request.headers.get("clientid") ||
     "3";
+
+  const academicYearCode =
+    request.cookies.get("sop_academic_year")?.value || "AY 2026-27";
+  const courseFamilyId = Number(request.cookies.get("sop_course_family_id")?.value || 0);
+  const centerId = Number(request.cookies.get("sop_center_id")?.value || 1);
+  const levelId = Number(request.cookies.get("sop_level_id")?.value || 1);
+  const userId = request.cookies.get("sop_user_id")?.value || sapId;
+
+  const now = new Date();
+  const todayStr = now.toISOString().split("T")[0]; // "YYYY-MM-DD"
+  const currentYear = now.getFullYear();
+  const semesterStartStr = `${currentYear}-06-15`;
 
   // 2. Resolve target URL and target method from environment variables or blueprint fallback
   let targetUrl: string | null = null;
@@ -308,14 +342,14 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
     forwardHeaders["Cookie"] = cookieJar.join("; ");
   }
 
-  // 4. Construct Request Body for POST requests
+  // 4. Construct Request Body for POST requests according to upes-full-blueprint.json
   let bodyData: BodyInit | undefined = undefined;
   if (targetMethod === "POST" || targetMethod === "PUT") {
     forwardHeaders["Content-Type"] = "application/json";
     if (incomingMethod === "POST" || incomingMethod === "PUT") {
       try {
         const clientBody = await request.text();
-        if (clientBody && clientBody.trim().length > 0) {
+        if (clientBody && clientBody.trim().length > 2 && clientBody.trim() !== "{}") {
           bodyData = clientBody;
         }
       } catch {
@@ -324,38 +358,135 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
     }
 
     if (!bodyData) {
-      if (path.includes("timetable")) {
-        // UPES Timetable payload structure
+      if (targetUrl.includes("/attendance/api/attendance/summary")) {
+        // [POST] /apigateway/attendance/api/attendance/summary
         bodyData = JSON.stringify({
-          ActivityCode: "EXAM_PRO",
-          TimeTableContextDetails: {},
-          StudentId: cookieStudentId,
-          studentId: cookieStudentId,
+          StartDate: null,
+          EndDate: todayStr,
+          ModeName: "Default",
           StudentUniqueId: cookieStudentId,
-          studentUniqueId: cookieStudentId,
-          TermCode: termCode,
-          termCode,
-          SapId: sapId,
-          sapId,
+          SelectedModuleId: null,
+          SelectedTermId: null,
         });
-      } else {
-        // Synthesize the standard UPES POST payload with both PascalCase & camelCase compatibility
+      } else if (targetUrl.includes("/student-attendance/studentattendancesummary")) {
+        // [POST] /apigateway/student-attendance/studentattendancesummary
+        bodyData = JSON.stringify({
+          StudentUniqueID: cookieStudentId,
+          CourseFamilyId: courseFamilyId,
+          TermCodeId: 0,
+          CourseList: [],
+          StartDate: semesterStartStr,
+          EndDate: todayStr,
+          TermStartDate: semesterStartStr,
+          TermEndDate: todayStr,
+        });
+      } else if (targetUrl.includes("/student-attendance/attendancedropdown")) {
+        // [POST] /apigateway/student-attendance/attendancedropdown
+        bodyData = JSON.stringify({
+          StudentUniqueID: cookieStudentId,
+        });
+      } else if (targetUrl.includes("/timetable/masters")) {
+        // [POST] /apigateway/api/timetable/masters
+        bodyData = JSON.stringify({
+          DropdownType: "RoomCategory",
+        });
+      } else if (targetUrl.includes("/api/timetable")) {
+        // [POST] /apigateway/api/timetable
+        bodyData = JSON.stringify({
+          ActivityCode: "TT_STUDENT",
+          TimeTableContextDetails: {},
+        });
+      } else if (targetUrl.includes("/api/calendareventlist")) {
+        // [POST] /apigateway/api/calendareventlist
+        bodyData = JSON.stringify({
+          StudentUniqueId: cookieStudentId,
+        });
+      } else if (targetUrl.includes("/studentinformation/initialstudentdata")) {
+        // [POST] /apigateway/connect-portal/api/studentinformation/initialstudentdata
         bodyData = JSON.stringify({
           StudentId: cookieStudentId,
-          studentId: cookieStudentId,
+        });
+      } else if (targetUrl.includes("/exam-pro")) {
+        // [POST] /apigateway/integratons/api/data/exam-pro
+        bodyData = JSON.stringify({
           StudentUniqueId: cookieStudentId,
-          studentUniqueId: cookieStudentId,
-          SelectedStudentId: cookieStudentId,
-          TermCode: termCode,
-          termCode,
-          SapId: sapId,
-          sapId,
-          Email: studentEmail,
-          email: studentEmail,
           ActivityCode: "EXAM_PRO",
+          TermCode: termCode,
+        });
+      } else if (targetUrl.includes("/moduleselection")) {
+        // [POST] /apigateway/courseplanning/api/moduleselection
+        bodyData = JSON.stringify({
+          StudentUniqueId: cookieStudentId,
+          SelectedCourseFamilyId: courseFamilyId,
+          ActivityCode: "STU_MOD_SEL",
+        });
+      } else if (targetUrl.includes("/circular/getlist")) {
+        // [POST] /apigateway/communication/api/circular/getlist
+        bodyData = JSON.stringify({
+          SelectedStudentId: cookieStudentId,
+          AcademicYearId: 21,
+          SearchString: "",
+        });
+      } else if (targetUrl.includes("/servicerequest/dropdowns")) {
+        // [POST] /apigateway/communication/api/servicerequest/dropdowns
+        bodyData = JSON.stringify({
+          RequiredDropdown: "Category",
+          searchString: "",
+          studentUniqueId: cookieStudentId,
+        });
+      } else if (targetUrl.includes("/servicerequest")) {
+        // [POST] /apigateway/communication/api/servicerequest
+        bodyData = JSON.stringify({
+          ServiceRequestId: null,
+          StudentUniqueId: cookieStudentId,
+        });
+      } else if (targetUrl.includes("/roomallocation")) {
+        // [POST] /apigateway/hostel/api/roomallocation/getstudentsallocation
+        bodyData = JSON.stringify({
+          StudentId: cookieStudentId,
+          AcademicYearCode: academicYearCode,
+          CenterCode: "BID",
+          BrandCode: "UPES",
+          RequestedFor: "ROOM_ALLOCATION",
+        });
+      } else if (targetUrl.includes("/studentdetails")) {
+        // [POST] /apigateway/hostel/api/studentdetails
+        bodyData = JSON.stringify({
+          PageFeatureCode: "CONNECT-HSTL-STU-DET",
+          StudentUniqueID: cookieStudentId,
+        });
+      } else if (targetUrl.includes("/pass")) {
+        // [POST] /apigateway/hostel/api/pass
+        bodyData = JSON.stringify({
+          PageFeatureCode: "CONNECT-HSTL-GATEPASS",
+          StudentUniqueID: cookieStudentId,
+        });
+      } else if (targetUrl.includes("/sso/user/oauth2/access-lms")) {
+        // [POST] /sso/user/oauth2/access-lms
+        bodyData = JSON.stringify({});
+      } else {
+        // Comprehensive fallback for unknown POST endpoints with exact profile fields
+        bodyData = JSON.stringify({
+          StudentId: cookieStudentId,
+          StudentUniqueId: cookieStudentId,
+          StudentUniqueID: cookieStudentId,
+          GlobalId: sapId,
+          UserId: userId,
+          EmailId: studentEmail,
+          TermCode: termCode,
+          AcademicYearCode: academicYearCode,
+          CenterId: centerId,
+          CourseFamilyId: courseFamilyId,
+          LevelId: levelId,
+          StartDate: semesterStartStr,
+          EndDate: todayStr,
         });
       }
     }
+  } else {
+    // For GET / HEAD, explicitly remove Content-Type and ensure bodyData is undefined
+    delete forwardHeaders["Content-Type"];
+    bodyData = undefined;
   }
 
   // 5. Execute live fetch to UPES API with 8s timeout
@@ -374,6 +505,53 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
     });
 
     clearTimeout(timeoutId);
+
+    // Attendance resilience fallback: if primary attendance endpoint returned 400 Bad Request or 404, retry fallback
+    if (path.includes("attendance") && response && (response.status === 400 || response.status === 404)) {
+      const altUrl = targetUrl.includes("/attendance/api/attendance/summary")
+        ? "https://myupes-beta.upes.ac.in/apigateway/student-attendance/studentattendancesummary"
+        : "https://myupes-beta.upes.ac.in/apigateway/attendance/api/attendance/summary";
+
+      const altBody = altUrl.includes("studentattendancesummary")
+        ? JSON.stringify({
+            StudentUniqueID: cookieStudentId,
+            CourseFamilyId: courseFamilyId,
+            TermCodeId: 0,
+            CourseList: [],
+            StartDate: semesterStartStr,
+            EndDate: todayStr,
+            TermStartDate: semesterStartStr,
+            TermEndDate: todayStr,
+          })
+        : JSON.stringify({
+            StartDate: null,
+            EndDate: todayStr,
+            ModeName: "Default",
+            StudentUniqueId: cookieStudentId,
+            SelectedModuleId: null,
+            SelectedTermId: null,
+          });
+
+      console.log(`Primary attendance endpoint ${targetUrl} returned ${response.status}. Retrying fallback ${altUrl}...`);
+      const altController = new AbortController();
+      const altTimeout = setTimeout(() => altController.abort(), 8000);
+      const altRes = await fetch(altUrl, {
+        method: "POST",
+        headers: forwardHeaders,
+        body: altBody,
+        signal: altController.signal,
+      }).catch((altErr) => {
+        console.warn(`Alternative attendance fetch error:`, altErr.message);
+        return null;
+      });
+      clearTimeout(altTimeout);
+
+      if (altRes && altRes.ok) {
+        response = altRes;
+        targetUrl = altUrl;
+        bodyData = altBody;
+      }
+    }
 
     // If 401 Unauthorized received on connect-portal or microservices, revalidate SSO token and retry once
     let newUniqueHash: string | undefined;
@@ -436,6 +614,16 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
         }
       }
 
+      let parsedSentBody: any = null;
+      if (bodyData) {
+        try {
+          parsedSentBody = typeof bodyData === "string" ? JSON.parse(bodyData) : bodyData;
+        } catch {
+          parsedSentBody = bodyData;
+        }
+      }
+      const expectedSchema = getExpectedSchemaFromBlueprint(targetUrl, targetMethod);
+
       return NextResponse.json(
         {
           isConfigured: true,
@@ -447,7 +635,7 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
           statusText: response?.statusText || "Gateway Timeout",
           rawSnippet,
           message: response
-            ? `Target ${envKey} responded with status ${response.status} (${response.statusText}).`
+            ? `Target ${envKey} responded with status ${response.status} (${response.statusText}): ${rawSnippet}`
             : `Network timeout reaching ${targetUrl}.`,
           diagnostic: {
             targetUrl,
@@ -455,6 +643,8 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
             statusCode: response?.status || 504,
             statusText: response?.statusText || "Timeout / Unreachable",
             rawSnippet,
+            sentBody: parsedSentBody,
+            expectedSchemaFromBlueprint: expectedSchema,
           },
           timestamp: new Date().toISOString(),
         },

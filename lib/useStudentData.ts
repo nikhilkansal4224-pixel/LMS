@@ -144,6 +144,8 @@ export function useStudentData() {
               ? json
               : JSON.stringify(json || {}).slice(0, 300)),
           method: json?.method || "GET",
+          sentBody: json?.sentBody || null,
+          expectedSchemaFromBlueprint: json?.expectedSchemaFromBlueprint || null,
         };
 
         if (res.ok && json && !json.error && json.isConfigured !== false && json.diagnostic?.statusCode !== 504) {

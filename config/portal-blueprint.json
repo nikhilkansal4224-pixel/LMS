@@ -84,8 +84,12 @@
       "dropdownUrl": "https://myupes-beta.upes.ac.in/apigateway/student-attendance/attendancedropdown",
       "description": "Subject-wise attendance summary, conducted, attended, and percentage",
       "payloadTemplate": {
-        "StudentId": "{{studentId}}",
-        "TermCode": "{{termCode}}"
+        "StartDate": null,
+        "EndDate": "{{today}}",
+        "ModeName": "Default",
+        "StudentUniqueId": "{{studentId}}",
+        "SelectedModuleId": null,
+        "SelectedTermId": null
       },
       "sampleKeys": [
         "SubjectCode",
@@ -101,8 +105,8 @@
       "mastersUrl": "https://myupes-beta.upes.ac.in/apigateway/api/timetable/masters",
       "description": "Daily and weekly student schedule, class slots, rooms, and faculty",
       "payloadTemplate": {
-        "StudentId": "{{studentId}}",
-        "TermCode": "{{termCode}}"
+        "ActivityCode": "TT_STUDENT",
+        "TimeTableContextDetails": {}
       },
       "sampleKeys": [
         "Id",
