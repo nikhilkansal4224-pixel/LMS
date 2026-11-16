@@ -46,6 +46,16 @@ export async function POST(request: NextRequest) {
         path: "/",
         maxAge: 60 * 60 * 24 * 7,
       });
+      response.cookies.set("sop_unique_hash", "demo-hash-key-39697", {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+      response.cookies.set("sop_client_id", "3", {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
 
       return response;
     }
@@ -80,6 +90,8 @@ export async function POST(request: NextRequest) {
     let rawResponseData: any = null;
     let studentId: string | null = null;
     let termCode: string = "SEM_01";
+    let uniqueHashKey: string | null = null;
+    let clientId: string = "3";
 
     if (upesAuthUrl) {
       const payload = mapLoginPayload({
@@ -133,42 +145,106 @@ export async function POST(request: NextRequest) {
           }
 
           if (!accessToken && authCode && tokenExchangeUrl) {
-            const exchangeRes = await fetch(tokenExchangeUrl, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json, text/plain, */*",
-                Origin: "https://myupes-beta.upes.ac.in",
-                Referer: "https://myupes-beta.upes.ac.in/",
-              },
-              body: JSON.stringify({ code: authCode, clientId: 3 }),
-            });
+            try {
+              const exchangeRes = await fetch(tokenExchangeUrl, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json, text/plain, */*",
+                  Origin: "https://myupes-beta.upes.ac.in",
+                  Referer: "https://myupes-beta.upes.ac.in/",
+                },
+                body: JSON.stringify({ code: authCode, clientId: 3 }),
+              });
 
-            if (exchangeRes.ok) {
-              const exchangeData = await exchangeRes.json();
-              if (exchangeData?.Item?.Identity?.AccessToken) {
-                accessToken = exchangeData.Item.Identity.AccessToken;
-                userInfo = exchangeData.Item.UserInfo;
-              } else if (exchangeData?.AccessToken) {
-                accessToken = exchangeData.AccessToken;
-                userInfo = exchangeData.UserInfo;
+              if (exchangeRes.ok) {
+                const exchangeData = await exchangeRes.json();
+                if (exchangeData?.Item?.Identity?.AccessToken) {
+                  accessToken = exchangeData.Item.Identity.AccessToken;
+                  userInfo = exchangeData.Item.UserInfo;
+                } else if (exchangeData?.AccessToken) {
+                  accessToken = exchangeData.AccessToken;
+                  userInfo = exchangeData.UserInfo;
+                }
               }
+            } catch (err: any) {
+              console.warn("Token exchange error:", err.message);
             }
           }
 
-          // Step 2: Fetch Student Profile immediately to extract real StudentId UUID & TermCode
-          if (accessToken && profileUrl) {
+          // Step 1.5: Validate token with UPES Identity Server to obtain UniqueHashKey and ClientId
+          if (accessToken && tokenExchangeUrl) {
             try {
-              const profileRes = await fetch(profileUrl, {
-                method: "GET",
+              const validateRes = await fetch(tokenExchangeUrl, {
+                method: "POST",
                 headers: {
-                  Authorization: `Bearer ${accessToken}`,
+                  "Content-Type": "application/json",
+                  Accept: "application/json, text/plain, */*",
                   Origin: "https://myupes-beta.upes.ac.in",
                   Referer: "https://myupes-beta.upes.ac.in/",
-                  Accept: "application/json, text/plain, */*",
+                  "x-applicationname": "connectportal",
+                  "x-requestfrom": "web",
                   "User-Agent":
                     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
                 },
+                body: JSON.stringify({
+                  AuthToken: accessToken,
+                  UniqueId: "",
+                }),
+              });
+
+              if (validateRes.ok) {
+                const validateData = await validateRes.json();
+                const vItem = validateData?.Item || validateData?.data || validateData;
+                if (vItem) {
+                  if (vItem.UniqueHashKey) uniqueHashKey = String(vItem.UniqueHashKey);
+                  if (vItem.ClientId) clientId = String(vItem.ClientId);
+                  if (vItem.UserId && !userInfo?.UserId) {
+                    if (!userInfo) userInfo = {};
+                    userInfo.UserId = vItem.UserId;
+                  }
+                  if (vItem.FirstName && !userInfo?.FirstName) {
+                    if (!userInfo) userInfo = {};
+                    userInfo.FirstName = vItem.FirstName;
+                  }
+                }
+              }
+            } catch (valErr: any) {
+              console.warn("UPES validate/token call failed:", valErr.message);
+            }
+          }
+
+          // Step 2: Fetch Student Profile immediately using AccessToken + UniqueHashKey + ClientId
+          if (accessToken && profileUrl) {
+            try {
+              const profileHeaders: Record<string, string> = {
+                Authorization: `Bearer ${accessToken}`,
+                Origin: "https://myupes-beta.upes.ac.in",
+                Referer: "https://myupes-beta.upes.ac.in/",
+                Accept: "application/json, text/plain, */*",
+                "x-applicationname": "connectportal",
+                "x-requestfrom": "web",
+                "User-Agent":
+                  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
+              };
+
+              if (uniqueHashKey) {
+                profileHeaders["UniqueHashKey"] = uniqueHashKey;
+                profileHeaders["X-Unique-Hash-Key"] = uniqueHashKey;
+              }
+              if (clientId) {
+                profileHeaders["ClientId"] = clientId;
+                profileHeaders["X-Client-Id"] = clientId;
+              }
+
+              const cookieList = [`sop_session=${accessToken}`, `AuthToken=${accessToken}`];
+              if (uniqueHashKey) cookieList.push(`UniqueHashKey=${uniqueHashKey}`);
+              if (clientId) cookieList.push(`ClientId=${clientId}`);
+              profileHeaders["Cookie"] = cookieList.join("; ");
+
+              const profileRes = await fetch(profileUrl, {
+                method: "GET",
+                headers: profileHeaders,
               });
 
               if (profileRes.ok) {
@@ -204,6 +280,7 @@ export async function POST(request: NextRequest) {
     if (!accessToken) {
       accessToken = `upes-token-${Buffer.from(normalizedEmail).toString("base64")}-${Date.now()}`;
       studentId = studentId || "6349e408-1096-483e-82d0-64587e70b025";
+      uniqueHashKey = uniqueHashKey || "demo-hash-key-39697";
       userInfo = {
         UserId: 89466,
         StudentId: studentId,
@@ -233,6 +310,8 @@ export async function POST(request: NextRequest) {
       sapId: userInfo?.GlobalId || sapId,
       studentId: studentId || userInfo?.StudentId || "",
       termCode,
+      uniqueHashKey: uniqueHashKey || "",
+      clientId: clientId || "3",
       hasLiveToken: Boolean(rawResponseData?.Item?.Identity?.AccessToken || rawResponseData?.AccessToken),
     });
 
@@ -245,7 +324,7 @@ export async function POST(request: NextRequest) {
       maxAge: 60 * 60 * 24 * 7, // 7 days
     });
 
-    // Set student UUID, sapId, termCode, and email cookies for client hydration & proxy chaining
+    // Set student UUID, sapId, termCode, uniqueHashKey, clientId, and email cookies
     if (studentId) {
       response.cookies.set("sop_student_id", studentId, {
         httpOnly: false,
@@ -253,6 +332,20 @@ export async function POST(request: NextRequest) {
         maxAge: 60 * 60 * 24 * 7,
       });
     }
+
+    if (uniqueHashKey) {
+      response.cookies.set("sop_unique_hash", uniqueHashKey, {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+    }
+
+    response.cookies.set("sop_client_id", clientId || "3", {
+      httpOnly: false,
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7,
+    });
 
     response.cookies.set("sop_sap_id", userInfo?.GlobalId || sapId, {
       httpOnly: false,

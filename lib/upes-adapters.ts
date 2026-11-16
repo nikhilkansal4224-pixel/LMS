@@ -264,6 +264,13 @@ export function adaptAttendancePayload(raw: any): AttendanceSubject[] {
 
 /**
  * Defensive adapter to map UPES live Timetable JSON array into TimetableSlot[]
+ * Handles exact live UPES schemas:
+ * - DayofWeekDetails (DayOfWeekName, DayOfWeekShortName)
+ * - SlotStartTime, SlotEndTime ("09:00:00")
+ * - ModuleList (ModuleName, ModuleCode, CourseName, SubjectCode)
+ * - TeacherList (TeacherName, FacultyName)
+ * - FloorPlanDetails (VenueName, VenueCode, VenueCategory, MeetingLink, CenterName)
+ * - IsCancelledSlot, TimeTableSlotStatusName
  */
 export function adaptTimetablePayload(raw: any): TimetableSlot[] {
   if (!raw) return [];
@@ -286,47 +293,160 @@ export function adaptTimetablePayload(raw: any): TimetableSlot[] {
     ? raw.Item.Schedule
     : [];
 
-  const validDays = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ] as const;
+  const dayMap: Record<string, TimetableSlot["day"]> = {
+    mon: "Monday",
+    monday: "Monday",
+    tue: "Tuesday",
+    tues: "Tuesday",
+    tuesday: "Tuesday",
+    wed: "Wednesday",
+    wednesday: "Wednesday",
+    thu: "Thursday",
+    thur: "Thursday",
+    thurs: "Thursday",
+    thursday: "Thursday",
+    fri: "Friday",
+    friday: "Friday",
+    sat: "Saturday",
+    saturday: "Saturday",
+    sun: "Sunday",
+    sunday: "Sunday",
+  };
 
   return list.map((item: any, idx: number) => {
-    let day = (item.Day || item.DayName || item.day || "Monday") as TimetableSlot["day"];
-    if (!validDays.includes(day)) {
-      day = "Monday";
+    // 1. Determine day
+    let rawDay =
+      item.DayofWeekDetails?.DayOfWeekName ||
+      item.DayofWeekDetails?.DayOfWeekShortName ||
+      item.Day ||
+      item.DayName ||
+      item.day ||
+      "";
+
+    let day: TimetableSlot["day"] = "Monday";
+    if (rawDay && dayMap[rawDay.toLowerCase()]) {
+      day = dayMap[rawDay.toLowerCase()];
+    } else if (item.SlotDate) {
+      try {
+        const d = new Date(item.SlotDate);
+        if (!isNaN(d.getTime())) {
+          const daysOfWeek = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+          ] as const;
+          day = daysOfWeek[d.getDay()] as TimetableSlot["day"];
+        }
+      } catch {
+        day = "Monday";
+      }
     }
 
-    const startTime = item.StartTime || item.FromTime || item.startTime || "09:00";
-    const endTime = item.EndTime || item.ToTime || item.endTime || "10:00";
+    // 2. Format times ("09:00:00" -> "09:00")
+    const rawStart = String(
+      item.SlotStartTime || item.StartTime || item.FromTime || item.startTime || "09:00"
+    );
+    const startTime = rawStart.length >= 5 ? rawStart.slice(0, 5) : rawStart;
+
+    const rawEnd = String(
+      item.SlotEndTime || item.EndTime || item.ToTime || item.endTime || "10:00"
+    );
+    const endTime = rawEnd.length >= 5 ? rawEnd.slice(0, 5) : rawEnd;
+
+    // 3. Module/Course details
+    const moduleItem =
+      Array.isArray(item.ModuleList) && item.ModuleList.length > 0
+        ? item.ModuleList[0]
+        : null;
 
     const subjectCode =
+      moduleItem?.ModuleCode ||
+      moduleItem?.SubjectCode ||
+      moduleItem?.Code ||
       item.SubjectCode ||
       item.CourseCode ||
       item.code ||
       `CSEN${1000 + idx}`;
 
     const subjectName =
+      moduleItem?.ModuleName ||
+      moduleItem?.CourseName ||
+      moduleItem?.Name ||
       item.SubjectName ||
       item.CourseName ||
       item.name ||
       "Scheduled Class";
 
-    const faculty = item.Faculty || item.FacultyName || item.Teacher || "UPES Faculty";
-    const room = item.Room || item.RoomNo || "Room 304";
-    const block = item.Block || item.Building || "Block 9";
+    // 4. Faculty details
+    const teacherItem =
+      Array.isArray(item.TeacherList) && item.TeacherList.length > 0
+        ? item.TeacherList[0]
+        : null;
 
-    const rawType = String(item.Type || item.ClassType || item.type || "Lecture");
-    const type: TimetableSlot["type"] =
-      rawType.toLowerCase().includes("lab")
-        ? "Lab"
-        : rawType.toLowerCase().includes("tut")
-        ? "Tutorial"
-        : "Lecture";
+    const faculty =
+      teacherItem?.TeacherName ||
+      teacherItem?.FacultyName ||
+      teacherItem?.Name ||
+      item.Faculty ||
+      item.FacultyName ||
+      item.Teacher ||
+      "UPES Faculty";
+
+    // 5. FloorPlan / Venue details
+    const fp = item.FloorPlanDetails || {};
+    const venueName = fp.VenueName || item.VenueName || "";
+    const venueCode = fp.VenueCode || item.VenueCode || "";
+    const centerName = fp.CenterName || item.CenterName || "Bidholi Campus";
+    const meetingLink = fp.MeetingLink || item.MeetingLink || "";
+    const colorCode = fp.ColorCode || item.ColorCode || "";
+
+    const room =
+      venueName ||
+      venueCode ||
+      item.Room ||
+      item.RoomNo ||
+      "Room 304";
+
+    let block = "Block 9";
+    if (venueName) {
+      const blockMatch = venueName.match(/Block\s*[\w\d]+/i);
+      if (blockMatch) {
+        block = blockMatch[0];
+      } else if (centerName) {
+        block = centerName;
+      }
+    } else if (item.Block || item.Building) {
+      block = item.Block || item.Building;
+    }
+
+    // 6. Slot type
+    const categoryStr = String(
+      fp.VenueCategory ||
+        fp.VenueCategoryCode ||
+        item.Type ||
+        item.ClassType ||
+        item.type ||
+        ""
+    ).toLowerCase();
+    const subjectLower = subjectName.toLowerCase();
+
+    let type: TimetableSlot["type"] = "Lecture";
+    if (categoryStr.includes("lab") || subjectLower.includes("lab")) {
+      type = "Lab";
+    } else if (categoryStr.includes("tut") || subjectLower.includes("tutorial")) {
+      type = "Tutorial";
+    } else if (categoryStr.includes("prac") || subjectLower.includes("practical")) {
+      type = "Practical";
+    }
+
+    // 7. Cancellation & Status
+    const isCancelled = Boolean(item.IsCancelledSlot || item.isCancelled);
+    const statusName =
+      item.TimeTableSlotStatusName || (isCancelled ? "Cancelled" : "Scheduled");
 
     return {
       id: String(item.Id || item.id || `tt-${day}-${idx}`),
@@ -339,6 +459,14 @@ export function adaptTimetablePayload(raw: any): TimetableSlot[] {
       room,
       block,
       type,
+      venueName: venueName || undefined,
+      venueCode: venueCode || undefined,
+      meetingLink: meetingLink || undefined,
+      slotDate: item.SlotDate || undefined,
+      isCancelled,
+      statusName,
+      colorCode: colorCode || undefined,
+      centerName: centerName || undefined,
     };
   });
 }

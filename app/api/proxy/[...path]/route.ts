@@ -75,6 +75,18 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
     request.headers.get("x-student-email") ||
     "";
 
+  const uniqueHashKey =
+    request.cookies.get("sop_unique_hash")?.value ||
+    request.headers.get("x-unique-hash-key") ||
+    request.headers.get("uniquehashkey") ||
+    "";
+
+  const clientId =
+    request.cookies.get("sop_client_id")?.value ||
+    request.headers.get("x-client-id") ||
+    request.headers.get("clientid") ||
+    "3";
+
   // 2. Resolve target URL and target method from environment variables or blueprint fallback
   let targetUrl: string | null = null;
   let targetMethod: string = incomingMethod;
@@ -181,6 +193,8 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
     Accept: "application/json, text/plain, */*",
     Origin: "https://myupes-beta.upes.ac.in",
     Referer: "https://myupes-beta.upes.ac.in/",
+    "x-applicationname": "connectportal",
+    "x-requestfrom": "web",
   };
 
   if (authHeader) {
@@ -188,14 +202,43 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
       ? authHeader
       : `Bearer ${authHeader}`;
   }
+  if (uniqueHashKey) {
+    forwardHeaders["UniqueHashKey"] = uniqueHashKey;
+    forwardHeaders["X-Unique-Hash-Key"] = uniqueHashKey;
+  }
+  if (clientId) {
+    forwardHeaders["ClientId"] = clientId;
+    forwardHeaders["X-Client-Id"] = clientId;
+  }
   if (sapId) {
     forwardHeaders["X-SAP-ID"] = sapId;
   }
   if (cookieStudentId) {
     forwardHeaders["X-Student-Id"] = cookieStudentId;
+    forwardHeaders["x-studentuniqueid"] = cookieStudentId;
+    forwardHeaders["X-Student-Unique-Id"] = cookieStudentId;
   }
   if (studentEmail) {
     forwardHeaders["X-Student-Email"] = studentEmail;
+  }
+
+  // Forward cookies for UPES microservices (connect-portal, attendance, timetable)
+  const cookieJar: string[] = [];
+  if (cookieSession) {
+    cookieJar.push(`sop_session=${cookieSession}`);
+    cookieJar.push(`AuthToken=${cookieSession}`);
+  }
+  if (uniqueHashKey) {
+    cookieJar.push(`UniqueHashKey=${uniqueHashKey}`);
+  }
+  if (clientId) {
+    cookieJar.push(`ClientId=${clientId}`);
+  }
+  if (cookieStudentId) {
+    cookieJar.push(`StudentId=${cookieStudentId}`);
+  }
+  if (cookieJar.length > 0) {
+    forwardHeaders["Cookie"] = cookieJar.join("; ");
   }
 
   // 4. Construct Request Body for POST requests
@@ -214,21 +257,37 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
     }
 
     if (!bodyData) {
-      // Synthesize the standard UPES POST payload with both PascalCase & camelCase compatibility
-      bodyData = JSON.stringify({
-        StudentId: cookieStudentId,
-        studentId: cookieStudentId,
-        StudentUniqueId: cookieStudentId,
-        studentUniqueId: cookieStudentId,
-        SelectedStudentId: cookieStudentId,
-        TermCode: termCode,
-        termCode,
-        SapId: sapId,
-        sapId,
-        Email: studentEmail,
-        email: studentEmail,
-        ActivityCode: "EXAM_PRO",
-      });
+      if (path.includes("timetable")) {
+        // UPES Timetable payload structure
+        bodyData = JSON.stringify({
+          ActivityCode: "EXAM_PRO",
+          TimeTableContextDetails: {},
+          StudentId: cookieStudentId,
+          studentId: cookieStudentId,
+          StudentUniqueId: cookieStudentId,
+          studentUniqueId: cookieStudentId,
+          TermCode: termCode,
+          termCode,
+          SapId: sapId,
+          sapId,
+        });
+      } else {
+        // Synthesize the standard UPES POST payload with both PascalCase & camelCase compatibility
+        bodyData = JSON.stringify({
+          StudentId: cookieStudentId,
+          studentId: cookieStudentId,
+          StudentUniqueId: cookieStudentId,
+          studentUniqueId: cookieStudentId,
+          SelectedStudentId: cookieStudentId,
+          TermCode: termCode,
+          termCode,
+          SapId: sapId,
+          sapId,
+          Email: studentEmail,
+          email: studentEmail,
+          ActivityCode: "EXAM_PRO",
+        });
+      }
     }
   }
 

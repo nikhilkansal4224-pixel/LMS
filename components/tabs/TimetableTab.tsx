@@ -20,7 +20,7 @@ export function TimetableTab({ timetable }: TimetableTabProps) {
   ];
 
   const [activeDay, setActiveDay] = useState<TimetableSlot["day"]>("Monday");
-  const [filterType, setFilterType] = useState<"All" | "Lecture" | "Lab" | "Tutorial">("All");
+  const [filterType, setFilterType] = useState<"All" | "Lecture" | "Lab" | "Tutorial" | "Practical">("All");
 
   const daySlots = timetable
     .filter((slot) => slot.day === activeDay)
@@ -32,6 +32,8 @@ export function TimetableTab({ timetable }: TimetableTabProps) {
         return "bg-purple-500/15 text-purple-300 border border-purple-500/30";
       case "Tutorial":
         return "bg-sky-500/15 text-sky-300 border border-sky-500/30";
+      case "Practical":
+        return "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30";
       default:
         return "bg-amber-500/15 text-amber-300 border border-amber-500/30";
     }
@@ -58,7 +60,7 @@ export function TimetableTab({ timetable }: TimetableTabProps) {
 
           {/* Type Filter */}
           <div className="flex items-center gap-1.5 neu-inset-well p-1 rounded-xl">
-            {(["All", "Lecture", "Lab", "Tutorial"] as const).map((type) => (
+            {(["All", "Lecture", "Lab", "Tutorial", "Practical"] as const).map((type) => (
               <button
                 key={type}
                 onClick={() => setFilterType(type)}
@@ -114,10 +116,14 @@ export function TimetableTab({ timetable }: TimetableTabProps) {
               {/* Type colored accent stripe */}
               <div
                 className={`absolute top-0 left-0 bottom-0 w-1.5 ${
-                  slot.type === "Lab"
+                  slot.isCancelled
+                    ? "bg-rose-500 shadow-[0_0_12px_rgba(244,63,94,0.4)]"
+                    : slot.type === "Lab"
                     ? "bg-purple-500 shadow-[0_0_12px_rgba(168,85,247,0.4)]"
                     : slot.type === "Tutorial"
                     ? "bg-sky-500 shadow-[0_0_12px_rgba(14,165,233,0.4)]"
+                    : slot.type === "Practical"
+                    ? "bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.4)]"
                     : "bg-amber-500 shadow-neu-glow-amber"
                 }`}
               />
@@ -132,13 +138,20 @@ export function TimetableTab({ timetable }: TimetableTabProps) {
                     </span>
                   </div>
 
-                  <span
-                    className={`text-[10px] font-mono font-bold uppercase px-2.5 py-0.5 rounded-full ${getTypeBadgeStyle(
-                      slot.type
-                    )}`}
-                  >
-                    {slot.type}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    {slot.isCancelled && (
+                      <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                        Cancelled
+                      </span>
+                    )}
+                    <span
+                      className={`text-[10px] font-mono font-bold uppercase px-2.5 py-0.5 rounded-full ${getTypeBadgeStyle(
+                        slot.type
+                      )}`}
+                    >
+                      {slot.type}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Course Details */}
@@ -146,18 +159,30 @@ export function TimetableTab({ timetable }: TimetableTabProps) {
                   <span className="text-[11px] font-mono text-slate-400 font-bold">
                     {slot.subjectCode}
                   </span>
-                  <h4 className="text-base font-bold text-white mt-0.5">
+                  <h4 className={`text-base font-bold text-white mt-0.5 ${slot.isCancelled ? "line-through opacity-70" : ""}`}>
                     {slot.subjectName}
                   </h4>
                 </div>
 
                 {/* Faculty & Room Info */}
                 <div className="space-y-1.5 pt-3 border-t border-white/5 text-xs text-slate-300">
-                  <div className="flex items-center gap-2">
-                    <Building2 className="w-4 h-4 text-amber-400 shrink-0" />
-                    <span className="font-semibold text-slate-200">
-                      {slot.block} • {slot.room}
-                    </span>
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <Building2 className="w-4 h-4 text-amber-400 shrink-0" />
+                      <span className="font-semibold text-slate-200">
+                        {slot.venueName || `${slot.block} • ${slot.room}`}
+                      </span>
+                    </div>
+                    {slot.meetingLink && (
+                      <a
+                        href={slot.meetingLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[11px] text-amber-400 hover:text-amber-300 font-mono underline ml-auto"
+                      >
+                        Join Online →
+                      </a>
+                    )}
                   </div>
                   <div className="flex items-center gap-2 text-slate-400 text-[11px]">
                     <User className="w-3.5 h-3.5 text-slate-500 shrink-0" />

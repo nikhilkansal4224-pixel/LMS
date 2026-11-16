@@ -59,29 +59,43 @@ export function TodayTimetableCard({ timetable, onViewAll }: TodayTimetableCardP
 
           <div className="pl-2">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400 px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20">
-                UP NEXT • {upNextSlot.startTime} – {upNextSlot.endTime}
+              <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${
+                upNextSlot.isCancelled
+                  ? "bg-rose-500/15 border-rose-500/30 text-rose-400"
+                  : "bg-amber-500/10 border-amber-500/20 text-amber-400"
+              }`}>
+                {upNextSlot.isCancelled ? "CANCELLED" : "UP NEXT"} • {upNextSlot.startTime} – {upNextSlot.endTime}
               </span>
               <span className="text-[10px] font-mono text-slate-400">
                 {upNextSlot.type}
               </span>
             </div>
 
-            <h4 className="text-sm font-bold text-white mt-1 line-clamp-1">
+            <h4 className={`text-sm font-bold text-white mt-1 line-clamp-1 ${upNextSlot.isCancelled ? "line-through opacity-70" : ""}`}>
               {upNextSlot.subjectName}
             </h4>
 
             <div className="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs text-slate-400 mt-2">
               <div className="flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                <span className="text-slate-200 font-medium">
-                  {upNextSlot.block} • {upNextSlot.room}
+                <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <span className="text-slate-200 font-medium truncate max-w-[200px]">
+                  {upNextSlot.venueName || `${upNextSlot.block} • ${upNextSlot.room}`}
                 </span>
               </div>
               <div className="flex items-center gap-1 text-[11px]">
-                <User className="w-3.5 h-3.5 text-slate-500" />
+                <User className="w-3.5 h-3.5 text-slate-500 shrink-0" />
                 <span className="truncate">{upNextSlot.faculty}</span>
               </div>
+              {upNextSlot.meetingLink && (
+                <a
+                  href={upNextSlot.meetingLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] text-amber-400 hover:underline flex items-center gap-0.5 ml-auto"
+                >
+                  Join Online →
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -107,11 +121,11 @@ export function TodayTimetableCard({ timetable, onViewAll }: TodayTimetableCardP
                 {slot.startTime}
               </span>
               <div className="truncate">
-                <p className="text-xs font-semibold text-slate-200 truncate">
+                <p className={`text-xs font-semibold text-slate-200 truncate ${slot.isCancelled ? "line-through opacity-60" : ""}`}>
                   {slot.subjectName}
                 </p>
                 <p className="text-[10px] text-slate-400 truncate">
-                  {slot.block} • {slot.room}
+                  {slot.venueName || `${slot.block} • ${slot.room}`}
                 </p>
               </div>
             </div>

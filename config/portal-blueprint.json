@@ -105,12 +105,21 @@
         "TermCode": "{{termCode}}"
       },
       "sampleKeys": [
-        "DayOfWeek",
-        "SlotTime",
-        "SubjectName",
-        "SubjectCode",
-        "FacultyName",
-        "RoomNumber"
+        "Id",
+        "FloorPlanDetails",
+        "FloorPlanDetails.VenueName",
+        "FloorPlanDetails.VenueCode",
+        "FloorPlanDetails.MeetingLink",
+        "DayofWeekDetails",
+        "DayofWeekDetails.DayOfWeekName",
+        "SlotDate",
+        "SlotStartTime",
+        "SlotEndTime",
+        "ModuleList",
+        "TeacherList",
+        "CohortList",
+        "TimeTableSlotStatusName",
+        "IsCancelledSlot"
       ]
     },
     "lms": {

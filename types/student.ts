@@ -42,7 +42,7 @@ export interface AttendanceSubject {
 
 export interface TimetableSlot {
   id: string;
-  day: "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday";
+  day: "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
   startTime: string; // "09:00"
   endTime: string;   // "10:00"
   subjectCode: string;
@@ -50,7 +50,15 @@ export interface TimetableSlot {
   faculty: string;
   room: string;
   block: string;
-  type: "Lecture" | "Lab" | "Tutorial";
+  type: "Lecture" | "Lab" | "Tutorial" | "Practical";
+  venueName?: string;
+  venueCode?: string;
+  meetingLink?: string;
+  slotDate?: string;
+  isCancelled?: boolean;
+  statusName?: string;
+  colorCode?: string;
+  centerName?: string;
 }
 
 export interface AcademicSemester {

@@ -64,8 +64,14 @@ export interface UpesIdentityResponse {
       MobileNumber?: string;
       DateOfBirth?: string;
       ProfilePicture?: string;
+      UniqueHashKey?: string;
+      ClientId?: string | number;
     };
     Code?: string;
+    UniqueHashKey?: string;
+    ClientId?: string | number;
   };
+  UniqueHashKey?: string;
+  ClientId?: string | number;
   Message?: string;
 }
