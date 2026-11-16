@@ -92,7 +92,7 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
     targetUrl =
       process.env.UPES_ATTENDANCE_URL ||
       portalBlueprint.endpoints.attendance.url ||
-      "https://myupes-beta.upes.ac.in/apigateway/attendance/api/attendance/summary";
+      "https://myupes-beta.upes.ac.in/apigateway/student-attendance/studentattendancesummary";
     // UPES Attendance summary API requires POST method
     targetMethod = "POST";
   } else if (path.includes("timetable")) {
@@ -110,6 +110,10 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
       portalBlueprint.endpoints.grades?.url ||
       `https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/course-summary/${cookieStudentId}`;
     targetMethod = "GET";
+  } else if (path.includes("lms/sso")) {
+    envKey = "UPES_LMS_SSO_URL";
+    targetUrl = "https://myupes-beta.upes.ac.in/sso/user/oauth2/access-lms";
+    targetMethod = "POST";
   } else if (path.includes("lms") || path.includes("courses")) {
     envKey = "UPES_LMS_URL";
     targetUrl =
@@ -117,6 +121,30 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
       portalBlueprint.endpoints.lms?.courses?.url ||
       `https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/course-summary/${cookieStudentId}`;
     targetMethod = "GET";
+  } else if (path.includes("finance") || path.includes("fees")) {
+    envKey = "UPES_FINANCE_URL";
+    targetUrl =
+      process.env.UPES_FINANCE_URL ||
+      portalBlueprint.endpoints.finance?.url ||
+      `https://myupes-beta.upes.ac.in/apigateway/financeintegrations/api/getstudentschedulepaywithdueamt?StudentID=${cookieStudentId}`;
+    targetMethod = "GET";
+  } else if (path.includes("calendar") || path.includes("events")) {
+    envKey = "UPES_CALENDAR_URL";
+    targetUrl =
+      process.env.UPES_CALENDAR_URL ||
+      portalBlueprint.endpoints.calendar?.url ||
+      "https://myupes-beta.upes.ac.in/apigateway/api/calendareventlist";
+    targetMethod = "POST";
+  } else if (path.includes("notifications")) {
+    envKey = "UPES_NOTIFICATIONS_URL";
+    targetUrl = `https://myupes-beta.upes.ac.in/apigateway/notification/bell/fetch/slcm/${sapId}/30/0`;
+    targetMethod = "GET";
+  } else if (path.includes("hostel")) {
+    envKey = "UPES_HOSTEL_URL";
+    targetUrl =
+      portalBlueprint.endpoints.hostel?.url ||
+      "https://myupes-beta.upes.ac.in/apigateway/hostel/api/roomallocation/getstudentsallocation";
+    targetMethod = "POST";
   }
 
   // Fallback to custom target header/query or UPES_API_BASE_URL
@@ -186,12 +214,20 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
     }
 
     if (!bodyData) {
-      // Synthesize the standard UPES POST payload
+      // Synthesize the standard UPES POST payload with both PascalCase & camelCase compatibility
       bodyData = JSON.stringify({
+        StudentId: cookieStudentId,
         studentId: cookieStudentId,
+        StudentUniqueId: cookieStudentId,
+        studentUniqueId: cookieStudentId,
+        SelectedStudentId: cookieStudentId,
+        TermCode: termCode,
         termCode,
+        SapId: sapId,
         sapId,
+        Email: studentEmail,
         email: studentEmail,
+        ActivityCode: "EXAM_PRO",
       });
     }
   }

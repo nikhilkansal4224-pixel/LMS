@@ -2,9 +2,24 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { LayoutDashboard, UserCheck, CalendarDays, GraduationCap, BookOpen } from "lucide-react";
+import {
+  LayoutDashboard,
+  UserCheck,
+  CalendarDays,
+  GraduationCap,
+  BookOpen,
+  CreditCard,
+  Calendar,
+} from "lucide-react";
 
-export type NavTab = "overview" | "attendance" | "timetable" | "lms" | "academics";
+export type NavTab =
+  | "overview"
+  | "attendance"
+  | "timetable"
+  | "lms"
+  | "academics"
+  | "finance"
+  | "calendar";
 
 interface NavDockProps {
   activeTab: NavTab;
@@ -40,8 +55,20 @@ export function NavDock({ activeTab, onTabChange, attendanceAlertCount = 0 }: Na
     },
     {
       id: "academics" as NavTab,
-      label: "Academics & Grades",
+      label: "Academics",
       icon: GraduationCap,
+      badge: null,
+    },
+    {
+      id: "finance" as NavTab,
+      label: "Fees & Dues",
+      icon: CreditCard,
+      badge: null,
+    },
+    {
+      id: "calendar" as NavTab,
+      label: "Events",
+      icon: Calendar,
       badge: null,
     },
   ];

@@ -1,14 +1,18 @@
 {
   "portalMetadata": {
     "portalUrl": "https://myupes-beta.upes.ac.in",
-    "mappedAt": "2026-11-15T18:42:56.874Z",
-    "version": "1.1.0",
-    "system": "UPES Unified SLCM & Blackboard LMS",
-    "totalEndpointsMapped": 13,
+    "mappedAt": "2026-11-16T13:56:00.000Z",
+    "version": "2.0.0",
+    "recorder": "Human-Guided WebKit Passive Recorder",
+    "pagesVisitedCount": 21,
+    "apisCapturedCount": 67,
+    "system": "UPES Unified Connect Portal & Blackboard/Moodle LMS",
     "defaultHeaders": {
       "Origin": "https://myupes-beta.upes.ac.in",
       "Referer": "https://myupes-beta.upes.ac.in/",
       "Accept": "application/json, text/plain, */*",
+      "x-applicationname": "connectportal",
+      "x-requestfrom": "web",
       "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15"
     }
   },
@@ -17,40 +21,53 @@
       "login": {
         "url": "https://myupes-beta.upes.ac.in/sso/api/account/oauth2/token",
         "method": "POST",
-        "description": "Student login authentication and credential handshake",
-        "fallbackEnvKey": "UPES_AUTH_URL",
-        "sampleKeys": [
-          "UserId",
-          "FirstName",
-          "EmailId",
-          "MobileNumber",
-          "UserType",
-          "UserType.Code",
-          "UserType.DisplayName",
-          "RoleUserMaps",
-          "UniqueHashKey",
-          "ClientId"
-        ]
+        "description": "Student login authentication and redirect URL generator",
+        "payloadTemplate": {
+          "UserId": "string",
+          "Password": "string",
+          "Captcha": "string",
+          "RememberMe": true
+        },
+        "responseSchemaKeys": ["Item", "Item.emailId", "Item.redirectUrl", "Message", "StatusCode"]
       },
       "tokenExchange": {
+        "url": "https://myupes-beta.upes.ac.in/sso/oauth2/access_token",
+        "method": "POST",
+        "description": "Exchanges authorization code from redirectUrl for AccessToken",
+        "payloadTemplate": {
+          "ClientId": 3,
+          "ClientSecret": "",
+          "Code": "string"
+        },
+        "responseSchemaKeys": ["StatusCode", "Item", "Item.Identity.AccessToken", "Item.UserInfo"]
+      },
+      "validateToken": {
         "url": "https://myupes-beta.upes.ac.in/sso/oauth2/validate/token",
         "method": "POST",
-        "description": "Token exchange and session validation endpoint",
-        "fallbackEnvKey": "UPES_TOKEN_EXCHANGE_URL",
-        "sampleKeys": [
-          "AccessToken",
-          "Item.Identity.AccessToken",
-          "Item.UserInfo"
-        ]
+        "description": "Validates session token and returns student identity",
+        "payloadTemplate": {
+          "AuthToken": "string",
+          "UniqueId": "string"
+        },
+        "responseSchemaKeys": ["UserId", "FirstName", "EmailId", "GlobalId"]
+      },
+      "lmsAccess": {
+        "url": "https://myupes-beta.upes.ac.in/sso/user/oauth2/access-lms",
+        "method": "POST",
+        "description": "Generates 1-click SSO redirect URL to Blackboard/Moodle LMS",
+        "payloadTemplate": {},
+        "responseSchemaKeys": ["redirectUrl", "statusCode"]
       }
     },
     "profile": {
       "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentloginbasicinfo",
       "method": "GET",
-      "description": "Student profile, program, semester, SAP ID, and photo info",
-      "fallbackEnvKey": "UPES_PROFILE_URL",
+      "description": "Primary student profile, program, center, and photo info",
+      "secondaryUrl": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentinformation/initialstudentdata",
+      "secondaryMethod": "POST",
       "sampleKeys": [
         "FirstName",
+        "LastName",
         "GlobalId",
         "EmailId",
         "ProgramTypeName",
@@ -61,13 +78,14 @@
       ]
     },
     "attendance": {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/attendance/api/attendance/summary",
+      "url": "https://myupes-beta.upes.ac.in/apigateway/student-attendance/studentattendancesummary",
       "method": "POST",
-      "description": "Subject-wise attendance summary and percentage stats",
-      "fallbackEnvKey": "UPES_ATTENDANCE_URL",
+      "fallbackUrl": "https://myupes-beta.upes.ac.in/apigateway/attendance/api/attendance/summary",
+      "dropdownUrl": "https://myupes-beta.upes.ac.in/apigateway/student-attendance/attendancedropdown",
+      "description": "Subject-wise attendance summary, conducted, attended, and percentage",
       "payloadTemplate": {
-        "studentId": "{{studentId}}",
-        "termCode": "{{termCode}}"
+        "StudentId": "{{studentId}}",
+        "TermCode": "{{termCode}}"
       },
       "sampleKeys": [
         "SubjectCode",
@@ -80,11 +98,11 @@
     "timetable": {
       "url": "https://myupes-beta.upes.ac.in/apigateway/api/timetable",
       "method": "POST",
-      "description": "Daily and weekly student schedule and class slots",
-      "fallbackEnvKey": "UPES_TIMETABLE_URL",
+      "mastersUrl": "https://myupes-beta.upes.ac.in/apigateway/api/timetable/masters",
+      "description": "Daily and weekly student schedule, class slots, rooms, and faculty",
       "payloadTemplate": {
-        "studentId": "{{studentId}}",
-        "termCode": "{{termCode}}"
+        "StudentId": "{{studentId}}",
+        "TermCode": "{{termCode}}"
       },
       "sampleKeys": [
         "DayOfWeek",
@@ -100,31 +118,12 @@
         "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/course-summary/{{studentId}}",
         "method": "GET",
         "description": "LMS course progress, credits, and term summaries",
-        "fallbackEnvKey": "UPES_LMS_URL",
         "sampleKeys": [
           "CourseProgressSummery",
           "CourseProgressSummery.ProgramName",
-          "CourseProgressSummery.ProgramType",
-          "CourseProgressSummery.MajorName",
-          "CourseProgressSummery.AcademicYear",
-          "CourseProgressSummery.Term",
-          "CourseProgressSummery.TermCode",
-          "CourseProgressSummery.CampusName",
-          "CourseProgressSummery.CampusCode",
           "CourseProgressSummery.CGPA",
           "CourseProgressSummery.TotalCreditsRequired",
           "CourseProgressSummery.TotalCreditsEarned",
-          "CourseProgressSummery.CreditinProgress",
-          "CourseProgressSummery.TaggedSemesters",
-          "CourseProgressSummery.TaggedSchools",
-          "CourseProgressSummery.Status",
-          "CourseProgressSummery.CurrentTermId",
-          "CourseProgressSummery.ProgramCode",
-          "CourseProgressSummery.LevelId",
-          "CourseProgressSummery.LevelName",
-          "CourseProgressSummery.AdmissionBatchId",
-          "CourseProgressSummery.AdmissionBatch",
-          "CourseProgressSummery.IsCertificateProgram",
           "TermWiseCourseProgress",
           "TermWiseAllCourseDetails"
         ]
@@ -133,48 +132,55 @@
         "url": "https://myupes-beta.upes.ac.in/apigateway/docstorage/api/storage/downloadfile",
         "method": "POST",
         "description": "Course learning materials and lecture slide downloads",
-        "sampleKeys": [
-          "FileContainer",
-          "FilePath",
-          "FileName",
-          "DownloadUrl"
-        ]
+        "payloadTemplate": {
+          "ContainerName": "iemsfilecontainer",
+          "BlobRelativePath": "string",
+          "ActualFileName": "string"
+        }
       },
-      "assignments": {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/course-summary/{{studentId}}",
-        "method": "GET",
-        "description": "Pending course assignments and submissions",
-        "sampleKeys": [
-          "AssignmentId",
-          "Title",
-          "CourseCode",
-          "DueDate",
-          "SubmissionStatus"
-        ]
-      },
-      "announcements": {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/course-summary/{{studentId}}",
-        "method": "GET",
-        "description": "Course announcements and notifications",
-        "sampleKeys": [
-          "NoticeId",
-          "CourseTitle",
-          "Title",
-          "Date",
-          "Content"
-        ]
+      "specialization": {
+        "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/specialization-course-progress/{{studentId}}",
+        "method": "GET"
       }
     },
     "grades": {
       "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/course-summary/{{studentId}}",
       "method": "GET",
       "description": "Semester SGPA, cumulative CGPA, and course grades",
-      "fallbackEnvKey": "UPES_GRADES_URL",
+      "sampleKeys": ["CGPA", "TermWiseCourseProgress", "TotalCreditsEarned"]
+    },
+    "finance": {
+      "url": "https://myupes-beta.upes.ac.in/apigateway/financeintegrations/api/getstudentschedulepaywithdueamt?StudentID={{studentId}}",
+      "method": "GET",
+      "gatewaysUrl": "https://myupes-beta.upes.ac.in/apigateway/paymentgateway/api/payment/gateways",
+      "description": "Student scheduled fees payment, outstanding amount, and excess dues",
       "sampleKeys": [
-        "CGPA",
-        "TermWiseCourseProgress",
-        "TotalCreditsEarned"
+        "Item.OutstandingAmount",
+        "Item.ExcessAmount",
+        "Item.StudentSchedulePayment",
+        "Item.IsPartialPaymentEnabled"
       ]
+    },
+    "calendar": {
+      "url": "https://myupes-beta.upes.ac.in/apigateway/api/calendareventlist",
+      "method": "POST",
+      "description": "University holiday and events calendar",
+      "payloadTemplate": {
+        "StudentUniqueId": "{{studentId}}"
+      },
+      "sampleKeys": ["Name", "BatchName", "Type", "SubType", "StartDate", "EndDate"]
+    },
+    "hostel": {
+      "url": "https://myupes-beta.upes.ac.in/apigateway/hostel/api/roomallocation/getstudentsallocation",
+      "method": "POST",
+      "passesUrl": "https://myupes-beta.upes.ac.in/apigateway/hostel/api/pass",
+      "noticeBoardUrl": "https://myupes-beta.upes.ac.in/apigateway/hostel/api/hostelnoticeboard",
+      "description": "Hostel room allocation, leave pass requests, and hostel noticeboard"
+    },
+    "notifications": {
+      "url": "https://myupes-beta.upes.ac.in/apigateway/notification/bell/fetch/slcm/{{id}}/30/0",
+      "method": "GET",
+      "description": "Student notification bell items and unread alerts"
     }
   }
 }

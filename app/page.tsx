@@ -15,6 +15,8 @@ import { AttendanceTab } from "@/components/tabs/AttendanceTab";
 import { TimetableTab } from "@/components/tabs/TimetableTab";
 import { AcademicsTab } from "@/components/tabs/AcademicsTab";
 import { LmsTab } from "@/components/tabs/LmsTab";
+import { FinanceTab } from "@/components/tabs/FinanceTab";
+import { CalendarTab } from "@/components/tabs/CalendarTab";
 import { PortalConfigModal } from "@/components/modals/PortalConfigModal";
 import { RawApiInspectorModal } from "@/components/modals/RawApiInspectorModal";
 
@@ -313,6 +315,32 @@ export default function DashboardPage() {
                     />
                   </div>
                 )}
+              </motion.div>
+            )}
+
+            {/* VIEW 6: Fees & Dues */}
+            {activeTab === "finance" && (
+              <motion.div
+                key="finance"
+                variants={tabVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <FinanceTab finance={data.finance} />
+              </motion.div>
+            )}
+
+            {/* VIEW 7: Events & Calendar */}
+            {activeTab === "calendar" && (
+              <motion.div
+                key="calendar"
+                variants={tabVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <CalendarTab events={data.calendar} />
               </motion.div>
             )}
           </AnimatePresence>

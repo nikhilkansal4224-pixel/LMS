@@ -5,6 +5,8 @@ import {
   AcademicSemester,
   UpesProfilePictureInfo,
   LmsData,
+  FinanceData,
+  CalendarEvent,
 } from "@/types/student";
 
 /**
@@ -505,4 +507,67 @@ export function adaptLmsPayload(raw: any): LmsData {
     assignments,
     announcements,
   };
+}
+
+/**
+ * Defensive adapter to map UPES live Fees / Finance JSON into FinanceData
+ */
+export function adaptFinancePayload(raw: any): FinanceData {
+  if (!raw) {
+    return {
+      outstandingAmount: 0,
+      excessAmount: 0,
+      isNoDues: true,
+      currency: "INR",
+      paymentSchedule: [],
+    };
+  }
+
+  const data = raw.Item || raw.data || raw;
+  const outstanding = Number(data.OutstandingAmount ?? data.outstandingAmount ?? 0);
+  const excess = Number(data.ExcessAmount ?? data.excessAmount ?? 0);
+
+  const rawSchedule = Array.isArray(data.StudentSchedulePayment)
+    ? data.StudentSchedulePayment
+    : Array.isArray(data.paymentSchedule)
+    ? data.paymentSchedule
+    : [];
+
+  const paymentSchedule = rawSchedule.map((p: any, idx: number) => ({
+    title: String(p.FeeHeadName || p.title || p.Description || `Installment ${idx + 1}`),
+    amount: Number(p.DueAmount || p.Amount || p.amount || 0),
+    dueDate: String(p.DueDate || p.dueDate || "Upcoming"),
+    status: (p.Status || (outstanding === 0 ? "Paid" : "Pending")) as any,
+  }));
+
+  return {
+    outstandingAmount: outstanding,
+    excessAmount: excess,
+    isNoDues: outstanding <= 0,
+    currency: "INR",
+    paymentSchedule,
+  };
+}
+
+/**
+ * Defensive adapter to map UPES live Calendar Event list into CalendarEvent[]
+ */
+export function adaptCalendarPayload(raw: any): CalendarEvent[] {
+  if (!raw) return [];
+  const list = Array.isArray(raw)
+    ? raw
+    : Array.isArray(raw.Items)
+    ? raw.Items
+    : Array.isArray(raw.Item)
+    ? raw.Item
+    : [];
+
+  return list.map((item: any, idx: number) => ({
+    id: String(item.Id || item.id || `cal-${idx}`),
+    name: String(item.Name || item.name || item.BatchName || "University Event"),
+    type: String(item.Type || item.type || "Event"),
+    subType: item.SubType || item.subType || "",
+    startDate: String(item.StartDate || item.startDate || "Upcoming"),
+    endDate: String(item.EndDate || item.endDate || ""),
+  }));
 }

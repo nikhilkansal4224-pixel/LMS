@@ -122,6 +122,28 @@ export interface NotificationItem {
   read: boolean;
 }
 
+export interface FinanceData {
+  outstandingAmount: number;
+  excessAmount: number;
+  isNoDues: boolean;
+  currency: string;
+  paymentSchedule: {
+    title: string;
+    amount: number;
+    dueDate: string;
+    status: "Paid" | "Pending" | "Upcoming";
+  }[];
+}
+
+export interface CalendarEvent {
+  id: string;
+  name: string;
+  type: string;
+  subType?: string;
+  startDate: string;
+  endDate: string;
+}
+
 export interface StudentDashboardData {
   profile: StudentProfile;
   attendance: AttendanceSubject[];
@@ -134,5 +156,7 @@ export interface StudentDashboardData {
     semesters: AcademicSemester[];
   };
   lms?: LmsData;
+  finance?: FinanceData;
+  calendar?: CalendarEvent[];
   notifications: NotificationItem[];
 }

@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "crawl": "tsx scripts/crawl-portal.ts"
+    "crawl": "tsx scripts/crawl-portal.ts",
+    "deep-crawl": "tsx scripts/deep-crawl.ts",
+    "record": "tsx scripts/record-portal.ts"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.3",

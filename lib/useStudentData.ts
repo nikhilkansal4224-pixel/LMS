@@ -10,6 +10,8 @@ import {
   adaptTimetablePayload,
   adaptGradesPayload,
   adaptLmsPayload,
+  adaptFinancePayload,
+  adaptCalendarPayload,
 } from "./upes-adapters";
 import { EndpointDiagnosticInfo } from "@/components/bento/EmptyEndpointCard";
 
@@ -167,15 +169,24 @@ export function useStudentData() {
     };
 
     try {
-      // Fire 5 independent requests in PARALLEL
-      const [profileResult, attResult, ttResult, lmsResult, gradesResult] =
-        await Promise.allSettled([
-          fetchWithTiming("/api/proxy/student/profile"),
-          fetchWithTiming("/api/proxy/student/attendance"),
-          fetchWithTiming("/api/proxy/student/timetable"),
-          fetchWithTiming("/api/proxy/student/lms"),
-          fetchWithTiming("/api/proxy/student/grades"),
-        ]);
+      // Fire 7 independent requests in PARALLEL
+      const [
+        profileResult,
+        attResult,
+        ttResult,
+        lmsResult,
+        gradesResult,
+        finResult,
+        calResult,
+      ] = await Promise.allSettled([
+        fetchWithTiming("/api/proxy/student/profile"),
+        fetchWithTiming("/api/proxy/student/attendance"),
+        fetchWithTiming("/api/proxy/student/timetable"),
+        fetchWithTiming("/api/proxy/student/lms"),
+        fetchWithTiming("/api/proxy/student/grades"),
+        fetchWithTiming("/api/proxy/student/finance"),
+        fetchWithTiming("/api/proxy/student/calendar"),
+      ]);
 
       const parallelDurationMs = Math.max(
         1,
@@ -188,6 +199,8 @@ export function useStudentData() {
       const ttRes = ttResult.status === "fulfilled" ? ttResult.value : null;
       const lmsRes = lmsResult.status === "fulfilled" ? lmsResult.value : null;
       const gradesRes = gradesResult.status === "fulfilled" ? gradesResult.value : null;
+      const finRes = finResult.status === "fulfilled" ? finResult.value : null;
+      const calRes = calResult.status === "fulfilled" ? calResult.value : null;
 
       // Calculate sequential estimate (sum of each individual duration)
       const durations = [
@@ -196,6 +209,8 @@ export function useStudentData() {
         ttRes?.durationMs || 75,
         lmsRes?.durationMs || 80,
         gradesRes?.durationMs || 90,
+        finRes?.durationMs || 65,
+        calRes?.durationMs || 60,
       ];
       const sequentialEstimateMs = durations.reduce((a, b) => a + b, 0);
       const speedup = (sequentialEstimateMs / Math.max(1, parallelDurationMs)).toFixed(1);
@@ -237,12 +252,24 @@ export function useStudentData() {
           ? adaptGradesPayload(gradesRes.data)
           : defaultStudentData.academics;
 
+      const adaptedFinance =
+        finRes?.data && finRes.data.isConfigured !== false
+          ? adaptFinancePayload(finRes.data)
+          : adaptFinancePayload(null);
+
+      const adaptedCalendar =
+        calRes?.data && calRes.data.isConfigured !== false
+          ? adaptCalendarPayload(calRes.data)
+          : [];
+
       const updatedDashboardData: StudentDashboardData = {
         profile: adaptedProfile,
         attendance: adaptedAttendance,
         timetable: adaptedTimetable,
         academics: adaptedGrades,
         lms: adaptedLms,
+        finance: adaptedFinance,
+        calendar: adaptedCalendar,
         notifications: defaultStudentData.notifications,
       };
 
@@ -264,6 +291,8 @@ export function useStudentData() {
         timetable: ttRes?.data,
         lms: lmsRes?.data,
         grades: gradesRes?.data,
+        finance: finRes?.data,
+        calendar: calRes?.data,
       });
 
       // Update Diagnostics
@@ -273,6 +302,8 @@ export function useStudentData() {
         timetable: ttRes?.diagnostic || {},
         lms: lmsRes?.diagnostic || {},
         grades: gradesRes?.diagnostic || {},
+        finance: finRes?.diagnostic || {},
+        calendar: calRes?.diagnostic || {},
       });
 
       // Update Endpoint Status

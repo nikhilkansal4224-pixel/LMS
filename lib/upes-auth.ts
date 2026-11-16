@@ -7,9 +7,12 @@ export const mapLoginPayload = (credentials: {
   password: string;
   captchaToken?: string;
 }) => ({
+  UserId: credentials.username,
   UserName: credentials.username,
   Password: credentials.password,
+  Captcha: credentials.captchaToken || "",
   CaptchaResponse: credentials.captchaToken || "",
+  RememberMe: true,
   GrantType: "password",
   ClientId: 3,
 });
