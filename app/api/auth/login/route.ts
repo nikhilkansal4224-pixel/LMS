@@ -85,6 +85,9 @@ export async function POST(request: NextRequest) {
       portalBlueprint.endpoints.profile.url ||
       "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentloginbasicinfo";
 
+    const appSecret =
+      process.env.UPES_CONNECT_APP_SECRET || "ku7GUMtyT8er51rTfTc7HC";
+
     let accessToken: string | null = null;
     let userInfo: any = null;
     let rawResponseData: any = null;
@@ -181,8 +184,9 @@ export async function POST(request: NextRequest) {
                   "Content-Type": "application/json",
                   Accept: "application/json, text/plain, */*",
                   Origin: "https://myupes-beta.upes.ac.in",
-                  Referer: "https://myupes-beta.upes.ac.in/",
+                  Referer: "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
                   "x-applicationname": "connectportal",
+                  "x-appsecret": appSecret,
                   "x-requestfrom": "web",
                   "User-Agent":
                     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
@@ -220,9 +224,10 @@ export async function POST(request: NextRequest) {
               const profileHeaders: Record<string, string> = {
                 Authorization: `Bearer ${accessToken}`,
                 Origin: "https://myupes-beta.upes.ac.in",
-                Referer: "https://myupes-beta.upes.ac.in/",
+                Referer: "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
                 Accept: "application/json, text/plain, */*",
                 "x-applicationname": "connectportal",
+                "x-appsecret": appSecret,
                 "x-requestfrom": "web",
                 "User-Agent":
                   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",

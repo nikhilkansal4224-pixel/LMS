@@ -21,9 +21,59 @@ export async function OPTIONS() {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
       "Access-Control-Allow-Headers":
-        "Content-Type, Authorization, x-target-url, x-session-token, x-sap-id, x-student-id",
+        "Content-Type, Authorization, x-target-url, x-session-token, x-sap-id, x-student-id, x-applicationname, x-appsecret, x-studentuniqueid, x-studentUniqueId",
     },
   });
+}
+
+/**
+ * Revalidates SSO Token with UPES Identity Server if connect-portal or API Gateway returns 401 Unauthorized
+ */
+async function revalidateSsoToken(
+  accessToken: string,
+  studentId: string,
+  appSecret: string
+): Promise<{ uniqueHashKey?: string; clientId?: string } | null> {
+  const tokenExchangeUrl =
+    process.env.UPES_TOKEN_EXCHANGE_URL ||
+    portalBlueprint.endpoints.auth.tokenExchange.url ||
+    "https://myupes-beta.upes.ac.in/sso/oauth2/validate/token";
+
+  try {
+    const res = await fetch(tokenExchangeUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json, text/plain, */*",
+        Origin: "https://myupes-beta.upes.ac.in",
+        Referer: "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
+        "x-applicationname": "connectportal",
+        "x-appsecret": appSecret,
+        "x-requestfrom": "web",
+        "x-studentUniqueId": studentId,
+        "x-studentuniqueid": studentId,
+        Authorization: `Bearer ${accessToken}`,
+        "User-Agent":
+          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
+      },
+      body: JSON.stringify({
+        AuthToken: accessToken,
+        UniqueId: studentId,
+      }),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      const item = data?.Item || data?.data || data;
+      return {
+        uniqueHashKey: item?.UniqueHashKey ? String(item.UniqueHashKey) : undefined,
+        clientId: item?.ClientId ? String(item.ClientId) : undefined,
+      };
+    }
+  } catch (err: any) {
+    console.warn("revalidateSsoToken error:", err.message);
+  }
+  return null;
 }
 
 async function handleProxy(request: NextRequest, pathSegments: string[], incomingMethod: string) {
@@ -187,20 +237,36 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
     ? `Bearer ${cookieSession}`
     : request.headers.get("authorization") || request.headers.get("x-session-token");
 
+  const appSecret =
+    process.env.UPES_CONNECT_APP_SECRET || "ku7GUMtyT8er51rTfTc7HC";
+
+  const isConnectPortalOrSso =
+    targetUrl.includes("/apigateway/connect-portal/") ||
+    targetUrl.includes("/sso/oauth2/validate/token") ||
+    path.includes("connect-portal") ||
+    path.includes("profile") ||
+    path.includes("grades") ||
+    path.includes("lms");
+
   const forwardHeaders: Record<string, string> = {
     "User-Agent":
       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
     Accept: "application/json, text/plain, */*",
     Origin: "https://myupes-beta.upes.ac.in",
-    Referer: "https://myupes-beta.upes.ac.in/",
+    Referer: isConnectPortalOrSso
+      ? "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard"
+      : "https://myupes-beta.upes.ac.in/",
     "x-applicationname": "connectportal",
+    "x-appsecret": appSecret,
     "x-requestfrom": "web",
   };
 
   if (authHeader) {
-    forwardHeaders["Authorization"] = authHeader.startsWith("Bearer ")
+    const formattedAuth = authHeader.startsWith("Bearer ")
       ? authHeader
       : `Bearer ${authHeader}`;
+    forwardHeaders["Authorization"] = formattedAuth;
+    forwardHeaders["authorization"] = formattedAuth;
   }
   if (uniqueHashKey) {
     forwardHeaders["UniqueHashKey"] = uniqueHashKey;
@@ -216,6 +282,7 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
   if (cookieStudentId) {
     forwardHeaders["X-Student-Id"] = cookieStudentId;
     forwardHeaders["x-studentuniqueid"] = cookieStudentId;
+    forwardHeaders["x-studentUniqueId"] = cookieStudentId;
     forwardHeaders["X-Student-Unique-Id"] = cookieStudentId;
   }
   if (studentEmail) {
@@ -296,7 +363,7 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 8000);
 
-    const response = await fetch(targetUrl, {
+    let response = await fetch(targetUrl, {
       method: targetMethod,
       headers: forwardHeaders,
       body: bodyData,
@@ -307,6 +374,53 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
     });
 
     clearTimeout(timeoutId);
+
+    // If 401 Unauthorized received on connect-portal or microservices, revalidate SSO token and retry once
+    let newUniqueHash: string | undefined;
+    let newClientId: string | undefined;
+
+    if (response && response.status === 401 && cookieSession) {
+      console.log(`401 Unauthorized on ${targetUrl}, attempting SSO token revalidation...`);
+      const ssoData = await revalidateSsoToken(cookieSession, cookieStudentId, appSecret);
+      if (ssoData) {
+        if (ssoData.uniqueHashKey) {
+          newUniqueHash = ssoData.uniqueHashKey;
+          forwardHeaders["UniqueHashKey"] = ssoData.uniqueHashKey;
+          forwardHeaders["X-Unique-Hash-Key"] = ssoData.uniqueHashKey;
+        }
+        if (ssoData.clientId) {
+          newClientId = ssoData.clientId;
+          forwardHeaders["ClientId"] = ssoData.clientId;
+          forwardHeaders["X-Client-Id"] = ssoData.clientId;
+        }
+        const retryCookies = [`sop_session=${cookieSession}`, `AuthToken=${cookieSession}`];
+        if (newUniqueHash || uniqueHashKey) {
+          retryCookies.push(`UniqueHashKey=${newUniqueHash || uniqueHashKey}`);
+        }
+        if (newClientId || clientId) {
+          retryCookies.push(`ClientId=${newClientId || clientId}`);
+        }
+        retryCookies.push(`StudentId=${cookieStudentId}`);
+        forwardHeaders["Cookie"] = retryCookies.join("; ");
+
+        const retryController = new AbortController();
+        const retryTimeout = setTimeout(() => retryController.abort(), 8000);
+        const retryResponse = await fetch(targetUrl, {
+          method: targetMethod,
+          headers: forwardHeaders,
+          body: bodyData,
+          signal: retryController.signal,
+        }).catch((retryErr) => {
+          console.warn(`UPES retry error [${targetMethod} ${targetUrl}]:`, retryErr.message);
+          return null;
+        });
+        clearTimeout(retryTimeout);
+
+        if (retryResponse) {
+          response = retryResponse;
+        }
+      }
+    }
 
     const durationMs = Math.max(1, Math.round(performance.now() - startTime));
 
@@ -357,9 +471,11 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
     }
 
     const contentType = response.headers.get("content-type") || "";
+    let finalRes: NextResponse;
+
     if (contentType.includes("application/json")) {
       const data = await response.json();
-      return NextResponse.json(data, {
+      finalRes = NextResponse.json(data, {
         status: response.status,
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -369,7 +485,7 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
       });
     } else {
       const text = await response.text();
-      return new NextResponse(text, {
+      finalRes = new NextResponse(text, {
         status: response.status,
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -379,6 +495,23 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
         },
       });
     }
+
+    if (newUniqueHash) {
+      finalRes.cookies.set("sop_unique_hash", newUniqueHash, {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+    }
+    if (newClientId) {
+      finalRes.cookies.set("sop_client_id", newClientId, {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+    }
+
+    return finalRes;
   } catch (error: any) {
     const durationMs = Math.max(1, Math.round(performance.now() - startTime));
     return NextResponse.json(
