@@ -27,8 +27,14 @@ export interface AttendanceSubject {
   code: string;
   name: string;
   faculty: string;
-  attended: number;
-  total: number;
+  attended: number;   // PresentCount from live UPES
+  total: number;      // TotalSessions from live UPES
+  absent?: number;    // AbsentCount from live UPES
+  condoned?: number;  // CondonedAttendanceCount from live UPES
+  percentage?: number; // AttendancePercentage from live UPES
+  threshold?: number;  // ThresholdPercentage (default 75.00)
+  startDate?: string; // SelectedStartDate
+  endDate?: string;   // SelectedEndDate
   type: "Lecture" | "Lab" | "Tutorial" | "Practical";
   credits: number;
   room: string;

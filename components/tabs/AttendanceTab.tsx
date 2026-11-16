@@ -327,9 +327,10 @@ export function AttendanceTab({
           <table className="w-full text-left text-xs">
             <thead>
               <tr className="border-b border-white/5 text-slate-400 font-mono text-[11px]">
-                <th className="pb-3 font-semibold">COURSE CODE &amp; NAME</th>
+                <th className="pb-3 font-semibold">MODULE ID &amp; NAME</th>
                 <th className="pb-3 font-semibold">TYPE</th>
-                <th className="pb-3 font-semibold">ATTENDED / TOTAL</th>
+                <th className="pb-3 font-semibold">PRESENT / SESSIONS</th>
+                <th className="pb-3 font-semibold">ABSENT</th>
                 <th className="pb-3 font-semibold">PERCENTAGE</th>
                 <th className="pb-3 font-semibold">BUNK MARGIN</th>
                 <th className="pb-3 font-semibold text-right">QUICK ACTION</th>
@@ -337,15 +338,16 @@ export function AttendanceTab({
             </thead>
             <tbody className="divide-y divide-white/5">
               {attendance.map((sub) => {
-                const pct = sub.total > 0 ? (sub.attended / sub.total) * 100 : 0;
+                const pct = sub.percentage !== undefined ? sub.percentage : (sub.total > 0 ? (sub.attended / sub.total) * 100 : 0);
                 const status = calculateAttendanceStatus(pct);
-                const advice = getBunkAdvice(sub.attended, sub.total, 75);
+                const advice = getBunkAdvice(sub.attended, sub.total, sub.threshold || 75);
+                const absentSessions = sub.absent !== undefined ? sub.absent : Math.max(0, sub.total - sub.attended);
 
                 return (
                   <tr key={sub.id} className="hover:bg-white/[0.02] transition-colors">
                     <td className="py-3.5 pr-4">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono font-bold text-amber-400">
+                        <span className="font-mono font-bold text-amber-400 px-1.5 py-0.5 rounded neu-inset-well text-[10px]">
                           {sub.code}
                         </span>
                         <span className="text-slate-200 font-medium">
@@ -353,7 +355,8 @@ export function AttendanceTab({
                         </span>
                       </div>
                       <span className="text-[11px] text-slate-500 block mt-0.5">
-                        {sub.faculty} • {sub.room}
+                        {sub.startDate && sub.endDate ? `${sub.startDate} to ${sub.endDate}` : sub.faculty}
+                        {sub.condoned !== undefined && sub.condoned > 0 ? ` • +${sub.condoned} Condoned (OD/Medical)` : ""}
                       </span>
                     </td>
                     <td className="py-3.5 pr-4 font-mono text-slate-400">
@@ -361,6 +364,9 @@ export function AttendanceTab({
                     </td>
                     <td className="py-3.5 pr-4 font-mono text-slate-200 font-bold">
                       {sub.attended} / {sub.total}
+                    </td>
+                    <td className="py-3.5 pr-4 font-mono text-rose-400 font-semibold">
+                      {absentSessions}
                     </td>
                     <td className="py-3.5 pr-4">
                       <div className="flex items-center gap-2">

@@ -17,7 +17,7 @@ export const defaultStudentData: StudentDashboardData = {
     AcademicYearName: "AY 2026–27",
     Email: "",
     ProfilePictureInfo: "",
-    PortalApiUrl: "https://slcm.upes.ac.in/api/v1",
+    PortalApiUrl: "https://myupes-beta.upes.ac.in",
   },
   attendance: [],
   timetable: [],

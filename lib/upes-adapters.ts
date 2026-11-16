@@ -153,19 +153,24 @@ export function adaptAttendancePayload(raw: any): AttendanceSubject[] {
     : [];
 
   return list.map((item: any, idx: number) => {
-    const code =
-      item.CourseCode ||
-      item.SubjectCode ||
-      item.code ||
-      item.ModuleCode ||
-      `SUB${idx + 1}`;
-
+    // 1. Module Name (from live UPES ModuleName)
     const name =
+      item.ModuleName ||
       item.CourseName ||
       item.SubjectName ||
       item.name ||
-      item.ModuleName ||
+      item.Title ||
       `Subject ${idx + 1}`;
+
+    // 2. Module ID / Code (from live UPES ModuleId)
+    const code =
+      item.ModuleId !== undefined && item.ModuleId !== null
+        ? String(item.ModuleId)
+        : item.CourseCode ||
+          item.SubjectCode ||
+          item.code ||
+          item.ModuleCode ||
+          `MOD-${idx + 1}`;
 
     const faculty =
       item.FacultyName ||
@@ -174,7 +179,9 @@ export function adaptAttendancePayload(raw: any): AttendanceSubject[] {
       item.Instructor ||
       "UPES Faculty";
 
+    // 3. Exact Present Sessions (from live UPES PresentCount)
     const attended = Number(
+      item.PresentCount ??
       item.AttendedHours ??
       item.AttendedClasses ??
       item.attended ??
@@ -183,7 +190,9 @@ export function adaptAttendancePayload(raw: any): AttendanceSubject[] {
       0
     );
 
+    // 4. Exact Total Sessions (from live UPES TotalSessions)
     const total = Number(
+      item.TotalSessions ??
       item.TotalHours ??
       item.TotalClasses ??
       item.total ??
@@ -192,7 +201,37 @@ export function adaptAttendancePayload(raw: any): AttendanceSubject[] {
       attended
     );
 
-    const rawType = String(item.CourseType || item.Type || item.type || "Lecture");
+    // 5. Exact Absent Sessions (from live UPES AbsentCount)
+    const absent = Number(
+      item.AbsentCount ??
+      item.absent ??
+      Math.max(0, total - attended)
+    );
+
+    // 6. Condoned Sessions (from live UPES CondonedAttendanceCount)
+    const condoned = Number(
+      item.CondonedAttendanceCount ??
+      item.condoned ??
+      0
+    );
+
+    // 7. Exact Attendance Percentage (from live UPES AttendancePercentage)
+    const percentage = Number(
+      item.AttendancePercentage ??
+      (total > 0 ? (attended / total) * 100 : 0)
+    );
+
+    // 8. Threshold Percentage (from live UPES ThresholdPercentage)
+    const threshold = Number(
+      item.ThresholdPercentage ??
+      item.threshold ??
+      75.00
+    );
+
+    const startDate = item.SelectedStartDate ? String(item.SelectedStartDate) : undefined;
+    const endDate = item.SelectedEndDate ? String(item.SelectedEndDate) : undefined;
+
+    const rawType = String(item.CourseType || item.Type || item.type || (name.toLowerCase().includes("lab") ? "Lab" : "Lecture"));
     const type: AttendanceSubject["type"] =
       rawType.toLowerCase().includes("lab") || rawType.toLowerCase().includes("practical")
         ? "Lab"
@@ -201,15 +240,21 @@ export function adaptAttendancePayload(raw: any): AttendanceSubject[] {
         : "Lecture";
 
     const credits = Number(item.Credits || item.credits || (type === "Lab" ? 2 : 4));
-    const room = item.Room || item.RoomNumber || item.Location || "Bidholi Complex";
+    const room = item.Room || item.RoomNumber || item.Location || "Bidholi Campus";
 
     return {
-      id: String(item.Id || item.id || `att-${code}-${idx}`),
+      id: String(item.ModuleId || item.Id || item.id || `att-${code}-${idx}`),
       code,
       name,
       faculty,
       attended,
       total,
+      absent,
+      condoned,
+      percentage,
+      threshold,
+      startDate,
+      endDate,
       type,
       credits,
       room,

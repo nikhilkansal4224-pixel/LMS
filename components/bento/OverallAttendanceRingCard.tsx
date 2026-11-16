@@ -17,6 +17,11 @@ export function OverallAttendanceRingCard({
 }: OverallAttendanceRingCardProps) {
   const totalAttended = attendance.reduce((acc, curr) => acc + curr.attended, 0);
   const totalConducted = attendance.reduce((acc, curr) => acc + curr.total, 0);
+  const totalAbsent = attendance.reduce(
+    (acc, curr) => acc + (curr.absent ?? Math.max(0, curr.total - curr.attended)),
+    0
+  );
+  const totalCondoned = attendance.reduce((acc, curr) => acc + (curr.condoned ?? 0), 0);
   const aggregatePercentage =
     totalConducted > 0 ? (totalAttended / totalConducted) * 100 : 0;
   const formattedPct = aggregatePercentage.toFixed(1);
@@ -132,19 +137,24 @@ export function OverallAttendanceRingCard({
         </div>
 
         {/* Stats Column */}
-        <div className="flex flex-col gap-2.5">
+        <div className="flex flex-col gap-2">
           <div className="p-2.5 rounded-xl neu-inset-well">
             <span className="text-[10px] uppercase font-mono text-slate-400 block">
-              Classes Attended
+              Present / Conducted
             </span>
             <div className="flex items-baseline gap-1 mt-0.5">
-              <span className="text-lg font-mono font-bold text-white">
+              <span className="text-base font-mono font-bold text-white">
                 {totalAttended}
               </span>
               <span className="text-xs font-mono text-slate-500">
-                / {totalConducted}
+                / {totalConducted} Sessions
               </span>
             </div>
+            {totalAbsent > 0 && (
+              <span className="text-[10px] font-mono text-rose-400/90 block mt-0.5">
+                {totalAbsent} Absent {totalCondoned > 0 ? `• +${totalCondoned} Condoned` : ""}
+              </span>
+            )}
           </div>
 
           <div className="p-2.5 rounded-xl neu-inset-well">

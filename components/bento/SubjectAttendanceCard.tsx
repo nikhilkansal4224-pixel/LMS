@@ -78,14 +78,21 @@ export function SubjectAttendanceCard({
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-md neu-inset-well text-amber-400 border border-amber-500/20">
-                      {subject.code}
+                      Module {subject.code}
                     </span>
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded neu-inset-track text-slate-400">
-                      {subject.type} • {subject.credits} Credits
+                      {subject.attended} / {subject.total} Sessions
                     </span>
-                    <span className="text-[10px] text-slate-500 hidden sm:inline">
-                      {subject.faculty}
-                    </span>
+                    {subject.absent !== undefined && subject.absent > 0 && (
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded neu-inset-track text-rose-400/80">
+                        {subject.absent} Absent
+                      </span>
+                    )}
+                    {subject.condoned !== undefined && subject.condoned > 0 && (
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded neu-inset-track text-emerald-400/90">
+                        +{subject.condoned} Condoned
+                      </span>
+                    )}
                   </div>
 
                   <h4 className="text-sm font-semibold text-slate-100 mt-1 line-clamp-1">
@@ -99,10 +106,10 @@ export function SubjectAttendanceCard({
                     className="font-mono text-base font-extrabold"
                     style={{ color: status.color }}
                   >
-                    {percentage.toFixed(1)}%
+                    {(subject.percentage !== undefined ? subject.percentage : percentage).toFixed(1)}%
                   </span>
                   <span className="text-[10px] font-mono text-slate-400 block">
-                    {subject.attended}/{subject.total} attended
+                    {subject.attended}/{subject.total} Present
                   </span>
                 </div>
               </div>
