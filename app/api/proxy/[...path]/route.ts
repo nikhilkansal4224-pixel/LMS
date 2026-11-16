@@ -361,7 +361,7 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
       if (targetUrl.includes("/attendance/api/attendance/summary")) {
         // [POST] /apigateway/attendance/api/attendance/summary
         bodyData = JSON.stringify({
-          StartDate: null,
+          StartDate: semesterStartStr,
           EndDate: todayStr,
           ModeName: "Default",
           StudentUniqueId: cookieStudentId,
@@ -524,7 +524,7 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
             TermEndDate: todayStr,
           })
         : JSON.stringify({
-            StartDate: null,
+            StartDate: semesterStartStr,
             EndDate: todayStr,
             ModeName: "Default",
             StudentUniqueId: cookieStudentId,

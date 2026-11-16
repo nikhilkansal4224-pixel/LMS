@@ -84,7 +84,7 @@
       "dropdownUrl": "https://myupes-beta.upes.ac.in/apigateway/student-attendance/attendancedropdown",
       "description": "Subject-wise attendance summary, conducted, attended, and percentage",
       "payloadTemplate": {
-        "StartDate": null,
+        "StartDate": "2026-06-15",
         "EndDate": "{{today}}",
         "ModeName": "Default",
         "StudentUniqueId": "{{studentId}}",
