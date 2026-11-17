@@ -18,6 +18,7 @@
 .DS_Store
 *.pem
 *.har
+tmp/
 
 # debug
 npm-debug.log*

@@ -292,7 +292,11 @@ export async function POST(request: NextRequest) {
 
               if (profileRes && profileRes.ok) {
                 const profileJson = await profileRes.json();
-                const pItem = profileJson?.Item || profileJson?.data || profileJson;
+                const pItem =
+                  profileJson?.Item ||
+                  (Array.isArray(profileJson?.Items) && profileJson.Items[0]) ||
+                  profileJson?.data ||
+                  profileJson;
                 if (pItem) {
                   studentId =
                     pItem.StudentId ||

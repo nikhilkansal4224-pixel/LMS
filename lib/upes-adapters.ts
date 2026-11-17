@@ -39,8 +39,13 @@ export function adaptProfilePayload(raw: any, fallbackEmail?: string): StudentPr
     };
   }
 
-  // Handle standard UPES wrapper { Item: { ... } } or { data: { ... } }
-  const data = raw.Item || raw.data || raw.StudentProfile || raw;
+  // Handle standard UPES wrapper { Item: { ... } }, { Items: [ ... ] }, or { data: { ... } }
+  const data =
+    raw.Item ||
+    (Array.isArray(raw.Items) && raw.Items[0]) ||
+    raw.data ||
+    raw.StudentProfile ||
+    raw;
   const userInfo = data.UserInfo || data;
 
   let firstName =
@@ -369,16 +374,16 @@ export function adaptTimetablePayload(raw: any): TimetableSlot[] {
       }
     }
 
-    // 2. Format times ("09:00:00" -> "09:00")
+    // 2. Format times (handles "09:00 AM", "09:55 AM", or "09:00:00")
     const rawStart = String(
       item.SlotStartTime || item.StartTime || item.FromTime || item.startTime || "09:00"
-    );
-    const startTime = rawStart.length >= 5 ? rawStart.slice(0, 5) : rawStart;
+    ).trim();
+    const startTime = /^\d{2}:\d{2}:\d{2}$/.test(rawStart) ? rawStart.slice(0, 5) : rawStart;
 
     const rawEnd = String(
       item.SlotEndTime || item.EndTime || item.ToTime || item.endTime || "10:00"
-    );
-    const endTime = rawEnd.length >= 5 ? rawEnd.slice(0, 5) : rawEnd;
+    ).trim();
+    const endTime = /^\d{2}:\d{2}:\d{2}$/.test(rawEnd) ? rawEnd.slice(0, 5) : rawEnd;
 
     // 3. Module/Course details
     const moduleItem =

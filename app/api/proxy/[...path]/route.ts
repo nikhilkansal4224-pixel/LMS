@@ -170,6 +170,10 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
   const todayStr = now.toISOString().split("T")[0]; // "YYYY-MM-DD"
   const currentYear = now.getFullYear();
   const semesterStartStr = `${currentYear}-06-15`;
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const dayNum = String(now.getDate()).padStart(2, "0");
+  const monStr = months[now.getMonth()];
+  const slotDateStr = `${dayNum}-${monStr}-${currentYear}`; // "DD-MMM-YYYY" (e.g. "17-Nov-2026")
 
   // 2. Resolve target URL and target method from environment variables or blueprint fallback
   let targetUrl: string | null = null;
@@ -287,7 +291,9 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
       "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
     Accept: "application/json, text/plain, */*",
     Origin: "https://myupes-beta.upes.ac.in",
-    Referer: isConnectPortalOrSso
+    Referer: path.includes("profile") || targetUrl.includes("studentloginbasicinfo")
+      ? "https://myupes-beta.upes.ac.in/connectportal/user/student/home/studentsinfo"
+      : isConnectPortalOrSso
       ? "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard"
       : "https://myupes-beta.upes.ac.in/",
     "x-applicationname": "connectportal",
@@ -359,11 +365,11 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
 
     if (!bodyData) {
       if (targetUrl.includes("/attendance/api/attendance/summary")) {
-        // [POST] /apigateway/attendance/api/attendance/summary
+        // [POST] /apigateway/attendance/api/attendance/summary (Exact Live Safari HAR Schema)
         bodyData = JSON.stringify({
-          StartDate: semesterStartStr,
+          StartDate: null,
           EndDate: todayStr,
-          ModeName: "Default",
+          ModeName: "term",
           StudentUniqueId: cookieStudentId,
           SelectedModuleId: null,
           SelectedTermId: null,
@@ -386,15 +392,19 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
           StudentUniqueID: cookieStudentId,
         });
       } else if (targetUrl.includes("/timetable/masters")) {
-        // [POST] /apigateway/api/timetable/masters
+        // [POST] /apigateway/api/timetable/masters (Exact Live Safari HAR Schema)
         bodyData = JSON.stringify({
-          DropdownType: "RoomCategory",
+          DropdownType: "venuecategory",
         });
       } else if (targetUrl.includes("/api/timetable")) {
-        // [POST] /apigateway/api/timetable
+        // [POST] /apigateway/api/timetable (Exact Live Safari HAR Schema)
         bodyData = JSON.stringify({
-          ActivityCode: "TT_STUDENT",
-          TimeTableContextDetails: {},
+          ActivityCode: "studentdashboard",
+          TimeTableContextDetails: {
+            SlotStartDate: slotDateStr,
+            SlotEndDate: slotDateStr,
+            StudentCode: cookieStudentId,
+          },
         });
       } else if (targetUrl.includes("/api/calendareventlist")) {
         // [POST] /apigateway/api/calendareventlist

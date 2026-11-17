@@ -1,3813 +1,1651 @@
 {
-  "metadata": {
+  "portalMetadata": {
     "portalUrl": "https://myupes-beta.upes.ac.in",
-    "recordedAt": "2026-11-16T08:25:53.151Z",
-    "recorder": "Human-Guided WebKit Passive Recorder",
-    "pagesVisitedCount": 21,
-    "apisCapturedCount": 67
-  },
-  "pagesVisited": [
-    {
-      "title": "MyUPES : Login",
-      "url": "https://myupes-beta.upes.ac.in/",
-      "timestamp": "2026-11-16T08:21:29.866Z"
-    },
-    {
-      "title": "Login | MyUPES",
-      "url": "https://myupes-beta.upes.ac.in/oneportal/app/auth/login",
-      "timestamp": "2026-11-16T08:21:30.943Z"
-    },
-    {
-      "title": "Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/app/auth/login?code=28d09d7411dd4118987ca3adc726e528&emailId=Nikhil.39697@stu.upes.ac.in&name=Nikhil",
-      "timestamp": "2026-11-16T08:22:33.152Z"
-    },
-    {
-      "title": "Dashboard | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/studentsinfo",
-      "timestamp": "2026-11-16T08:22:35.022Z"
-    },
-    {
-      "title": "Dashboard | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
-      "timestamp": "2026-11-16T08:22:35.338Z"
-    },
-    {
-      "title": "Holiday and Events | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/calendar-events",
-      "timestamp": "2026-11-16T08:22:49.822Z"
-    },
-    {
-      "title": "Exam Registration | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/integration/examination/exam-registration",
-      "timestamp": "2026-11-16T08:22:52.527Z"
-    },
-    {
-      "title": "Student Profile | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/collaboration/studentprofile",
-      "timestamp": "2026-11-16T08:22:57.369Z"
-    },
-    {
-      "title": "Dashboard | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/collaboration/studentprofile/programprogress",
-      "timestamp": "2026-11-16T08:23:11.883Z"
-    },
-    {
-      "title": "Service Request Creation | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/collaboration/servicerequest",
-      "timestamp": "2026-11-16T08:23:27.009Z"
-    },
-    {
-      "title": "Received Circulars | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/collaboration/circulars",
-      "timestamp": "2026-11-16T08:23:35.021Z"
-    },
-    {
-      "title": "Course Selection | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/course-selection",
-      "timestamp": "2026-11-16T08:23:38.996Z"
-    },
-    {
-      "title": "Hall Ticket | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/integration/examination/hall-ticket",
-      "timestamp": "2026-11-16T08:24:01.242Z"
-    },
-    {
-      "title": "Transcript | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/integration/examination/transcript",
-      "timestamp": "2026-11-16T08:24:04.959Z"
-    },
-    {
-      "title": "My Feedback | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/feedback/myfeedback",
-      "timestamp": "2026-11-16T08:24:11.063Z"
-    },
-    {
-      "title": "My courses | UPES LMS",
-      "url": "https://lms.upes.ac.in/my/courses.php",
-      "timestamp": "2026-11-16T08:24:35.932Z"
-    },
-    {
-      "title": "Hostel Notice Board | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/hostel/notice-board",
-      "timestamp": "2026-11-16T08:24:46.903Z"
-    },
-    {
-      "title": "Hostel Passes | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/hostel/dayout-leavepass-requests",
-      "timestamp": "2026-11-16T08:24:50.113Z"
-    },
-    {
-      "title": "Hostel Allocation | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/hostel/room-allocation",
-      "timestamp": "2026-11-16T08:24:58.945Z"
-    },
-    {
-      "title": "Request For Hostel | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/hostel/hostel-request",
-      "timestamp": "2026-11-16T08:25:02.671Z"
-    },
-    {
-      "title": "Student Attendance | Connect Portal",
-      "url": "https://myupes-beta.upes.ac.in/connectportal/user/student/student-attendance",
-      "timestamp": "2026-11-16T08:25:13.497Z"
+    "mappedAt": "2026-11-17T05:10:25.017Z",
+    "sourceHar": "myupes-beta.upes.ac.in.har",
+    "version": "3.0.0",
+    "system": "UPES Unified Connect Portal (Live Safari Har Recording)",
+    "description": "Exact, verified microservices, payloads, headers, and response schemas captured from Safari.",
+    "connectPortalHeaders": {
+      "Origin": "https://myupes-beta.upes.ac.in",
+      "Referer": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
+      "Accept": "application/json, text/plain, */*",
+      "x-applicationname": "connectportal",
+      "x-requestfrom": "web",
+      "x-appsecret": "ku7GUMtyT8er51rTfTc7HC",
+      "x-studentUniqueId": "{{studentId}}"
     }
-  ],
+  },
   "sections": {
     "auth": [
       {
-        "url": "https://myupes-beta.upes.ac.in/sso/api/account/oauth2/token",
-        "originalPath": "/sso/api/account/oauth2/token",
         "method": "POST",
-        "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
-        "requestPayloadTemplate": {
-          "UserId": "string",
-          "Password": "string",
-          "Captcha": "string",
-          "RememberMe": "boolean"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-appsecret",
-          "x-applicationname",
-          "x-requestfrom"
-        ],
-        "responseSchemaKeys": [
-          "Item",
-          "Item.emailId",
-          "Item.redirectUrl",
-          "Message",
-          "StatusCode"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/sso/oauth2/access_token",
-        "originalPath": "/sso/oauth2/access_token",
-        "method": "POST",
-        "pageContext": "Connect Portal (/connectportal/app/auth/login)",
-        "requestPayloadTemplate": {
-          "ClientId": "number",
-          "ClientSecret": "string",
-          "Code": "string"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret"
-        ],
-        "responseSchemaKeys": [
-          "StatusCode",
-          "Item",
-          "Item.Identity",
-          "Item.UserInfo"
-        ],
-        "statusCode": 200
-      },
-      {
         "url": "https://myupes-beta.upes.ac.in/sso/oauth2/validate/token",
         "originalPath": "/sso/oauth2/validate/token",
-        "method": "POST",
-        "pageContext": "Login | Connect Portal (/connectportal/app/auth/login)",
-        "requestPayloadTemplate": {
-          "AuthToken": "string",
-          "UniqueId": "string"
+        "status": 200,
+        "headers": [
+          "Content-Type",
+          "Accept",
+          "Authorization",
+          "Origin",
+          "Referer",
+          "x-appsecret",
+          "x-applicationname",
+          "x-requestfrom",
+          "x-studentUniqueId"
+        ],
+        "sampleHeaders": {
+          "Content-Type": "application/json",
+          "Accept": "application/json, text/plain, */*",
+          "Authorization": "Bearer {{accessToken}}",
+          "Origin": "https://myupes-beta.upes.ac.in",
+          "Referer": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/studentsinfo",
+          "x-appsecret": "ku7GUMtyT8er51rTfTc7HC",
+          "x-applicationname": "connectportal",
+          "x-requestfrom": "web",
+          "x-studentUniqueId": "{{studentId}}"
         },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
+        "requestPayloadTemplate": {
+          "AuthToken": "{{accessToken}}",
+          "UniqueId": "{{uniqueId}}"
+        },
+        "sampleResponse": {
+          "UserId": 89466,
+          "FirstName": "{{studentName}}",
+          "EmailId": "{{emailId}}",
+          "MobileNumber": "{{mobileNo}}",
+          "UserType": {
+            "Code": "ST",
+            "DisplayName": "Student"
+          },
+          "RoleUserMaps": [
+            {
+              "RoleId": 0,
+              "RoleCode": "ST",
+              "IsPrefered": false
+            }
+          ],
+          "UniqueHashKey": "{{uniqueHashKey}}",
+          "ClientId": "3"
+        }
+      },
+      {
+        "method": "POST",
+        "url": "https://myupes-beta.upes.ac.in/sso/api/account/oauth2/token",
+        "originalPath": "/sso/api/account/oauth2/token",
+        "status": 200,
+        "headers": [
+          "Content-Type",
+          "Accept",
+          "Origin",
+          "Referer",
+          "x-applicationname",
+          "x-requestfrom",
+          "X-AppSecret"
+        ],
+        "sampleHeaders": {
+          "Content-Type": "application/json",
+          "Accept": "application/json, text/plain, */*",
+          "Origin": "https://myupes-beta.upes.ac.in",
+          "Referer": "https://myupes-beta.upes.ac.in/oneportal/app/auth/login",
+          "x-applicationname": "oneportal",
+          "x-requestfrom": "web",
+          "X-AppSecret": ""
+        },
+        "requestPayloadTemplate": {
+          "UserId": "{{emailId}}",
+          "Password": "{{password}}",
+          "Captcha": "-",
+          "RememberMe": false
+        },
+        "sampleResponse": {
+          "Item": {
+            "emailId": "{{emailId}}",
+            "redirectUrl": "https://myupes-beta.upes.ac.in/connectportal/app/auth/login?code={{authCode}}&emailId={{emailId}}&name={{studentName}}"
+          },
+          "Message": "You are authorized to access the system.",
+          "StatusCode": 200
+        }
+      },
+      {
+        "method": "GET",
+        "url": "https://myupes-beta.upes.ac.in/connectportal/app/auth/login?code={{authCode}}&emailId={{emailId}}&name={{studentName}}",
+        "originalPath": "/connectportal/app/auth/login",
+        "status": 200,
+        "headers": [
+          "Accept",
+          "Referer"
+        ],
+        "sampleHeaders": {
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+          "Referer": "https://myupes-beta.upes.ac.in/oneportal/app/auth/login"
+        },
+        "requestPayloadTemplate": null,
+        "sampleResponse": "<!DOCTYPE html><html lang=\"en\"><head>\n  <meta charset=\"utf-8\">\n  <title>Connect Portal</title>\n  <base href=\"/connectportal/\">\n  <link rel=\"preload\" href=\"https://fonts.googleapis.com\">\n  <link rel=\"preload\" href=\"https://fonts.gstatic.com\" crossorigin=\"\">\n  <link rel=\"preload stylesheet\" href=\"http"
+      },
+      {
+        "method": "POST",
+        "url": "https://myupes-beta.upes.ac.in/sso/oauth2/access_token",
+        "originalPath": "/sso/oauth2/access_token",
+        "status": 200,
+        "headers": [
+          "Content-Type",
+          "Accept",
+          "Origin",
+          "Referer",
           "x-applicationname",
           "x-requestfrom",
           "x-appsecret"
         ],
-        "responseSchemaKeys": [
-          "UserId",
-          "FirstName",
-          "EmailId",
-          "MobileNumber",
-          "UserType",
-          "UserType.Code",
-          "UserType.DisplayName",
-          "RoleUserMaps",
-          "UniqueHashKey",
-          "ClientId"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/commonapp/web/signalr/notification/negotiate?unique_token=wuoT5GhWCNd8P1jSKqjD&application_name=connectportal&requestfrom=web&negotiateVersion=1",
-        "originalPath": "/commonapp/web/signalr/notification/negotiate",
-        "method": "POST",
-        "pageContext": "Login | Connect Portal (/connectportal/app/auth/login)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "content-type",
-          "referer",
-          "accept",
-          "origin",
-          "user-agent",
-          "cache-control",
-          "x-requested-with",
-          "x-signalr-user-agent"
-        ],
-        "responseSchemaKeys": [
-          "negotiateVersion",
-          "connectionId",
-          "connectionToken",
-          "availableTransports"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentloginbasicinfo",
-        "originalPath": "/apigateway/connect-portal/api/studentloginbasicinfo",
-        "method": "GET",
-        "pageContext": "Login | Connect Portal (/connectportal/app/auth/login)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret"
-        ],
-        "responseSchemaKeys": [
-          "StatusCode",
-          "Message",
-          "Item",
-          "Items",
-          "AdditionalData"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/exam-api-golang/api/v1/auth/login",
-        "originalPath": "/exam-api-golang/api/v1/auth/login",
-        "method": "POST",
-        "pageContext": "Exam Registration | Connect Portal (/connectportal/user/student/integration/examination/exam-registration)",
-        "requestPayloadTemplate": {
-          "email": "string",
-          "password": "string"
+        "sampleHeaders": {
+          "Content-Type": "application/json",
+          "Accept": "application/json, text/plain, */*",
+          "Origin": "https://myupes-beta.upes.ac.in",
+          "Referer": "https://myupes-beta.upes.ac.in/connectportal/app/auth/login?code={{authCode}}&emailId={{emailId}}&name={{studentName}}",
+          "x-applicationname": "connectportal",
+          "x-requestfrom": "web",
+          "x-appsecret": "ku7GUMtyT8er51rTfTc7HC"
         },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent"
-        ],
-        "responseSchemaKeys": [
-          "accessToken",
-          "expiresIn",
-          "refreshToken",
-          "user",
-          "user.user_id",
-          "user.tenant_id",
-          "user.child_id",
-          "user.child_type",
-          "user.employee_code",
-          "user.email",
-          "user.mobile",
-          "user.status",
-          "user.role",
-          "user.permissions"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/sso/user/oauth2/access-lms?uniqueId=%7B%7BstudentId%7D%7D",
-        "originalPath": "/sso/user/oauth2/access-lms",
-        "method": "POST",
-        "pageContext": "My Feedback | Connect Portal (/connectportal/user/student/feedback/myfeedback)",
-        "requestPayloadTemplate": {},
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "redirectUrl",
-          "statusCode"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=media_videojs_get_language&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22media_videojs_get_language%22%2C%22args%22%3A%7B%22lang%22%3A%22en%22%7D%7D%5D",
-        "originalPath": "/lib/ajax/service-nologin.php",
-        "method": "GET",
-        "pageContext": "My courses | UPES LMS (/my/courses.php)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "user-agent",
-          "x-requested-with"
-        ],
-        "responseSchemaKeys": [
-          "error",
-          "data"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_get_string&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_get_string%22%2C%22args%22%3A%7B%22stringid%22%3A%22changesmadereallygoaway%22%2C%22stringparams%22%3A%5B%5D%2C%22component%22%3A%22moodle%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-        "originalPath": "/lib/ajax/service-nologin.php",
-        "method": "GET",
-        "pageContext": "My courses | UPES LMS (/my/courses.php)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "user-agent",
-          "x-requested-with"
-        ],
-        "responseSchemaKeys": [
-          "error",
-          "data"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_output_load_fontawesome_icon_system_map&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_output_load_fontawesome_icon_system_map%22%2C%22args%22%3A%7B%22themename%22%3A%22moove%22%7D%7D%5D",
-        "originalPath": "/lib/ajax/service-nologin.php",
-        "method": "GET",
-        "pageContext": "My courses | UPES LMS (/my/courses.php)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "user-agent",
-          "x-requested-with"
-        ],
-        "responseSchemaKeys": [
-          "error",
-          "data"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_output_load_template_with_dependencies&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22paged_content%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-        "originalPath": "/lib/ajax/service-nologin.php",
-        "method": "GET",
-        "pageContext": "My courses | UPES LMS (/my/courses.php)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "user-agent",
-          "x-requested-with"
-        ],
-        "responseSchemaKeys": [
-          "error",
-          "data",
-          "data.templates",
-          "data.strings"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_output_load_template_with_dependencies&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22pix_icon_fontawesome%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-        "originalPath": "/lib/ajax/service-nologin.php",
-        "method": "GET",
-        "pageContext": "My courses | UPES LMS (/my/courses.php)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "user-agent",
-          "x-requested-with"
-        ],
-        "responseSchemaKeys": [
-          "error",
-          "data",
-          "data.templates",
-          "data.strings"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_get_string&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_get_string%22%2C%22args%22%3A%7B%22stringparams%22%3A%5B%5D%2C%22component%22%3A%22core%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-        "originalPath": "/lib/ajax/service-nologin.php",
-        "method": "GET",
-        "pageContext": "My courses | UPES LMS (/my/courses.php)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "user-agent",
-          "x-requested-with"
-        ],
-        "responseSchemaKeys": [
-          "error",
-          "exception",
-          "exception.message",
-          "exception.errorcode",
-          "exception.link",
-          "exception.moreinfourl"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_output_load_template_with_dependencies&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22overlay_loading%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-        "originalPath": "/lib/ajax/service-nologin.php",
-        "method": "GET",
-        "pageContext": "My courses | UPES LMS (/my/courses.php)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "user-agent",
-          "x-requested-with"
-        ],
-        "responseSchemaKeys": [
-          "error",
-          "data",
-          "data.templates",
-          "data.strings"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_output_load_template_with_dependencies&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22block_myoverview%22%2C%22template%22%3A%22view-cards%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-        "originalPath": "/lib/ajax/service-nologin.php",
-        "method": "GET",
-        "pageContext": "My courses | UPES LMS (/my/courses.php)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "user-agent",
-          "x-requested-with"
-        ],
-        "responseSchemaKeys": [
-          "error",
-          "data",
-          "data.templates",
-          "data.strings"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_get_string%2Ccore_get_string%2Ccore_get_string%2Ccore_get_string%2Ccore_get_string&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_get_string%22%2C%22args%22%3A%7B%22stringid%22%3A%22cancel%22%2C%22stringparams%22%3A%5B%5D%2C%22component%22%3A%22core%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A1%2C%22methodname%22%3A%22core_get_string%22%2C%22args%22%3A%7B%22stringid%22%3A%22closebuttontitle%22%2C%22stringparams%22%3A%5B%5D%2C%22component%22%3A%22core%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A2%2C%22methodname%22%3A%22core_get_string%22%2C%22args%22%3A%7B%22stringid%22%3A%22savechanges%22%2C%22stringparams%22%3A%5B%5D%2C%22component%22%3A%22core%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A3%2C%22methodname%22%3A%22core_get_string%22%2C%22args%22%3A%7B%22stringid%22%3A%22showless%22%2C%22stringparams%22%3A%5B%5D%2C%22component%22%3A%22core_form%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A4%2C%22methodname%22%3A%22core_get_string%22%2C%22args%22%3A%7B%22stringid%22%3A%22showmore%22%2C%22stringparams%22%3A%5B%5D%2C%22component%22%3A%22core_form%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-        "originalPath": "/lib/ajax/service-nologin.php",
-        "method": "GET",
-        "pageContext": "My courses | UPES LMS (/my/courses.php)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "user-agent",
-          "x-requested-with"
-        ],
-        "responseSchemaKeys": [
-          "error",
-          "data"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=6-method-calls&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22modal%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A1%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22modal_backdrop%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A2%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22modal_save_cancel%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A3%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22modal_delete_cancel%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A4%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22modal_cancel%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A5%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22local%2Fmodal%2Falert%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-        "originalPath": "/lib/ajax/service-nologin.php",
-        "method": "GET",
-        "pageContext": "My courses | UPES LMS (/my/courses.php)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "user-agent",
-          "x-requested-with"
-        ],
-        "responseSchemaKeys": [
-          "error",
-          "data",
-          "data.templates",
-          "data.strings"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/sso/user/oauth2/refresh-token?q=wYyex0U8E6TkmxHmBiAG",
-        "originalPath": "/sso/user/oauth2/refresh-token",
-        "method": "POST",
-        "pageContext": "Connect Portal (/connectportal/user/student/home/dashboard)",
         "requestPayloadTemplate": {
-          "ClientId": "number",
-          "ClientSecret": "string",
-          "RefreshToken": "string"
+          "ClientId": 3,
+          "ClientSecret": "ku7GUMtyT8er51rTfTc7HC",
+          "Code": "{{authCode}}"
         },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "StatusCode",
-          "Item",
-          "Item.requestInfo",
-          "Item.tokenInfo",
-          "Message"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/commonapp/web/signalr/notification/negotiate?unique_token=lF9kH3pvmve9gPOEaNYv&application_name=connectportal&requestfrom=web&negotiateVersion=1",
-        "originalPath": "/commonapp/web/signalr/notification/negotiate",
-        "method": "POST",
-        "pageContext": "Connect Portal (/connectportal/user/student/home/dashboard)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "content-type",
-          "referer",
-          "accept",
-          "origin",
-          "user-agent",
-          "cache-control",
-          "x-requested-with",
-          "x-signalr-user-agent"
-        ],
-        "responseSchemaKeys": [
-          "negotiateVersion",
-          "connectionId",
-          "connectionToken",
-          "availableTransports"
-        ],
-        "statusCode": 200
+        "sampleResponse": {
+          "StatusCode": 200,
+          "Item": {
+            "Identity": {
+              "clientId": 3,
+              "AccessToken": "{{accessToken}}",
+              "RefreshToken": "z5UVf0y8DKt6dsqiJEaPFCPwPjnv2k7iPGEi/rmD6Uk=",
+              "Scope": "openid",
+              "TokenType": "Bearer",
+              "ExpiresIn": 37798.5367048
+            },
+            "UserInfo": {
+              "UserId": 89466,
+              "EmailId": "{{emailId}}",
+              "FirstName": "{{studentName}}",
+              "MiddleName": "",
+              "LastName": "",
+              "UserTypeInfo": {
+                "Code": "ST",
+                "DisplayName": "Student"
+              },
+              "MobileNumber": "{{mobileNo}}",
+              "DateOfBirth": "2007-12-08T00:00:00",
+              "ProfilePicture": "",
+              "RoleUserMaps": [
+                {
+                  "RoleId": 109,
+                  "RoleCode": "ST",
+                  "RoleName": "Student",
+                  "IsPrefered": false
+                }
+              ],
+              "IsFirstTimeLogin": false
+            }
+          }
+        }
       }
     ],
     "profile": [
       {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprofileformconfiguration/{{studentId}}",
-        "originalPath": "/apigateway/connect-portal/api/studentprofileformconfiguration/6349e408-1096-483e-82d0-64587e70b025",
         "method": "GET",
-        "pageContext": "Exam Registration | Connect Portal (/connectportal/user/student/integration/examination/exam-registration)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
+        "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentloginbasicinfo",
+        "originalPath": "/apigateway/connect-portal/api/studentloginbasicinfo",
+        "status": 200,
+        "headers": [
+          "Accept",
+          "Authorization",
+          "Referer",
           "x-applicationname",
           "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
+          "x-appsecret"
         ],
-        "responseSchemaKeys": [
-          "Id",
-          "ParentId",
-          "IsChecked",
-          "IsDisabled",
-          "IsMandatory",
-          "ConfigId",
-          "DisplayName",
-          "AdmissionField",
-          "Validations",
-          "StudentProfileField",
-          "IsStudentProfileField",
-          "BrandId",
-          "Brand",
-          "Section",
-          "SectionCode",
-          "IsRegistrationConfig",
-          "Sequence",
-          "SectionSequence"
-        ],
-        "statusCode": 200
+        "sampleHeaders": {
+          "Accept": "application/json, text/plain, */*",
+          "Authorization": "Bearer {{accessToken}}",
+          "Referer": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/studentsinfo",
+          "x-applicationname": "connectportal",
+          "x-requestfrom": "web",
+          "x-appsecret": "ku7GUMtyT8er51rTfTc7HC"
+        },
+        "requestPayloadTemplate": null,
+        "sampleResponse": {
+          "StatusCode": 200,
+          "Message": "student found",
+          "Item": null,
+          "Items": [
+            {
+              "StudentId": "{{studentId}}",
+              "FirstName": "{{studentName}}",
+              "MiddleName": "",
+              "LastName": "",
+              "AdmissionDate": null,
+              "GlobalId": "{{sapId}}",
+              "Date_Of_Birth": "2007-12-08T00:00:00",
+              "EmailId": "{{emailId}}",
+              "MobileNo": null,
+              "ApplicationNo": "{{applicationNo}}",
+              "StreamId": null,
+              "StreamCode": "NA",
+              "StreamName": "NA",
+              "TermCodeID": 0,
+              "TermCode": "SEM_1",
+              "TermName": "Semester 1",
+              "CenterId": 0,
+              "CenterCode": "UPES_BID",
+              "CenterName": "UPES Bidholi Campus",
+              "CourseId": 0,
+              "CourseFamilyAcademicYearId": 0,
+              "CourseFamilyYearCode": "BTech_CS_GLOBAL",
+              "UserId": 0,
+              "CourseCodeId": 0,
+              "CourseCode": "Y1",
+              "CourseCodeName": "First Year",
+              "AdmissionBatchId": null,
+              "AdmissionBatchCode": "UPES_AY26_2",
+              "AdmissionBatchName": "2026-2028",
+              "AcademicYearId": 0,
+              "AcademicYearCode": "UPES_AY26",
+              "AcademicYearName": "2026-2027",
+              "BrandId": null,
+              "BrandCode": "UPES",
+              "BrandName": "UPES",
+              "BrandLogoUrl": "https://saupesprodci01.blob.core.windows.net/slcmstaticfiles/applogos/logo.png",
+              "BrandTypeCode": "UNIVERSITY",
+              "CenterLocationId": 0,
+              "CampusCode": "DDN",
+              "CampusName": "UPES Dehradun",
+              "DepartmentId": 0,
+              "DepartmentCode": "",
+              "DepartmentName": "",
+              "LevelId": null,
+              "ProgramTypeCode": "PRG108",
+              "ProgramTypeName": "Bachelor of Technology (Computer Science and Engineering) \n",
+              "FacultyId": null,
+              "FacultyCode": "SOCS",
+              "FacultyName": "School of Computer Science",
+              "ProfilePictureInfo": {
+                "FilePath": "/edutech/documents/iemsfilecontainer/29c79c9a-40d2-4f94-837e-de171ac637a8.jpeg",
+                "ContainerName": "iemsfilecontainer"
+              },
+              "GenderCode": "Male",
+              "GenderName": "Male",
+              "CourseFamilyName": "B.Tech CSE (Global)",
+              "CourseFamilyCode": "BTech_CS_GLOBAL",
+              "MajorName": "Global Program",
+              "MajorCode": "UPESMJ131",
+              "CourseFamilyId": 241,
+              "MobileNumber": "{{mobileNo}}",
+              "NoDuesStatus": null
+            }
+          ],
+          "AdditionalData": null
+        }
       },
       {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/hostel/api/studentdetails",
-        "originalPath": "/apigateway/hostel/api/studentdetails",
         "method": "POST",
-        "pageContext": "Hostel Notice Board | Connect Portal (/connectportal/user/student/hostel/notice-board)",
-        "requestPayloadTemplate": {
-          "PageFeatureCode": "string",
-          "StudentUniqueID": "string"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
+        "url": "https://myupes-beta.upes.ac.in/apigateway/docstorage/api/storage/downloadfile",
+        "originalPath": "/apigateway/docstorage/api/storage/downloadfile",
+        "status": 200,
+        "headers": [
+          "Content-Type",
+          "Accept",
+          "Authorization",
+          "Origin",
+          "Referer",
+          "x-appsecret",
           "x-applicationname",
           "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
+          "x-studentUniqueId"
         ],
-        "responseSchemaKeys": []
+        "sampleHeaders": {
+          "Content-Type": "application/json",
+          "Accept": "application/json, text/plain, */*",
+          "Authorization": "Bearer {{accessToken}}",
+          "Origin": "https://myupes-beta.upes.ac.in",
+          "Referer": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/studentsinfo",
+          "x-appsecret": "ku7GUMtyT8er51rTfTc7HC",
+          "x-applicationname": "connectportal",
+          "x-requestfrom": "web",
+          "x-studentUniqueId": "{{studentId}}"
+        },
+        "requestPayloadTemplate": {
+          "ContainerName": "iemsfilecontainer",
+          "BlobRelativePath": "/edutech/documents/iemsfilecontainer/29c79c9a-40d2-4f94-837e-de171ac637a8.jpeg",
+          "ActualFileName": "profile-picture.png"
+        },
+        "sampleResponse": "/9j/4AAQSkZJRgABAQEASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAAB"
+      },
+      {
+        "method": "GET",
+        "url": "https://myupes-beta.upes.ac.in/apigateway/api/featureaccess/0?studentId={{studentId}}",
+        "originalPath": "/apigateway/api/featureaccess/0",
+        "status": 200,
+        "headers": [
+          "Accept",
+          "Authorization",
+          "Referer",
+          "x-applicationname",
+          "x-requestfrom",
+          "x-studentUniqueId",
+          "x-appsecret"
+        ],
+        "sampleHeaders": {
+          "Accept": "application/json, text/plain, */*",
+          "Authorization": "Bearer {{accessToken}}",
+          "Referer": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
+          "x-applicationname": "connectportal",
+          "x-requestfrom": "web",
+          "x-studentUniqueId": "{{studentId}}",
+          "x-appsecret": "ku7GUMtyT8er51rTfTc7HC"
+        },
+        "requestPayloadTemplate": null,
+        "sampleResponse": [
+          {
+            "FeatureId": 204,
+            "FeatureName": "Received Circulars ",
+            "FeatureCode": "CONNECT-COLLAB-RCVD-CRLS",
+            "RoleId": 109,
+            "Role": "Student",
+            "UserId": 89466,
+            "IsEditable": true,
+            "IsApproval": false,
+            "FullName": "{{studentName}}",
+            "Sequence": 5080,
+            "FeatureComponent": "/user/student/collaboration/circulars",
+            "FeatureIcon": "fa fa-flag",
+            "NestedFeatures": [],
+            "FeatureDescription": "<h6>What it is</h6><p>Flow of the Received Circulars .</p>"
+          },
+          {
+            "FeatureId": 205,
+            "FeatureName": "Time Table",
+            "FeatureCode": "CONNECT-COLLAB-TM-TBL",
+            "RoleId": 109,
+            "Role": "Student",
+            "UserId": 89466,
+            "IsEditable": false,
+            "IsApproval": false,
+            "FullName": "{{studentName}}",
+            "Sequence": 5040,
+            "FeatureComponent": "/user/student/curriculum-scheduling",
+            "FeatureIcon": "fa fa-calendar",
+            "NestedFeatures": [],
+            "FeatureDescription": "<h6>What it is</h6><p>Flow of the Time Table.</p>"
+          },
+          {
+            "FeatureId": 225,
+            "FeatureName": "Student Profile",
+            "FeatureCode": "CONNECT-COLLAB-STU-PROFILE",
+            "RoleId": 109,
+            "Role": "Student",
+            "UserId": 89466,
+            "IsEditable": false,
+            "IsApproval": false,
+            "FullName": "{{studentName}}",
+            "Sequence": 5000,
+            "FeatureComponent": "/user/student/collaboration/studentprofile",
+            "FeatureIcon": "fa fa-user",
+            "NestedFeatures": [],
+            "FeatureDescription": "<h6>What it is</h6><p>Flow of the Student Profile.</p>"
+          },
+          {
+            "FeatureId": 453,
+            "FeatureName": "Service Request Creation",
+            "FeatureCode": "CONNECT-COLLAB-SER-REQ",
+            "RoleId": 109,
+            "Role": "Student",
+            "UserId": 89466,
+            "IsEditable": true,
+            "IsApproval": false,
+            "FullName": "{{studentName}}",
+            "Sequence": 5020,
+            "FeatureComponent": "/user/student/collaboration/servicerequest",
+            "FeatureIcon": "fa fa-wrench",
+            "NestedFeatures": [],
+            "FeatureDescription": "<h6>What it is</h6><p>Flow of the Service Request.</p>"
+          },
+          {
+            "FeatureId": 1495,
+            "FeatureName": "LMS",
+            "FeatureCode": "STUD-LMS",
+            "RoleId": 109,
+            "Role": "Student",
+            "UserId": 89466,
+            "IsEditable": true,
+            "IsApproval": false,
+            "FullName": "{{studentName}}",
+            "Sequence": 6000,
+            "FeatureComponent": "/lms/activity",
+            "FeatureIcon": "fa fa-info-circle",
+            "NestedFeatures": [],
+            "FeatureDescription": "<h6>What it is</h6><p>Flow of the LMS Activity.</p>"
+          },
+          {
+            "FeatureId": 1498,
+            "FeatureName": "My Feedback",
+            "FeatureCode": "CONNECT-MY-FEED",
+            "RoleId": 109,
+            "Role": "Student",
+            "UserId": 89466,
+            "IsEditable": true,
+            "IsApproval": false,
+            "FullName": "{{studentName}}",
+            "Sequence": 5500,
+            "FeatureComponent": "/user/student/feedback/myfeedback",
+            "FeatureIcon": "fa fa-lightbulb-o",
+            "NestedFeatures": [],
+            "FeatureDescription": "<h6>What it is</h6><p>Flow of the My Feedback.</p>"
+          },
+          {
+            "FeatureId": 3624,
+            "FeatureName": "Holiday and Events",
+            "FeatureCode": "STD-HOLIDAY-EVENTS",
+            "RoleId": 109,
+            "Role": "Student",
+            "UserId": 89466,
+            "IsEditable": true,
+            "IsApproval": false,
+            "FullName": "{{studentName}}",
+            "Sequence": 200,
+            "FeatureComponent": "/user/student/calendar-events",
+            "FeatureIcon": "fa fa-calendar-o",
+            "NestedFeatures": [],
+            "FeatureDescription": "<h6>What it is</h6><p>Flow of the Holiday and Events.</p>"
+          },
+          {
+            "FeatureId": 3629,
+            "FeatureName": "Course Selection",
+            "FeatureCode": "STD-COURSE-SELECTION",
+            "RoleId": 109,
+            "Role": "Student",
+            "UserId": 89466,
+            "IsEditable": true,
+            "IsApproval": false,
+            "FullName": "{{studentName}}",
+            "Sequence": 5090,
+            "FeatureComponent": "/user/student/course-selection",
+            "FeatureIcon": "fa fa-check",
+            "NestedFeatures": [],
+            "FeatureDescription": "<h6>What it is</h6><p>Flow of the Course Selection.</p>"
+          },
+          {
+            "FeatureId": 3632,
+            "FeatureName": "Hall Ticket",
+            "FeatureCode": "CONNECT-HL-TKT",
+            "RoleId": 109,
+            "Role": "Student",
+            "UserId": 89466,
+            "IsEditable": false,
+            "IsApproval": false,
+            "FullName": "{{studentName}}",
+            "Sequence": 5100,
+            "FeatureComponent": "/user/student/integration/examination/hall-ticket",
+            "FeatureIcon": "fa fa-ticket",
+            "NestedFeatures": [],
+            "FeatureDescription": ""
+          },
+          {
+            "FeatureId": 3633,
+            "FeatureName": "Transcript",
+            "FeatureCode": "CONNECT-TRNSCT",
+            "RoleId": 109,
+            "Role": "Student",
+            "UserId": 89466,
+            "IsEditable": true,
+            "IsApproval": false,
+            "FullName": "{{studentName}}",
+            "Sequence": 5110,
+            "FeatureComponent": "/user/student/integration/examination/transcript",
+            "FeatureIcon": "fa fa-file",
+            "NestedFeatures": [],
+            "FeatureDescription": ""
+          },
+          {
+            "FeatureId": 3644,
+            "FeatureName": "Finance",
+            "FeatureCode": "STUD-FIN",
+            "RoleId": 109,
+            "Role": "Student",
+            "UserId": 89466,
+            "IsEditable": true,
+            "IsApproval": false,
+            "FullName": "{{studentName}}",
+            "Sequence": 7390,
+            "FeatureComponent": "",
+            "FeatureIcon": "",
+            "NestedFeatures": [],
+            "FeatureDescription": ""
+          },
+          {
+            "FeatureId": 3673,
+            "FeatureName": "Student Attendance",
+            "FeatureCode": "CONNECT-STUD-ATTN",
+            "RoleId": 109,
+            "Role": "Student",
+            "UserId": 89466,
+            "IsEditable": true,
+            "IsApproval": false,
+            "FullName": "{{studentName}}",
+            "Sequence": 7830,
+            "FeatureComponent": "/user/student/student-attendance",
+            "FeatureIcon": "fa fa-clock-o",
+            "NestedFeatures": [],
+            "FeatureDescription": "<h6>Student Attendance</h6>"
+          },
+          {
+            "FeatureId": 3690,
+            "FeatureName": "Hostel Management",
+            "FeatureCode": "STD_HSTEL_MGMT",
+            "RoleId": 109,
+            "Role": "Student",
+            "UserId": 89466,
+            "IsEditable": true,
+            "IsApproval": false,
+            "FullName": "{{studentName}}",
+            "Sequence": 6010,
+            "FeatureComponent": "javascript:void(0);",
+            "FeatureIcon": "fa fa-building-o",
+            "NestedFeatures": [
+              {
+                "FeatureId": 3681,
+                "FeatureName": "Hostel Notice Board",
+                "FeatureCode": "CONNECT-HSTEL-NOTC-BOARD",
+                "RoleId": 109,
+                "Role": "Student",
+                "UserId": 89466,
+                "IsEditable": true,
+                "IsApproval": false,
+                "FullName": "{{studentName}}",
+                "Sequence": 7791,
+                "FeatureComponent": "/user/student/hostel/notice-board",
+                "FeatureIcon": "",
+                "FeatureDescription": "<h6>What it is</h6><p>The Page to fetch notices to the respective Student.</p>"
+              },
+              {
+                "FeatureId": 3679,
+                "FeatureName": "Hostel Passes",
+                "FeatureCode": "CONNECT-HSTL-PASS",
+                "RoleId": 109,
+                "Role": "Student",
+                "UserId": 89466,
+                "IsEditable": true,
+                "IsApproval": false,
+                "FullName": "{{studentName}}",
+                "Sequence": 7890,
+                "FeatureComponent": "/user/student/hostel/dayout-leavepass-requests",
+                "FeatureIcon": "fa fa-ticket",
+                "FeatureDescription": "<h6>What it is</h6><p>This Page is used to raise and view approved leave and day out pass requests raised by the students.</p>"
+              },
+              {
+                "FeatureId": 3685,
+                "FeatureName": "Hostel Allocation",
+                "FeatureCode": "CONNECT-HOSTEL-MESS-ALLOCATE",
+                "RoleId": 109,
+                "Role": "Student",
+                "UserId": 89466,
+                "IsEditable": true,
+                "IsApproval": false,
+                "FullName": "{{studentName}}",
+                "Sequence": 7910,
+                "FeatureComponent": "/user/student/hostel/room-allocation",
+                "FeatureIcon": "fa fa-building-o",
+                "FeatureDescription": "<h6>What it is</h6><p>The Page to view Hostel and Mess allocation and to download Id cards.</p>"
+              },
+              {
+                "FeatureId": 3688,
+                "FeatureName": "Request For Hostel",
+                "FeatureCode": "CONNECT-HSTEL-REQUEST",
+                "RoleId": 109,
+                "Role": "Student",
+                "UserId": 89466,
+                "IsEditable": true,
+                "IsApproval": false,
+                "FullName": "{{studentName}}",
+                "Sequence": 7921,
+                "FeatureComponent": "/user/student/hostel/hostel-request",
+                "FeatureIcon": "fa fa-bed",
+                "FeatureDescription": "<h6>What it is</h6><p>The Page to fetch attendance and discipline report.</p>"
+              }
+            ],
+            "FeatureDescription": "Hostel Management"
+          }
+        ]
       }
     ],
     "attendance": [
       {
+        "method": "POST",
         "url": "https://myupes-beta.upes.ac.in/apigateway/attendance/api/attendance/summary",
         "originalPath": "/apigateway/attendance/api/attendance/summary",
-        "method": "POST",
-        "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-        "requestPayloadTemplate": {
-          "StartDate": "object",
-          "EndDate": "string",
-          "ModeName": "string",
-          "StudentUniqueId": "string",
-          "SelectedModuleId": "object",
-          "SelectedTermId": "object"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
+        "status": 200,
+        "headers": [
+          "Content-Type",
+          "Accept",
+          "Authorization",
+          "Origin",
+          "Referer",
+          "x-appsecret",
           "x-applicationname",
           "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
+          "x-studentUniqueId"
         ],
-        "responseSchemaKeys": [
-          "TotalSessions",
-          "PresentCount",
-          "AbsentCount",
-          "CondonedAttendanceCount",
-          "StudentCount",
-          "AttendancePercentage",
-          "ModuleId",
-          "ModuleName",
-          "ThresholdPercentage",
-          "SelectedStartDate",
-          "SelectedEndDate"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/student-attendance/attendancedropdown",
-        "originalPath": "/apigateway/student-attendance/attendancedropdown",
-        "method": "POST",
-        "pageContext": "Request For Hostel | Connect Portal (/connectportal/user/student/hostel/hostel-request)",
-        "requestPayloadTemplate": {
-          "StudentUniqueID": "string"
+        "sampleHeaders": {
+          "Content-Type": "application/json",
+          "Accept": "application/json, text/plain, */*",
+          "Authorization": "Bearer {{accessToken}}",
+          "Origin": "https://myupes-beta.upes.ac.in",
+          "Referer": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
+          "x-appsecret": "ku7GUMtyT8er51rTfTc7HC",
+          "x-applicationname": "connectportal",
+          "x-requestfrom": "web",
+          "x-studentUniqueId": "{{studentId}}"
         },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "CourseFamilyId",
-          "CourseFamilyName",
-          "TermDropdownDetailsList"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/student-attendance/studentattendancesummary",
-        "originalPath": "/apigateway/student-attendance/studentattendancesummary",
-        "method": "POST",
-        "pageContext": "Student Attendance | Connect Portal (/connectportal/user/student/student-attendance)",
         "requestPayloadTemplate": {
-          "StudentUniqueID": "string",
-          "CourseFamilyId": "number",
-          "TermCodeId": "number",
-          "CourseList": "object",
-          "StartDate": "string",
-          "EndDate": "string",
-          "TermStartDate": "string",
-          "TermEndDate": "string"
+          "StartDate": null,
+          "EndDate": "2026-11-17",
+          "ModeName": "term",
+          "StudentUniqueId": "{{studentId}}",
+          "SelectedModuleId": null,
+          "SelectedTermId": null
         },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "AttendanceInfo",
-          "AttendanceSummary",
-          "AttendanceSummary.TotalAttendance",
-          "AttendanceSummary.TotalSessionCount",
-          "AttendanceSummary.TotalCondonedAttendanceCount",
-          "AttendanceSummary.TotalPresentPercentage",
-          "AttendanceSummary.TotalPresentPercentageTermWise"
-        ],
-        "statusCode": 200
+        "sampleResponse": [
+          {
+            "TotalSessions": 3,
+            "PresentCount": 3,
+            "AbsentCount": 0,
+            "CondonedAttendanceCount": 0,
+            "StudentCount": 1,
+            "AttendancePercentage": 100,
+            "ModuleId": 89309,
+            "ModuleName": "Managing Self",
+            "ThresholdPercentage": 75,
+            "SelectedStartDate": "2026-06-15",
+            "SelectedEndDate": "2026-11-17"
+          },
+          {
+            "TotalSessions": 12,
+            "PresentCount": 11,
+            "AbsentCount": 1,
+            "CondonedAttendanceCount": 0,
+            "StudentCount": 1,
+            "AttendancePercentage": 91.67,
+            "ModuleId": 89310,
+            "ModuleName": "Environment Sustainability & Climate Change",
+            "ThresholdPercentage": 75,
+            "SelectedStartDate": "2026-06-15",
+            "SelectedEndDate": "2026-11-17"
+          },
+          {
+            "TotalSessions": 1,
+            "PresentCount": 1,
+            "AbsentCount": 0,
+            "CondonedAttendanceCount": 0,
+            "StudentCount": 1,
+            "AttendancePercentage": 100,
+            "ModuleId": 89311,
+            "ModuleName": "AI Foundations & Ethical AI",
+            "ThresholdPercentage": 75,
+            "SelectedStartDate": "2026-06-15",
+            "SelectedEndDate": "2026-11-17"
+          },
+          {
+            "TotalSessions": 47,
+            "PresentCount": 34,
+            "AbsentCount": 13,
+            "CondonedAttendanceCount": 0,
+            "StudentCount": 1,
+            "AttendancePercentage": 72.34,
+            "ModuleId": 89327,
+            "ModuleName": "Advanced Engineering Mathematics I",
+            "ThresholdPercentage": 75,
+            "SelectedStartDate": "2026-06-15",
+            "SelectedEndDate": "2026-11-17"
+          },
+          {
+            "TotalSessions": 62,
+            "PresentCount": 61,
+            "AbsentCount": 1,
+            "CondonedAttendanceCount": 0,
+            "StudentCount": 1,
+            "AttendancePercentage": 98.39,
+            "ModuleId": 89328,
+            "ModuleName": "Programming in C",
+            "ThresholdPercentage": 75,
+            "SelectedStartDate": "2026-06-15",
+            "SelectedEndDate": "2026-11-17"
+          },
+          {
+            "TotalSessions": 17,
+            "PresentCount": 15,
+            "AbsentCount": 2,
+            "CondonedAttendanceCount": 0,
+            "StudentCount": 1,
+            "AttendancePercentage": 88.24,
+            "ModuleId": 89329,
+            "ModuleName": "Problem Solving",
+            "ThresholdPercentage": 75,
+            "SelectedStartDate": "2026-06-15",
+            "SelectedEndDate": "2026-11-17"
+          },
+          {
+            "TotalSessions": 57,
+            "PresentCount": 50,
+            "AbsentCount": 7,
+            "CondonedAttendanceCount": 0,
+            "StudentCount": 1,
+            "AttendancePercentage": 87.72,
+            "ModuleId": 89330,
+            "ModuleName": "Physics for Computer Engineers",
+            "ThresholdPercentage": 75,
+            "SelectedStartDate": "2026-06-15",
+            "SelectedEndDate": "2026-11-17"
+          }
+        ]
       }
     ],
     "timetable": [
       {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/api/timetable/masters",
-        "originalPath": "/apigateway/api/timetable/masters",
         "method": "POST",
-        "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/studentsinfo)",
-        "requestPayloadTemplate": {
-          "DropdownType": "string"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "Id",
-          "Code",
-          "Name",
-          "ColorCode"
-        ],
-        "statusCode": 200
-      },
-      {
         "url": "https://myupes-beta.upes.ac.in/apigateway/api/timetable",
         "originalPath": "/apigateway/api/timetable",
-        "method": "POST",
-        "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-        "requestPayloadTemplate": {
-          "ActivityCode": "string",
-          "TimeTableContextDetails": "object"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
+        "status": 200,
+        "headers": [
+          "Content-Type",
+          "Accept",
+          "Authorization",
+          "Origin",
+          "Referer",
+          "x-appsecret",
           "x-applicationname",
           "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
+          "x-studentUniqueId"
         ],
-        "responseSchemaKeys": [
-          "Id",
-          "FloorPlanDetails",
-          "FloorPlanDetails.FloorPlanId",
-          "FloorPlanDetails.VenueName",
-          "FloorPlanDetails.VenueCode",
-          "FloorPlanDetails.VenueCategory",
-          "FloorPlanDetails.VenueCategoryCode",
-          "FloorPlanDetails.ColorCode",
-          "FloorPlanDetails.MeetingLink",
-          "FloorPlanDetails.CenterId",
-          "FloorPlanDetails.CenterName",
-          "DayofWeekDetails",
-          "DayofWeekDetails.DayOfWeekId",
-          "DayofWeekDetails.DayOfWeekShortName",
-          "DayofWeekDetails.DayOfWeekName",
-          "SlotDate",
-          "SlotStartTime",
-          "SlotEndTime",
-          "ModuleList",
-          "CohortList",
-          "TeacherList",
-          "IsMergedSlot",
-          "IsCancelledSlot",
-          "TimeTableSlotStatusId",
-          "TimeTableSlotStatusName",
-          "IsRecurringSlot",
-          "RequestId",
-          "CohortUnAvailableDetail",
-          "RoomUnAvailableDetail",
-          "FacultyUnAvailableDetail",
-          "TimeSlotIdList",
-          "IsExtraSlot",
-          "IsRescheduledSlot",
-          "IsSubstitutedSlot",
-          "ContextCombination",
-          "IsSlotEditable",
-          "IsPreviousEvent",
-          "IsPartialCohortGrouping"
-        ],
-        "statusCode": 200
+        "sampleHeaders": {
+          "Content-Type": "application/json",
+          "Accept": "application/json, text/plain, */*",
+          "Authorization": "Bearer {{accessToken}}",
+          "Origin": "https://myupes-beta.upes.ac.in",
+          "Referer": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
+          "x-appsecret": "ku7GUMtyT8er51rTfTc7HC",
+          "x-applicationname": "connectportal",
+          "x-requestfrom": "web",
+          "x-studentUniqueId": "{{studentId}}"
+        },
+        "requestPayloadTemplate": {
+          "ActivityCode": "studentdashboard",
+          "TimeTableContextDetails": {
+            "SlotStartDate": "17-Nov-2026",
+            "SlotEndDate": "17-Nov-2026",
+            "StudentCode": "{{studentId}}"
+          }
+        },
+        "sampleResponse": [
+          {
+            "Id": 1148031,
+            "FloorPlanDetails": {
+              "FloorPlanId": 2715,
+              "VenueName": "5204",
+              "VenueCode": "5204",
+              "VenueCategory": "Class Room",
+              "VenueCategoryCode": "VT001",
+              "ColorCode": "#006097",
+              "MeetingLink": "",
+              "CenterId": 1,
+              "CenterName": "UPES Bidholi Campus"
+            },
+            "DayofWeekDetails": {
+              "DayOfWeekId": 2,
+              "DayOfWeekShortName": "TUE",
+              "DayOfWeekName": "Tuesday"
+            },
+            "SlotDate": "2026-Nov-17",
+            "SlotStartTime": "09:00 AM",
+            "SlotEndTime": "09:55 AM",
+            "ModuleList": [
+              {
+                "ModuleId": 89327,
+                "ModuleCode": "AEM1001_4",
+                "ModuleName": "Advanced Engineering Mathematics I"
+              }
+            ],
+            "CohortList": [
+              {
+                "Id": 134020,
+                "Code": "BT-CSE-I-B3_AEM1001_4",
+                "Name": "BT-CSE-I-B3_Advanced Engineering Mathematics I",
+                "CohortGroupId": 1511,
+                "CohortGroupCode": "CG-47k1vpmP8x",
+                "CohortGroupName": "BT-CSE-I-B3"
+              }
+            ],
+            "TeacherList": [
+              {
+                "Id": 37149,
+                "Code": "40004295",
+                "Name": "Salman  Ashraf"
+              }
+            ],
+            "IsMergedSlot": false,
+            "IsCancelledSlot": false,
+            "TimeTableSlotStatusId": 0,
+            "TimeTableSlotStatusName": "",
+            "IsRecurringSlot": true,
+            "RequestId": 1487153,
+            "CohortUnAvailableDetail": "",
+            "RoomUnAvailableDetail": "",
+            "FacultyUnAvailableDetail": "",
+            "TimeSlotIdList": "",
+            "IsExtraSlot": false,
+            "IsRescheduledSlot": false,
+            "IsSubstitutedSlot": false,
+            "ContextCombination": [
+              {
+                "CourseFamilyId": 241,
+                "CourseFamilyName": "B.Tech CSE (Global)",
+                "CourseFamilyCode": "BTech_CS_GLOBAL",
+                "CenterId": 1,
+                "CenterName": "UPES Bidholi Campus",
+                "CenterCode": "UPES_BID",
+                "CenterParentId": 1,
+                "LevelId": 1,
+                "LevelName": "First Year",
+                "LevelCode": "Y1",
+                "TermCodeId": 1,
+                "TermCodeName": "Semester 1",
+                "TermCode": "SEM_1"
+              }
+            ],
+            "IsSlotEditable": true,
+            "IsPreviousEvent": true,
+            "IsPartialCohortGrouping": false
+          },
+          {
+            "Id": 1253328,
+            "FloorPlanDetails": {
+              "FloorPlanId": 2691,
+              "VenueName": "3003",
+              "VenueCode": "3003",
+              "VenueCategory": "Class Room",
+              "VenueCategoryCode": "VT001",
+              "ColorCode": "#006097",
+              "MeetingLink": "",
+              "CenterId": 1,
+              "CenterName": "UPES Bidholi Campus"
+            },
+            "DayofWeekDetails": {
+              "DayOfWeekId": 2,
+              "DayOfWeekShortName": "TUE",
+              "DayOfWeekName": "Tuesday"
+            },
+            "SlotDate": "2026-Nov-17",
+            "SlotStartTime": "10:00 AM",
+            "SlotEndTime": "10:55 AM",
+            "ModuleList": [
+              {
+                "ModuleId": 89329,
+                "ModuleCode": "PRS1001_2",
+                "ModuleName": "Problem Solving"
+              }
+            ],
+            "CohortList": [
+              {
+                "Id": 134029,
+                "Code": "BT-CSE-I-B4_PRS1001_2",
+                "Name": "BT-CSE-I-B4_Problem Solving",
+                "CohortGroupId": 1512,
+                "CohortGroupCode": "CG-V429cXYBUa",
+                "CohortGroupName": "BT-CSE-I-B4"
+              },
+              {
+                "Id": 134022,
+                "Code": "BT-CSE-I-B3_PRS1001_2",
+                "Name": "BT-CSE-I-B3_Problem Solving",
+                "CohortGroupId": 1511,
+                "CohortGroupCode": "CG-47k1vpmP8x",
+                "CohortGroupName": "BT-CSE-I-B3"
+              }
+            ],
+            "TeacherList": [
+              {
+                "Id": 478,
+                "Code": "40002766",
+                "Name": "Meha  Mishra"
+              }
+            ],
+            "IsMergedSlot": false,
+            "IsCancelledSlot": false,
+            "TimeTableSlotStatusId": 0,
+            "TimeTableSlotStatusName": "",
+            "IsRecurringSlot": false,
+            "CohortUnAvailableDetail": "",
+            "RoomUnAvailableDetail": "",
+            "FacultyUnAvailableDetail": "",
+            "TimeSlotIdList": "",
+            "IsExtraSlot": false,
+            "IsRescheduledSlot": false,
+            "IsSubstitutedSlot": false,
+            "ContextCombination": [
+              {
+                "CourseFamilyId": 241,
+                "CourseFamilyName": "B.Tech CSE (Global)",
+                "CourseFamilyCode": "BTech_CS_GLOBAL",
+                "CenterId": 1,
+                "CenterName": "UPES Bidholi Campus",
+                "CenterCode": "UPES_BID",
+                "CenterParentId": 1,
+                "LevelId": 1,
+                "LevelName": "First Year",
+                "LevelCode": "Y1",
+                "TermCodeId": 1,
+                "TermCodeName": "Semester 1",
+                "TermCode": "SEM_1"
+              }
+            ],
+            "IsSlotEditable": true,
+            "IsPreviousEvent": true,
+            "IsPartialCohortGrouping": false
+          },
+          {
+            "Id": 1079334,
+            "FloorPlanDetails": {
+              "FloorPlanId": 2768,
+              "VenueName": "9107",
+              "VenueCode": "9107",
+              "VenueCategory": "Class Room",
+              "VenueCategoryCode": "VT001",
+              "ColorCode": "#006097",
+              "MeetingLink": "",
+              "CenterId": 1,
+              "CenterName": "UPES Bidholi Campus"
+            },
+            "DayofWeekDetails": {
+              "DayOfWeekId": 2,
+              "DayOfWeekShortName": "TUE",
+              "DayOfWeekName": "Tuesday"
+            },
+            "SlotDate": "2026-Nov-17",
+            "SlotStartTime": "11:00 AM",
+            "SlotEndTime": "11:55 AM",
+            "ModuleList": [
+              {
+                "ModuleId": 89330,
+                "ModuleCode": "PCE1001_5",
+                "ModuleName": "Physics for Computer Engineers"
+              }
+            ],
+            "CohortList": [
+              {
+                "Id": 134025,
+                "Code": "BT-CSE-I-B3_PCE1001_5",
+                "Name": "BT-CSE-I-B3_Physics for Computer Engineers",
+                "CohortGroupId": 1511,
+                "CohortGroupCode": "CG-47k1vpmP8x",
+                "CohortGroupName": "BT-CSE-I-B3"
+              },
+              {
+                "Id": 134032,
+                "Code": "BT-CSE-I-B4_PCE1001_5",
+                "Name": "BT-CSE-I-B4_Physics for Computer Engineers",
+                "CohortGroupId": 1512,
+                "CohortGroupCode": "CG-V429cXYBUa",
+                "CohortGroupName": "BT-CSE-I-B4"
+              }
+            ],
+            "TeacherList": [
+              {
+                "Id": 743,
+                "Code": "40001044",
+                "Name": "Santosh  Dubey"
+              }
+            ],
+            "IsMergedSlot": false,
+            "IsCancelledSlot": false,
+            "TimeTableSlotStatusId": 0,
+            "TimeTableSlotStatusName": "",
+            "IsRecurringSlot": true,
+            "RequestId": 1393468,
+            "CohortUnAvailableDetail": "",
+            "RoomUnAvailableDetail": "",
+            "FacultyUnAvailableDetail": "",
+            "TimeSlotIdList": "",
+            "IsExtraSlot": false,
+            "IsRescheduledSlot": false,
+            "IsSubstitutedSlot": false,
+            "ContextCombination": [
+              {
+                "CourseFamilyId": 241,
+                "CourseFamilyName": "B.Tech CSE (Global)",
+                "CourseFamilyCode": "BTech_CS_GLOBAL",
+                "CenterId": 1,
+                "CenterName": "UPES Bidholi Campus",
+                "CenterCode": "UPES_BID",
+                "CenterParentId": 1,
+                "LevelId": 1,
+                "LevelName": "First Year",
+                "LevelCode": "Y1",
+                "TermCodeId": 1,
+                "TermCodeName": "Semester 1",
+                "TermCode": "SEM_1"
+              }
+            ],
+            "IsSlotEditable": true,
+            "IsPreviousEvent": false,
+            "IsPartialCohortGrouping": false
+          }
+        ]
       },
       {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/financeintegrations/api/getstudentschedulepaywithdueamt?StudentID=%7B%7BstudentId%7D%7D",
-        "originalPath": "/apigateway/financeintegrations/api/getstudentschedulepaywithdueamt",
-        "method": "GET",
-        "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
+        "method": "POST",
+        "url": "https://myupes-beta.upes.ac.in/apigateway/api/timetable/masters",
+        "originalPath": "/apigateway/api/timetable/masters",
+        "status": 200,
+        "headers": [
+          "Content-Type",
+          "Accept",
+          "Authorization",
+          "Origin",
+          "Referer",
+          "x-appsecret",
           "x-applicationname",
           "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
+          "x-studentUniqueId"
         ],
-        "responseSchemaKeys": [
-          "StatusCode",
-          "Item",
-          "Item.ExcessAmount",
-          "Item.IsRefundWorkFlowActive",
-          "Item.IsWaiverWorkFlowActive",
-          "Item.StudentSchedulePayment",
-          "Item.IsPartialPaymentEnabled",
-          "Item.OutstandingAmount"
-        ],
-        "statusCode": 200
+        "sampleHeaders": {
+          "Content-Type": "application/json",
+          "Accept": "application/json, text/plain, */*",
+          "Authorization": "Bearer {{accessToken}}",
+          "Origin": "https://myupes-beta.upes.ac.in",
+          "Referer": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
+          "x-appsecret": "ku7GUMtyT8er51rTfTc7HC",
+          "x-applicationname": "connectportal",
+          "x-requestfrom": "web",
+          "x-studentUniqueId": "{{studentId}}"
+        },
+        "requestPayloadTemplate": {
+          "DropdownType": "venuecategory"
+        },
+        "sampleResponse": [
+          {
+            "Id": 1,
+            "Code": "VT001",
+            "Name": "Class Room",
+            "ColorCode": "#006097"
+          },
+          {
+            "Id": 3,
+            "Code": "HCR",
+            "Name": "Hybrid Class Room",
+            "ColorCode": "#F4C430"
+          },
+          {
+            "Id": 2,
+            "Code": "OCR",
+            "Name": "Virtual Class Room",
+            "ColorCode": "#e46097"
+          }
+        ]
       }
     ],
     "lms": [
       {
+        "method": "GET",
         "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/course-summary/{{studentId}}",
-        "originalPath": "/apigateway/connect-portal/api/studentprogramprogress/course-summary/6349e408-1096-483e-82d0-64587e70b025",
-        "method": "GET",
-        "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
+        "originalPath": "/apigateway/connect-portal/api/studentprogramprogress/course-summary/{{studentId}}",
+        "status": 200,
+        "headers": [
+          "Accept",
+          "Authorization",
+          "Referer",
           "x-applicationname",
           "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
+          "x-studentUniqueId",
+          "x-appsecret"
         ],
-        "responseSchemaKeys": [
-          "CourseProgressSummery",
-          "CourseProgressSummery.ProgramName",
-          "CourseProgressSummery.ProgramType",
-          "CourseProgressSummery.MajorName",
-          "CourseProgressSummery.AcademicYear",
-          "CourseProgressSummery.Term",
-          "CourseProgressSummery.TermCode",
-          "CourseProgressSummery.CampusName",
-          "CourseProgressSummery.CampusCode",
-          "CourseProgressSummery.CGPA",
-          "CourseProgressSummery.TotalCreditsRequired",
-          "CourseProgressSummery.TotalCreditsEarned",
-          "CourseProgressSummery.CreditinProgress",
-          "CourseProgressSummery.TaggedSemesters",
-          "CourseProgressSummery.TaggedSchools",
-          "CourseProgressSummery.Status",
-          "CourseProgressSummery.CurrentTermId",
-          "CourseProgressSummery.ProgramCode",
-          "CourseProgressSummery.LevelId",
-          "CourseProgressSummery.LevelName",
-          "CourseProgressSummery.AdmissionBatchId",
-          "CourseProgressSummery.AdmissionBatch",
-          "CourseProgressSummery.IsCertificateProgram",
-          "TermWiseCourseProgress",
-          "TermWiseAllCourseDetails",
-          "MinorCourseProgress",
-          "SpecializationProgress",
-          "learningProgress",
-          "CGPA",
-          "SGPA"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/exam-course-summary/{{studentId}}",
-        "originalPath": "/apigateway/connect-portal/api/studentprogramprogress/exam-course-summary/6349e408-1096-483e-82d0-64587e70b025",
-        "method": "GET",
-        "pageContext": "Exam Registration | Connect Portal (/connectportal/user/student/integration/examination/exam-registration)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "CourseProgressSummery",
-          "CourseProgressSummery.ProgramName",
-          "CourseProgressSummery.ProgramType",
-          "CourseProgressSummery.MajorName",
-          "CourseProgressSummery.AcademicYear",
-          "CourseProgressSummery.Term",
-          "CourseProgressSummery.TermCode",
-          "CourseProgressSummery.CampusName",
-          "CourseProgressSummery.CampusCode",
-          "CourseProgressSummery.CGPA",
-          "CourseProgressSummery.TotalCreditsRequired",
-          "CourseProgressSummery.TotalCreditsEarned",
-          "CourseProgressSummery.CreditinProgress",
-          "CourseProgressSummery.TaggedSemesters",
-          "CourseProgressSummery.TaggedSchools",
-          "CourseProgressSummery.Status",
-          "CourseProgressSummery.CurrentTermId",
-          "CourseProgressSummery.ProgramCode",
-          "CourseProgressSummery.LevelId",
-          "CourseProgressSummery.LevelName",
-          "CourseProgressSummery.AdmissionBatchId",
-          "CourseProgressSummery.AdmissionBatch",
-          "CourseProgressSummery.IsCertificateProgram",
-          "TermWiseCourseProgress",
-          "TermWiseAllCourseDetails",
-          "MinorCourseProgress",
-          "SpecializationProgress",
-          "learningProgress",
-          "CGPA",
-          "SGPA"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/specialization-course-progress/{{studentId}}",
-        "originalPath": "/apigateway/connect-portal/api/studentprogramprogress/specialization-course-progress/6349e408-1096-483e-82d0-64587e70b025",
-        "method": "GET",
-        "pageContext": "Student Profile | Connect Portal (/connectportal/user/student/collaboration/studentprofile)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "CourseProgressSummery",
-          "TermWiseCourseProgress",
-          "TermWiseAllCourseDetails",
-          "MinorCourseProgress",
-          "SpecializationProgress",
-          "learningProgress",
-          "CGPA",
-          "SGPA"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/term-wise-course/{{studentId}}/1",
-        "originalPath": "/apigateway/connect-portal/api/studentprogramprogress/term-wise-course/6349e408-1096-483e-82d0-64587e70b025/1",
-        "method": "GET",
-        "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/collaboration/studentprofile/programprogress)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "CourseProgressSummery",
-          "TermWiseCourseProgress",
-          "TermWiseAllCourseDetails",
-          "MinorCourseProgress",
-          "SpecializationProgress",
-          "learningProgress",
-          "CGPA",
-          "SGPA"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/courseplanning/api/moduleselection/{{studentId}}",
-        "originalPath": "/apigateway/courseplanning/api/moduleselection/6349e408-1096-483e-82d0-64587e70b025",
-        "method": "GET",
-        "pageContext": "Received Circulars | Connect Portal (/connectportal/user/student/collaboration/circulars)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "StatusCode",
-          "Message",
-          "Item",
-          "Item.CourseFamilyCode",
-          "Item.CourseFamilyName",
-          "Item.AcademicYearName",
-          "Item.AdmissionBatchName",
-          "Item.TermCodeName",
-          "Item.RecommendedCredits",
-          "Item.EnrolledCredits",
-          "Item.RequiredCredits",
-          "Item.AdditionalCredits",
-          "Item.StudentSelections"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/api/featureaccess/STD-COURSE-SELECTION/109?studentId=%7B%7BstudentId%7D%7D",
-        "originalPath": "/apigateway/api/featureaccess/STD-COURSE-SELECTION/109",
-        "method": "GET",
-        "pageContext": "Course Selection | Connect Portal (/connectportal/user/student/course-selection)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "FeatureId",
-          "FeatureName",
-          "FeatureCode",
-          "RoleId",
-          "Role",
-          "UserId",
-          "IsEditable",
-          "IsApproval",
-          "FullName",
-          "Sequence",
-          "FeatureComponent",
-          "FeatureIcon",
-          "FeatureDescription"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/courseplanning/api/moduleselection",
-        "originalPath": "/apigateway/courseplanning/api/moduleselection",
-        "method": "POST",
-        "pageContext": "Course Selection | Connect Portal (/connectportal/user/student/course-selection)",
-        "requestPayloadTemplate": {
-          "StudentUniqueId": "string",
-          "SelectedCourseFamilyId": "number",
-          "ActivityCode": "string"
+        "sampleHeaders": {
+          "Accept": "application/json, text/plain, */*",
+          "Authorization": "Bearer {{accessToken}}",
+          "Referer": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
+          "x-applicationname": "connectportal",
+          "x-requestfrom": "web",
+          "x-studentUniqueId": "{{studentId}}",
+          "x-appsecret": "ku7GUMtyT8er51rTfTc7HC"
         },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "StatusCode",
-          "Message",
-          "Items"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://lms.upes.ac.in/lib/ajax/service.php?sesskey=QuoSU66yO6&info=core_message_get_unsent_message",
-        "originalPath": "/lib/ajax/service.php",
-        "method": "POST",
-        "pageContext": "My courses | UPES LMS (/my/courses.php)",
-        "requestPayloadTemplate": [
-          {
-            "index": "number",
-            "methodname": "string",
-            "args": "object"
-          }
-        ],
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-requested-with"
-        ],
-        "responseSchemaKeys": [
-          "error",
-          "data"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://lms.upes.ac.in/lib/ajax/service.php?sesskey=QuoSU66yO6&info=core_course_get_enrolled_courses_by_timeline_classification",
-        "originalPath": "/lib/ajax/service.php",
-        "method": "POST",
-        "pageContext": "My courses | UPES LMS (/my/courses.php)",
-        "requestPayloadTemplate": [
-          {
-            "index": "number",
-            "methodname": "string",
-            "args": "object"
-          }
-        ],
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-requested-with"
-        ],
-        "responseSchemaKeys": [
-          "error",
-          "data",
-          "data.courses",
-          "data.nextoffset"
-        ],
-        "statusCode": 200
+        "requestPayloadTemplate": null,
+        "sampleResponse": {
+          "CourseProgressSummery": {
+            "ProgramName": "B.Tech CSE (Global)",
+            "ProgramType": "Bachelor of Technology (Computer Science and Engineering) \n",
+            "MajorName": "Global Program",
+            "AcademicYear": "2026-2027",
+            "Term": "Semester 1",
+            "TermCode": "SEM_1",
+            "CampusName": "UPES Bidholi Campus",
+            "CampusCode": "UPES_BID",
+            "CGPA": "0",
+            "TotalCreditsRequired": 200,
+            "TotalCreditsEarned": 0,
+            "CreditinProgress": 0,
+            "TaggedSemesters": [
+              {
+                "Id": 1,
+                "Name": "Semester 1",
+                "Code": "SEM_1",
+                "TaggedItems": null
+              },
+              {
+                "Id": 2,
+                "Name": "Semester 2",
+                "Code": "SEM_2",
+                "TaggedItems": null
+              },
+              {
+                "Id": 3,
+                "Name": "Semester 3",
+                "Code": "SEM_3",
+                "TaggedItems": null
+              },
+              {
+                "Id": 4,
+                "Name": "Semester 4",
+                "Code": "SEM_4",
+                "TaggedItems": null
+              },
+              {
+                "Id": 5,
+                "Name": "Semester 5",
+                "Code": "SEM_5",
+                "TaggedItems": null
+              },
+              {
+                "Id": 6,
+                "Name": "Semester 6",
+                "Code": "SEM_6",
+                "TaggedItems": null
+              },
+              {
+                "Id": 7,
+                "Name": "Semester 7",
+                "Code": "SEM_7",
+                "TaggedItems": null
+              },
+              {
+                "Id": 8,
+                "Name": "Semester 8",
+                "Code": "SEM_8",
+                "TaggedItems": null
+              }
+            ],
+            "TaggedSchools": [
+              {
+                "Id": 1,
+                "Name": "School of Computer Science",
+                "Code": "SOCS",
+                "TaggedItems": []
+              },
+              {
+                "Id": 2,
+                "Name": "School Of Engineering",
+                "Code": "SOE",
+                "TaggedItems": []
+              },
+              {
+                "Id": 3,
+                "Name": "School Of Design",
+                "Code": "SOD",
+                "TaggedItems": []
+              },
+              {
+                "Id": 4,
+                "Name": "School Of Business",
+                "Code": "SOB",
+                "TaggedItems": []
+              },
+              {
+                "Id": 5,
+                "Name": "School of Health Sciences & Technology",
+                "Code": "SOHS",
+                "TaggedItems": []
+              },
+              {
+                "Id": 6,
+                "Name": "School Of Modern Media",
+                "Code": "SOMM",
+                "TaggedItems": []
+              },
+              {
+                "Id": 7,
+                "Name": "School Of Law",
+                "Code": "SOL",
+                "TaggedItems": []
+              },
+              {
+                "Id": 8,
+                "Name": "School Of Liberal Studies",
+                "Code": "SOLS",
+                "TaggedItems": []
+              },
+              {
+                "Id": 10,
+                "Name": "UPES ONLINE",
+                "Code": "UPESON",
+                "TaggedItems": []
+              },
+              {
+                "Id": 16,
+                "Name": "School of Liberal Studies & Humanities",
+                "Code": "SOLSH",
+                "TaggedItems": []
+              }
+            ],
+            "Status": null,
+            "CurrentTermId": 1,
+            "ProgramCode": "BTech_CS_GLOBAL",
+            "LevelId": 1,
+            "LevelName": "First Year",
+            "AdmissionBatchId": 119,
+            "AdmissionBatch": "2026-2028",
+            "IsCertificateProgram": false
+          },
+          "TermWiseCourseProgress": null,
+          "TermWiseAllCourseDetails": null,
+          "MinorCourseProgress": null,
+          "SpecializationProgress": null,
+          "learningProgress": null,
+          "CGPA": null,
+          "SGPA": null
+        }
       }
     ],
-    "grades": [],
     "finance": [
       {
+        "method": "GET",
+        "url": "https://myupes-beta.upes.ac.in/apigateway/financeintegrations/api/getstudentschedulepaywithdueamt?StudentID={{studentId}}",
+        "originalPath": "/apigateway/financeintegrations/api/getstudentschedulepaywithdueamt",
+        "status": 200,
+        "headers": [
+          "Accept",
+          "Authorization",
+          "Referer",
+          "x-applicationname",
+          "x-requestfrom",
+          "x-studentUniqueId",
+          "x-appsecret"
+        ],
+        "sampleHeaders": {
+          "Accept": "application/json, text/plain, */*",
+          "Authorization": "Bearer {{accessToken}}",
+          "Referer": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
+          "x-applicationname": "connectportal",
+          "x-requestfrom": "web",
+          "x-studentUniqueId": "{{studentId}}",
+          "x-appsecret": "ku7GUMtyT8er51rTfTc7HC"
+        },
+        "requestPayloadTemplate": null,
+        "sampleResponse": {
+          "StatusCode": 200,
+          "Item": {
+            "ExcessAmount": 378,
+            "IsRefundWorkFlowActive": false,
+            "IsWaiverWorkFlowActive": false,
+            "StudentSchedulePayment": [],
+            "IsPartialPaymentEnabled": true,
+            "OutstandingAmount": 0
+          }
+        }
+      },
+      {
+        "method": "GET",
         "url": "https://myupes-beta.upes.ac.in/apigateway/paymentgateway/api/payment/gateways",
         "originalPath": "/apigateway/paymentgateway/api/payment/gateways",
-        "method": "GET",
-        "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
+        "status": 200,
+        "headers": [
+          "Accept",
+          "Authorization",
+          "Referer",
           "x-applicationname",
           "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
+          "x-studentUniqueId",
+          "x-appsecret"
         ],
-        "responseSchemaKeys": [
-          "GatewayId",
-          "GatewayUniqueId",
-          "Code",
-          "GatewayName",
-          "Description",
-          "LogoUrl",
-          "IsDefaultGateway",
-          "DisplaySequence",
-          "AdditionalCharges",
-          "PaymentMode"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/api/featureaccess/CONNECT-MY-FEED/109?studentId=%7B%7BstudentId%7D%7D",
-        "originalPath": "/apigateway/api/featureaccess/CONNECT-MY-FEED/109",
-        "method": "GET",
-        "pageContext": "Transcript | Connect Portal (/connectportal/user/student/integration/examination/transcript)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "FeatureId",
-          "FeatureName",
-          "FeatureCode",
-          "RoleId",
-          "Role",
-          "UserId",
-          "IsEditable",
-          "IsApproval",
-          "FullName",
-          "Sequence",
-          "FeatureComponent",
-          "FeatureIcon",
-          "FeatureDescription"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/feedback/api/sendtqmqfeedback/getalltqmqfeedbacks",
-        "originalPath": "/apigateway/feedback/api/sendtqmqfeedback/getalltqmqfeedbacks",
-        "method": "POST",
-        "pageContext": "Transcript | Connect Portal (/connectportal/user/student/integration/examination/transcript)",
-        "requestPayloadTemplate": {
-          "SelectedStudentId": "string",
-          "SearchString": "string"
+        "sampleHeaders": {
+          "Accept": "application/json, text/plain, */*",
+          "Authorization": "Bearer {{accessToken}}",
+          "Referer": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
+          "x-applicationname": "connectportal",
+          "x-requestfrom": "web",
+          "x-studentUniqueId": "{{studentId}}",
+          "x-appsecret": "ku7GUMtyT8er51rTfTc7HC"
         },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "StatusCode",
-          "Items"
-        ],
-        "statusCode": 200
+        "requestPayloadTemplate": null,
+        "sampleResponse": [
+          {
+            "GatewayId": 3,
+            "GatewayUniqueId": "c840e803-cf3c-4b93-8cb9-8d06a973f16e",
+            "Code": "PAYUMONEY",
+            "GatewayName": "PayU",
+            "Description": "PayU Payment Solutions",
+            "LogoUrl": "https://saupesprodci01.blob.core.windows.net/staticfiles/payment-gateways/payumoney-brand-logo.png",
+            "IsDefaultGateway": false,
+            "DisplaySequence": 1,
+            "AdditionalCharges": "",
+            "PaymentMode": "LIVE"
+          },
+          {
+            "GatewayId": 2,
+            "GatewayUniqueId": "e476fac7-a6ce-41df-a75b-a1a091243eba",
+            "Code": "RAZORPAY",
+            "GatewayName": "Razorpay",
+            "Description": "Payments with Razorpay",
+            "LogoUrl": "https://saupesprodci01.blob.core.windows.net/staticfiles/payment-gateways/razorpay-brand-logo.png",
+            "IsDefaultGateway": true,
+            "DisplaySequence": 2,
+            "AdditionalCharges": "",
+            "PaymentMode": "LIVE"
+          }
+        ]
       }
     ],
-    "documents": [
+    "notifications": [
       {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/docstorage/api/storage/downloadfile",
-        "originalPath": "/apigateway/docstorage/api/storage/downloadfile",
-        "method": "POST",
-        "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/studentsinfo)",
-        "requestPayloadTemplate": {
-          "ContainerName": "string",
-          "BlobRelativePath": "string",
-          "ActualFileName": "string"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
+        "method": "GET",
+        "url": "https://myupes-beta.upes.ac.in/apigateway/notification/bell/fetch/slcm/{{userId}}/30/0",
+        "originalPath": "/apigateway/notification/bell/fetch/slcm/{{userId}}/30/0",
+        "status": 200,
+        "headers": [
+          "Accept",
+          "Authorization",
+          "Referer",
           "x-applicationname",
           "x-requestfrom",
           "x-appsecret"
         ],
-        "responseSchemaKeys": []
+        "sampleHeaders": {
+          "Accept": "application/json, text/plain, */*",
+          "Authorization": "Bearer {{accessToken}}",
+          "Referer": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/studentsinfo",
+          "x-applicationname": "connectportal",
+          "x-requestfrom": "web",
+          "x-appsecret": "ku7GUMtyT8er51rTfTc7HC"
+        },
+        "requestPayloadTemplate": null,
+        "sampleResponse": {
+          "$id": "1",
+          "StatusCode": 200,
+          "Message": "notification fetched, total notification count : 18",
+          "Item": {
+            "$id": "2",
+            "TotalNotificationCount": 18,
+            "Notifications": [
+              {
+                "$id": "3",
+                "NotificationId": "37eff4c3-fe7a-41af-81de-5d2df6c4e736",
+                "NotificationSubject": "A new feedback form is created",
+                "NotificationBody": " You have received a new feedback form. Please fill it urgently.",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "17-Nov-2026 10:30 AM"
+              },
+              {
+                "$id": "4",
+                "NotificationId": "c94b99b5-24c9-4962-9d9f-a9212f0b1b2b",
+                "NotificationSubject": "Timetable is created",
+                "NotificationBody": "New class Problem Solving-() has been scheduled on 2026-Nov-26.<a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to view the timetable",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "17-Nov-2026 10:09 AM"
+              },
+              {
+                "$id": "5",
+                "NotificationId": "123239f1-c27e-4efd-b846-176d0348d5e4",
+                "NotificationSubject": "Timetable is published",
+                "NotificationBody": "Your session schedule has been generated. <a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to review ",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "17-Nov-2026 10:08 AM"
+              },
+              {
+                "$id": "6",
+                "NotificationId": "8c68de3c-da1e-47c2-b802-9871edd6c686",
+                "NotificationSubject": "Timetable is created",
+                "NotificationBody": "New class Programming in C-() has been scheduled on 2026-Nov-20.<a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to view the timetable",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "16-Nov-2026 10:58 AM"
+              },
+              {
+                "$id": "7",
+                "NotificationId": "8aa0df2b-b774-4064-9e42-529a59cc271c",
+                "NotificationSubject": "Timetable is published",
+                "NotificationBody": "Your session schedule has been generated. <a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to review ",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "16-Nov-2026 10:58 AM"
+              },
+              {
+                "$id": "8",
+                "NotificationId": "3dc2f150-eb00-47d2-8d01-acb46058c779",
+                "NotificationSubject": "Timetable is created",
+                "NotificationBody": "New class Programming in C-() has been scheduled on 2026-Nov-18.<a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to view the timetable",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "16-Nov-2026 10:57 AM"
+              },
+              {
+                "$id": "9",
+                "NotificationId": "e3433c8a-060f-482f-89ec-fe5da109b5ec",
+                "NotificationSubject": "Timetable is published",
+                "NotificationBody": "Your session schedule has been generated. <a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to review ",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "16-Nov-2026 10:57 AM"
+              },
+              {
+                "$id": "10",
+                "NotificationId": "9f1eb2a3-a47a-454c-b28e-c947e0e95ef7",
+                "NotificationSubject": "Timetable is created",
+                "NotificationBody": "New class Problem Solving-() has been scheduled on 2026-Nov-17.<a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to view the timetable",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "05-Nov-2026 11:08 PM"
+              },
+              {
+                "$id": "11",
+                "NotificationId": "95dbcfe4-9661-4442-ad51-4aa0a374a676",
+                "NotificationSubject": "Timetable is published",
+                "NotificationBody": "Your session schedule has been generated. <a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to review ",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "05-Nov-2026 11:08 PM"
+              },
+              {
+                "$id": "12",
+                "NotificationId": "82d44f5a-4376-4680-973b-cca7a5018432",
+                "NotificationSubject": "Timetable is created",
+                "NotificationBody": "New class Physics for Computer Engineers-() has been scheduled on 2026-Nov-16.<a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to view the timetable",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "05-Nov-2026 05:09 PM"
+              },
+              {
+                "$id": "13",
+                "NotificationId": "84bfdca7-797f-4a53-bbb5-c9bbe8a837c1",
+                "NotificationSubject": "Timetable is published",
+                "NotificationBody": "Your session schedule has been generated. <a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to review ",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "05-Nov-2026 05:09 PM"
+              },
+              {
+                "$id": "14",
+                "NotificationId": "7a3d3338-e27c-42d0-9535-0c4146013fde",
+                "NotificationSubject": "Timetable is created",
+                "NotificationBody": "New class Managing Self-() has been scheduled on 2026-Oct-27.<a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to view the timetable",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "24-Oct-2026 09:39 AM"
+              },
+              {
+                "$id": "15",
+                "NotificationId": "dffec357-510f-4753-b986-1a0094e479b3",
+                "NotificationSubject": "Timetable is published",
+                "NotificationBody": "Your session schedule has been generated. <a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to review ",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "24-Oct-2026 09:39 AM"
+              },
+              {
+                "$id": "16",
+                "NotificationId": "f94641ff-c36d-4806-b892-ccce556412d6",
+                "NotificationSubject": "Timetable is created",
+                "NotificationBody": "New class Managing Self-() has been scheduled on 2026-Oct-21.<a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to view the timetable",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "21-Oct-2026 10:26 AM"
+              },
+              {
+                "$id": "17",
+                "NotificationId": "08479d23-12da-461e-8472-c136e0d87ab6",
+                "NotificationSubject": "Timetable is published",
+                "NotificationBody": "Your session schedule has been generated. <a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to review ",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "21-Oct-2026 10:26 AM"
+              },
+              {
+                "$id": "18",
+                "NotificationId": "9634f37b-0ea8-49e2-8d3d-8a28737cc3de",
+                "NotificationSubject": "Timetable is created",
+                "NotificationBody": "New class Physics for Computer Engineers-() has been scheduled on 2026-Oct-28.<a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to view the timetable",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "14-Oct-2026 08:13 PM"
+              },
+              {
+                "$id": "19",
+                "NotificationId": "61bec48f-9d9a-4868-a8cf-02b470b733f4",
+                "NotificationSubject": "Timetable is published",
+                "NotificationBody": "Your session schedule has been generated. <a href=\"https://myupes-beta.upes.ac.in/connectportal/user/student/curriculum-scheduling\">Click here</a> to review ",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "14-Oct-2026 08:13 PM"
+              },
+              {
+                "$id": "20",
+                "NotificationId": "e35e105c-1df2-4cda-a9fe-ddf2d4ab699e",
+                "NotificationSubject": "A new feedback form is created",
+                "NotificationBody": " You have received a new feedback form. Please fill it urgently.",
+                "NotificationActionInformations": null,
+                "AdditionalData": null,
+                "IsMarkedAsRead": false,
+                "RaisedOn": "22-Sep-2026 11:38 AM"
+              }
+            ]
+          },
+          "Items": null,
+          "AdditionalData": null
+        }
       }
     ],
-    "other": [
+    "realtime": [
       {
-        "url": "https://www.google.com/recaptcha/api2/webworker.js?hl=en&v=4i3aN5wAweL7i3ADI7BSX4B-",
-        "originalPath": "/recaptcha/api2/webworker.js",
-        "method": "GET",
-        "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent"
-        ],
-        "responseSchemaKeys": []
-      },
-      {
-        "url": "https://www.google.com/recaptcha/api2/pat?k=6LedcUYsAAAAAC5wSlv787sAs3Kc6psBHclSZQN4",
-        "originalPath": "/recaptcha/api2/pat",
         "method": "POST",
-        "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "origin",
-          "user-agent"
+        "url": "https://myupes-beta.upes.ac.in/commonapp/web/signalr/notification?unique_token=StroCnpq0hhH6Q0iEKwX&application_name=connectportal&requestfrom=web&id=yu6qxsJFPj6GWm3nGJb8xw",
+        "originalPath": "/commonapp/web/signalr/notification",
+        "status": 404,
+        "headers": [
+          "Content-Type",
+          "Accept",
+          "Authorization",
+          "Origin",
+          "Referer",
+          "X-Requested-With",
+          "X-SignalR-User-Agent"
         ],
-        "responseSchemaKeys": []
-      },
-      {
-        "url": "https://www.gstatic.com/recaptcha/releases/4i3aN5wAweL7i3ADI7BSX4B-/recaptcha__en.js",
-        "originalPath": "/recaptcha/releases/4i3aN5wAweL7i3ADI7BSX4B-/recaptcha__en.js",
-        "method": "GET",
-        "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "user-agent"
-        ],
-        "responseSchemaKeys": []
-      },
-      {
-        "url": "https://www.google.com/recaptcha/api2/reload?k=6LedcUYsAAAAAC5wSlv787sAs3Kc6psBHclSZQN4",
-        "originalPath": "/recaptcha/api2/reload",
-        "method": "POST",
-        "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "origin",
-          "user-agent"
-        ],
-        "responseSchemaKeys": [],
-        "statusCode": 200
-      },
-      {
-        "url": "https://www.google.com/recaptcha/api2/replaceimage?k=6LedcUYsAAAAAC5wSlv787sAs3Kc6psBHclSZQN4",
-        "originalPath": "/recaptcha/api2/replaceimage",
-        "method": "POST",
-        "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
-        "requestPayloadTemplate": {
-          "v": "string",
-          "c": "string",
-          "ds": "string"
+        "sampleHeaders": {
+          "Content-Type": "text/plain;charset=UTF-8",
+          "Accept": "*/*",
+          "Authorization": "Bearer {{accessToken}}",
+          "Origin": "https://myupes-beta.upes.ac.in",
+          "Referer": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-SignalR-User-Agent": "Microsoft SignalR/6.0 (6.0.25; Unknown OS; Browser; Unknown Runtime Version)"
         },
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "origin",
-          "user-agent"
-        ],
-        "responseSchemaKeys": [],
-        "statusCode": 200
+        "requestPayloadTemplate": "{\"protocol\":\"json\",\"version\":1}\u001e",
+        "sampleResponse": "No Connection with that ID"
       },
       {
-        "url": "https://www.google.com/recaptcha/api2/userverify?k=6LedcUYsAAAAAC5wSlv787sAs3Kc6psBHclSZQN4",
-        "originalPath": "/recaptcha/api2/userverify",
         "method": "POST",
-        "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
-        "requestPayloadTemplate": {
-          "v": "string",
-          "c": "string",
-          "response": "string",
-          "t": "string",
-          "ct": "string",
-          "ch": "string",
-          "oc": "string",
-          "pm": "string",
-          "ccr": "string"
+        "url": "https://myupes-beta.upes.ac.in/commonapp/web/signalr/notification/negotiate?unique_token=StroCnpq0hhH6Q0iEKwX&application_name=connectportal&requestfrom=web&negotiateVersion=1",
+        "originalPath": "/commonapp/web/signalr/notification/negotiate",
+        "status": 200,
+        "headers": [
+          "Content-Type",
+          "Accept",
+          "Authorization",
+          "Origin",
+          "Referer",
+          "X-Requested-With",
+          "X-SignalR-User-Agent"
+        ],
+        "sampleHeaders": {
+          "Content-Type": "text/plain;charset=UTF-8",
+          "Accept": "*/*",
+          "Authorization": "Bearer {{accessToken}}",
+          "Origin": "https://myupes-beta.upes.ac.in",
+          "Referer": "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-SignalR-User-Agent": "Microsoft SignalR/6.0 (6.0.25; Unknown OS; Browser; Unknown Runtime Version)"
         },
-        "requiredHeaders": [
-          "content-type",
-          "accept",
-          "referer",
-          "origin",
-          "user-agent"
-        ],
-        "responseSchemaKeys": [],
-        "statusCode": 200
-      },
-      {
-        "url": "https://www.google.com/recaptcha/api2/clr?k=6LedcUYsAAAAAC5wSlv787sAs3Kc6psBHclSZQN4",
-        "originalPath": "/recaptcha/api2/clr",
-        "method": "POST",
-        "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
         "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "origin",
-          "user-agent"
-        ],
-        "responseSchemaKeys": []
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/notification/bell/fetch/slcm/{{id}}/30/0",
-        "originalPath": "/apigateway/notification/bell/fetch/slcm/89466/30/0",
-        "method": "GET",
-        "pageContext": "Login | Connect Portal (/connectportal/app/auth/login)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret"
-        ],
-        "responseSchemaKeys": [
-          "$id",
-          "StatusCode",
-          "Message",
-          "Item",
-          "Item.$id",
-          "Item.TotalNotificationCount",
-          "Item.Notifications",
-          "Items",
-          "AdditionalData"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/api/featureaccess/0?studentId=%7B%7BstudentId%7D%7D",
-        "originalPath": "/apigateway/api/featureaccess/0",
-        "method": "GET",
-        "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/studentsinfo)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "FeatureId",
-          "FeatureName",
-          "FeatureCode",
-          "RoleId",
-          "Role",
-          "UserId",
-          "IsEditable",
-          "IsApproval",
-          "FullName",
-          "Sequence",
-          "FeatureComponent",
-          "FeatureIcon",
-          "NestedFeatures",
-          "FeatureDescription"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentinformation/initialstudentdata",
-        "originalPath": "/apigateway/connect-portal/api/studentinformation/initialstudentdata",
-        "method": "POST",
-        "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-        "requestPayloadTemplate": {
-          "StudentId": "string"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "FirstName",
-          "MiddleName",
-          "LastName",
-          "ProfilePicture",
-          "Status",
-          "MobileNumber"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/api/calendareventlist",
-        "originalPath": "/apigateway/api/calendareventlist",
-        "method": "POST",
-        "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-        "requestPayloadTemplate": {
-          "StudentUniqueId": "string"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "Name",
-          "BatchName",
-          "Type",
-          "SubType",
-          "StartDate",
-          "EndDate",
-          "GradeId",
-          "BoardId",
-          "FacultyId",
-          "CourseId",
-          "BatchId"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/exam-api-golang/api/v1/registrations/students/{{globalId}}/cart",
-        "originalPath": "/exam-api-golang/api/v1/registrations/students/590039697/cart",
-        "method": "GET",
-        "pageContext": "Exam Registration | Connect Portal (/connectportal/user/student/integration/examination/exam-registration)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "user-agent",
-          "x-idempotency-key",
-          "x-roles",
-          "x-actor-id"
-        ],
-        "responseSchemaKeys": [
-          "student_id",
-          "cycles"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/exam-api-golang/api/v1/cycles",
-        "originalPath": "/exam-api-golang/api/v1/cycles",
-        "method": "GET",
-        "pageContext": "Exam Registration | Connect Portal (/connectportal/user/student/integration/examination/exam-registration)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "user-agent",
-          "x-idempotency-key",
-          "x-roles",
-          "x-actor-id"
-        ],
-        "responseSchemaKeys": [
-          "cycle_id",
-          "tenant_id",
-          "child_id",
-          "child_type",
-          "academic_year",
-          "cycle_code",
-          "cycle_name",
-          "cycle_type",
-          "status",
-          "activated_at",
-          "activated_by",
-          "created_at",
-          "created_by",
-          "version"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentinformation/{{studentId}}",
-        "originalPath": "/apigateway/connect-portal/api/studentinformation/6349e408-1096-483e-82d0-64587e70b025",
-        "method": "GET",
-        "pageContext": "Exam Registration | Connect Portal (/connectportal/user/student/integration/examination/exam-registration)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "StudentInfo",
-          "StudentAddress",
-          "StudentPreviousEducation",
-          "StudentProgramInfo",
-          "StudentGuardianInfo",
-          "StudentAuditLog"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/api/featureaccess/CONNECT-COLLAB-SER-REQ/109?studentId=%7B%7BstudentId%7D%7D",
-        "originalPath": "/apigateway/api/featureaccess/CONNECT-COLLAB-SER-REQ/109",
-        "method": "GET",
-        "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/collaboration/studentprofile/programprogress)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "FeatureId",
-          "FeatureName",
-          "FeatureCode",
-          "RoleId",
-          "Role",
-          "UserId",
-          "IsEditable",
-          "IsApproval",
-          "FullName",
-          "Sequence",
-          "FeatureComponent",
-          "FeatureIcon",
-          "FeatureDescription"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/communication/api/servicerequest",
-        "originalPath": "/apigateway/communication/api/servicerequest",
-        "method": "POST",
-        "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/collaboration/studentprofile/programprogress)",
-        "requestPayloadTemplate": {
-          "ServiceRequestId": "object",
-          "StudentUniqueId": "string"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": []
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/communication/api/servicerequest/dropdowns",
-        "originalPath": "/apigateway/communication/api/servicerequest/dropdowns",
-        "method": "POST",
-        "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/collaboration/studentprofile/programprogress)",
-        "requestPayloadTemplate": {
-          "RequiredDropdown": "string",
-          "searchString": "string",
-          "studentUniqueId": "string"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "ID",
-          "Name",
-          "Code",
-          "IsPrefilled"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/api/featureaccess/CONNECT-COLLAB-RCVD-CRLS/109?studentId=%7B%7BstudentId%7D%7D",
-        "originalPath": "/apigateway/api/featureaccess/CONNECT-COLLAB-RCVD-CRLS/109",
-        "method": "GET",
-        "pageContext": "Service Request Creation | Connect Portal (/connectportal/user/student/collaboration/servicerequest)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "FeatureId",
-          "FeatureName",
-          "FeatureCode",
-          "RoleId",
-          "Role",
-          "UserId",
-          "IsEditable",
-          "IsApproval",
-          "FullName",
-          "Sequence",
-          "FeatureComponent",
-          "FeatureIcon",
-          "FeatureDescription"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/communication/api/circular/getcirculardetailsbystudentid?studentId=%7B%7BstudentId%7D%7D&academicsYearId=135",
-        "originalPath": "/apigateway/communication/api/circular/getcirculardetailsbystudentid",
-        "method": "GET",
-        "pageContext": "Service Request Creation | Connect Portal (/connectportal/user/student/collaboration/servicerequest)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "StatusCode"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/communication/api/circular/getlist",
-        "originalPath": "/apigateway/communication/api/circular/getlist",
-        "method": "POST",
-        "pageContext": "Received Circulars | Connect Portal (/connectportal/user/student/collaboration/circulars)",
-        "requestPayloadTemplate": {
-          "SelectedStudentId": "string",
-          "AcademicYearId": "number",
-          "SearchString": "string"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "StatusCode",
-          "Path",
-          "ErrorMessage",
-          "ErrorId",
-          "TechnicalDetails",
-          "DataReferenceError"
-        ],
-        "statusCode": 500
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/integratons/api/data/exam-pro",
-        "originalPath": "/apigateway/integratons/api/data/exam-pro",
-        "method": "POST",
-        "pageContext": "Course Selection | Connect Portal (/connectportal/user/student/course-selection)",
-        "requestPayloadTemplate": {
-          "StudentUniqueId": "string",
-          "ActivityCode": "string",
-          "TermCode": "string"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "StatusCode",
-          "Message",
-          "Item",
-          "Item.GlobalId",
-          "Item.AttendanceData",
-          "Item.IsDisciplineIncidentPresent",
-          "Item.IsTQMQFeedbackCompleted",
-          "Item.IntegrationData"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/hostel/api/hostelnoticeboard?StudentId=%7B%7BstudentId%7D%7D",
-        "originalPath": "/apigateway/hostel/api/hostelnoticeboard",
-        "method": "GET",
-        "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "StatusCode",
-          "Items"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/hostel/api/pass",
-        "originalPath": "/apigateway/hostel/api/pass",
-        "method": "POST",
-        "pageContext": "Hostel Passes | Connect Portal (/connectportal/user/student/hostel/dayout-leavepass-requests)",
-        "requestPayloadTemplate": {
-          "PageFeatureCode": "string",
-          "StudentUniqueID": "string"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/hostel/api/roomallocation/getstudentsallocation",
-        "originalPath": "/apigateway/hostel/api/roomallocation/getstudentsallocation",
-        "method": "POST",
-        "pageContext": "Hostel Passes | Connect Portal (/connectportal/user/student/hostel/dayout-leavepass-requests)",
-        "requestPayloadTemplate": {
-          "StudentId": "string",
-          "AcademicYearCode": "string",
-          "CenterCode": "string",
-          "BrandCode": "string",
-          "RequestedFor": "string"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "StatusCode",
-          "Message",
-          "Items"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/api/usercontext",
-        "originalPath": "/apigateway/api/usercontext",
-        "method": "POST",
-        "pageContext": "Hostel Allocation | Connect Portal (/connectportal/user/student/hostel/room-allocation)",
-        "requestPayloadTemplate": {
-          "SelectedAcademicYearId": "object",
-          "SelectedBrandId": "object",
-          "SelectedClusterId": "object",
-          "SelectedCityId": "object",
-          "SelectedCenterLocationId": "object",
-          "SelectedCenterId": "object",
-          "SelectedCourseFamilyId": "object",
-          "SelectedCourseCodeId": "object",
-          "SelectedDivisionId": "object",
-          "SelectedTermCodeId": "object",
-          "SelectedModuleCodeId": "object",
-          "GroupId": "object",
-          "IsPublishedMode": "boolean",
-          "SelectedCourseFamilyAcademicYearId": "object",
-          "SPAGroupId": "object",
-          "IsEditable": "boolean",
-          "TimeZone": "string",
-          "SelectedFeatureActivityCode": "string",
-          "SelectedFlag": "string",
-          "RoleId": "object"
-        },
-        "requiredHeaders": [
-          "accept",
-          "content-type",
-          "referer",
-          "origin",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "IsBrandVisible",
-          "IsAcademicYearVisible",
-          "IsBrandLevelCourseFamilyVisible",
-          "IsBrandLevelCourseVisible",
-          "IsBrandLevelTermVisible",
-          "IsBrandLevelModuleVisible",
-          "IsClusterVisible",
-          "IsCenterLocationVisible",
-          "IsCenterVisible",
-          "IsCenterMasterVisible",
-          "IsCenterLevelCourseFamilyVisible",
-          "IsCenterLevelCourseVisible",
-          "IsCenterLevelTermVisible",
-          "IsCenterLevelModuleVisible",
-          "IsCenterLevelDivisionVisible",
-          "IsCenterLevelSPAGroupVisible",
-          "IsDatePickerVisible",
-          "IsSelectAllModulesWithoutTerm",
-          "Sequence",
-          "LastElement",
-          "IsHoldsCategoryVisible",
-          "IsAdmissionBatchVisible",
-          "IsStatusVisible",
-          "Id",
-          "Name",
-          "ParentId",
-          "ParentCode"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/hostel/api/studentrequestaccess?StudentId=%7B%7BglobalId%7D%7D&RequestType=REQ-RESRVED&AcademicYearId=19",
-        "originalPath": "/apigateway/hostel/api/studentrequestaccess",
-        "method": "GET",
-        "pageContext": "Request For Hostel | Connect Portal (/connectportal/user/student/hostel/hostel-request)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "StatusCode",
-          "Items"
-        ],
-        "statusCode": 200
-      },
-      {
-        "url": "https://myupes-beta.upes.ac.in/apigateway/hostel/api/studentrequestaccess?StudentId=%7B%7BglobalId%7D%7D&RequestType=REQ-RESRVED&AcademicYearId=21",
-        "originalPath": "/apigateway/hostel/api/studentrequestaccess",
-        "method": "GET",
-        "pageContext": "Request For Hostel | Connect Portal (/connectportal/user/student/hostel/hostel-request)",
-        "requestPayloadTemplate": null,
-        "requiredHeaders": [
-          "accept",
-          "referer",
-          "user-agent",
-          "x-applicationname",
-          "x-requestfrom",
-          "x-appsecret",
-          "x-studentuniqueid"
-        ],
-        "responseSchemaKeys": [
-          "StatusCode",
-          "Items"
-        ],
-        "statusCode": 200
+        "sampleResponse": {
+          "negotiateVersion": 1,
+          "connectionId": "JZvbJjZuss0RycL_3Ed8GA",
+          "connectionToken": "yu6qxsJFPj6GWm3nGJb8xw",
+          "availableTransports": [
+            {
+              "transport": "WebSockets",
+              "transferFormats": [
+                "Text",
+                "Binary"
+              ]
+            },
+            {
+              "transport": "ServerSentEvents",
+              "transferFormats": [
+                "Text"
+              ]
+            },
+            {
+              "transport": "LongPolling",
+              "transferFormats": [
+                "Text",
+                "Binary"
+              ]
+            }
+          ]
+        }
       }
     ]
-  },
-  "endpoints": [
-    {
-      "url": "https://www.google.com/recaptcha/api2/webworker.js?hl=en&v=4i3aN5wAweL7i3ADI7BSX4B-",
-      "originalPath": "/recaptcha/api2/webworker.js",
-      "method": "GET",
-      "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent"
-      ],
-      "responseSchemaKeys": []
-    },
-    {
-      "url": "https://www.google.com/recaptcha/api2/pat?k=6LedcUYsAAAAAC5wSlv787sAs3Kc6psBHclSZQN4",
-      "originalPath": "/recaptcha/api2/pat",
-      "method": "POST",
-      "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "origin",
-        "user-agent"
-      ],
-      "responseSchemaKeys": []
-    },
-    {
-      "url": "https://www.gstatic.com/recaptcha/releases/4i3aN5wAweL7i3ADI7BSX4B-/recaptcha__en.js",
-      "originalPath": "/recaptcha/releases/4i3aN5wAweL7i3ADI7BSX4B-/recaptcha__en.js",
-      "method": "GET",
-      "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "user-agent"
-      ],
-      "responseSchemaKeys": []
-    },
-    {
-      "url": "https://www.google.com/recaptcha/api2/reload?k=6LedcUYsAAAAAC5wSlv787sAs3Kc6psBHclSZQN4",
-      "originalPath": "/recaptcha/api2/reload",
-      "method": "POST",
-      "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "origin",
-        "user-agent"
-      ],
-      "responseSchemaKeys": [],
-      "statusCode": 200
-    },
-    {
-      "url": "https://www.google.com/recaptcha/api2/replaceimage?k=6LedcUYsAAAAAC5wSlv787sAs3Kc6psBHclSZQN4",
-      "originalPath": "/recaptcha/api2/replaceimage",
-      "method": "POST",
-      "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
-      "requestPayloadTemplate": {
-        "v": "string",
-        "c": "string",
-        "ds": "string"
-      },
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "origin",
-        "user-agent"
-      ],
-      "responseSchemaKeys": [],
-      "statusCode": 200
-    },
-    {
-      "url": "https://www.google.com/recaptcha/api2/userverify?k=6LedcUYsAAAAAC5wSlv787sAs3Kc6psBHclSZQN4",
-      "originalPath": "/recaptcha/api2/userverify",
-      "method": "POST",
-      "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
-      "requestPayloadTemplate": {
-        "v": "string",
-        "c": "string",
-        "response": "string",
-        "t": "string",
-        "ct": "string",
-        "ch": "string",
-        "oc": "string",
-        "pm": "string",
-        "ccr": "string"
-      },
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "origin",
-        "user-agent"
-      ],
-      "responseSchemaKeys": [],
-      "statusCode": 200
-    },
-    {
-      "url": "https://www.google.com/recaptcha/api2/clr?k=6LedcUYsAAAAAC5wSlv787sAs3Kc6psBHclSZQN4",
-      "originalPath": "/recaptcha/api2/clr",
-      "method": "POST",
-      "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "origin",
-        "user-agent"
-      ],
-      "responseSchemaKeys": []
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/sso/api/account/oauth2/token",
-      "originalPath": "/sso/api/account/oauth2/token",
-      "method": "POST",
-      "pageContext": "Login | MyUPES (/oneportal/app/auth/login)",
-      "requestPayloadTemplate": {
-        "UserId": "string",
-        "Password": "string",
-        "Captcha": "string",
-        "RememberMe": "boolean"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-appsecret",
-        "x-applicationname",
-        "x-requestfrom"
-      ],
-      "responseSchemaKeys": [
-        "Item",
-        "Item.emailId",
-        "Item.redirectUrl",
-        "Message",
-        "StatusCode"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/sso/oauth2/access_token",
-      "originalPath": "/sso/oauth2/access_token",
-      "method": "POST",
-      "pageContext": "Connect Portal (/connectportal/app/auth/login)",
-      "requestPayloadTemplate": {
-        "ClientId": "number",
-        "ClientSecret": "string",
-        "Code": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret"
-      ],
-      "responseSchemaKeys": [
-        "StatusCode",
-        "Item",
-        "Item.Identity",
-        "Item.UserInfo"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/sso/oauth2/validate/token",
-      "originalPath": "/sso/oauth2/validate/token",
-      "method": "POST",
-      "pageContext": "Login | Connect Portal (/connectportal/app/auth/login)",
-      "requestPayloadTemplate": {
-        "AuthToken": "string",
-        "UniqueId": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret"
-      ],
-      "responseSchemaKeys": [
-        "UserId",
-        "FirstName",
-        "EmailId",
-        "MobileNumber",
-        "UserType",
-        "UserType.Code",
-        "UserType.DisplayName",
-        "RoleUserMaps",
-        "UniqueHashKey",
-        "ClientId"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/commonapp/web/signalr/notification/negotiate?unique_token=wuoT5GhWCNd8P1jSKqjD&application_name=connectportal&requestfrom=web&negotiateVersion=1",
-      "originalPath": "/commonapp/web/signalr/notification/negotiate",
-      "method": "POST",
-      "pageContext": "Login | Connect Portal (/connectportal/app/auth/login)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "content-type",
-        "referer",
-        "accept",
-        "origin",
-        "user-agent",
-        "cache-control",
-        "x-requested-with",
-        "x-signalr-user-agent"
-      ],
-      "responseSchemaKeys": [
-        "negotiateVersion",
-        "connectionId",
-        "connectionToken",
-        "availableTransports"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/notification/bell/fetch/slcm/{{id}}/30/0",
-      "originalPath": "/apigateway/notification/bell/fetch/slcm/89466/30/0",
-      "method": "GET",
-      "pageContext": "Login | Connect Portal (/connectportal/app/auth/login)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret"
-      ],
-      "responseSchemaKeys": [
-        "$id",
-        "StatusCode",
-        "Message",
-        "Item",
-        "Item.$id",
-        "Item.TotalNotificationCount",
-        "Item.Notifications",
-        "Items",
-        "AdditionalData"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentloginbasicinfo",
-      "originalPath": "/apigateway/connect-portal/api/studentloginbasicinfo",
-      "method": "GET",
-      "pageContext": "Login | Connect Portal (/connectportal/app/auth/login)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret"
-      ],
-      "responseSchemaKeys": [
-        "StatusCode",
-        "Message",
-        "Item",
-        "Items",
-        "AdditionalData"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/docstorage/api/storage/downloadfile",
-      "originalPath": "/apigateway/docstorage/api/storage/downloadfile",
-      "method": "POST",
-      "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/studentsinfo)",
-      "requestPayloadTemplate": {
-        "ContainerName": "string",
-        "BlobRelativePath": "string",
-        "ActualFileName": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret"
-      ],
-      "responseSchemaKeys": []
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/api/featureaccess/0?studentId=%7B%7BstudentId%7D%7D",
-      "originalPath": "/apigateway/api/featureaccess/0",
-      "method": "GET",
-      "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/studentsinfo)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "FeatureId",
-        "FeatureName",
-        "FeatureCode",
-        "RoleId",
-        "Role",
-        "UserId",
-        "IsEditable",
-        "IsApproval",
-        "FullName",
-        "Sequence",
-        "FeatureComponent",
-        "FeatureIcon",
-        "NestedFeatures",
-        "FeatureDescription"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/api/timetable/masters",
-      "originalPath": "/apigateway/api/timetable/masters",
-      "method": "POST",
-      "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/studentsinfo)",
-      "requestPayloadTemplate": {
-        "DropdownType": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "Id",
-        "Code",
-        "Name",
-        "ColorCode"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/api/timetable",
-      "originalPath": "/apigateway/api/timetable",
-      "method": "POST",
-      "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-      "requestPayloadTemplate": {
-        "ActivityCode": "string",
-        "TimeTableContextDetails": "object"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "Id",
-        "FloorPlanDetails",
-        "FloorPlanDetails.FloorPlanId",
-        "FloorPlanDetails.VenueName",
-        "FloorPlanDetails.VenueCode",
-        "FloorPlanDetails.VenueCategory",
-        "FloorPlanDetails.VenueCategoryCode",
-        "FloorPlanDetails.ColorCode",
-        "FloorPlanDetails.MeetingLink",
-        "FloorPlanDetails.CenterId",
-        "FloorPlanDetails.CenterName",
-        "DayofWeekDetails",
-        "DayofWeekDetails.DayOfWeekId",
-        "DayofWeekDetails.DayOfWeekShortName",
-        "DayofWeekDetails.DayOfWeekName",
-        "SlotDate",
-        "SlotStartTime",
-        "SlotEndTime",
-        "ModuleList",
-        "CohortList",
-        "TeacherList",
-        "IsMergedSlot",
-        "IsCancelledSlot",
-        "TimeTableSlotStatusId",
-        "TimeTableSlotStatusName",
-        "IsRecurringSlot",
-        "RequestId",
-        "CohortUnAvailableDetail",
-        "RoomUnAvailableDetail",
-        "FacultyUnAvailableDetail",
-        "TimeSlotIdList",
-        "IsExtraSlot",
-        "IsRescheduledSlot",
-        "IsSubstitutedSlot",
-        "ContextCombination",
-        "IsSlotEditable",
-        "IsPreviousEvent",
-        "IsPartialCohortGrouping"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/attendance/api/attendance/summary",
-      "originalPath": "/apigateway/attendance/api/attendance/summary",
-      "method": "POST",
-      "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-      "requestPayloadTemplate": {
-        "StartDate": "object",
-        "EndDate": "string",
-        "ModeName": "string",
-        "StudentUniqueId": "string",
-        "SelectedModuleId": "object",
-        "SelectedTermId": "object"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "TotalSessions",
-        "PresentCount",
-        "AbsentCount",
-        "CondonedAttendanceCount",
-        "StudentCount",
-        "AttendancePercentage",
-        "ModuleId",
-        "ModuleName",
-        "ThresholdPercentage",
-        "SelectedStartDate",
-        "SelectedEndDate"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/financeintegrations/api/getstudentschedulepaywithdueamt?StudentID=%7B%7BstudentId%7D%7D",
-      "originalPath": "/apigateway/financeintegrations/api/getstudentschedulepaywithdueamt",
-      "method": "GET",
-      "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "StatusCode",
-        "Item",
-        "Item.ExcessAmount",
-        "Item.IsRefundWorkFlowActive",
-        "Item.IsWaiverWorkFlowActive",
-        "Item.StudentSchedulePayment",
-        "Item.IsPartialPaymentEnabled",
-        "Item.OutstandingAmount"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/paymentgateway/api/payment/gateways",
-      "originalPath": "/apigateway/paymentgateway/api/payment/gateways",
-      "method": "GET",
-      "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "GatewayId",
-        "GatewayUniqueId",
-        "Code",
-        "GatewayName",
-        "Description",
-        "LogoUrl",
-        "IsDefaultGateway",
-        "DisplaySequence",
-        "AdditionalCharges",
-        "PaymentMode"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/course-summary/{{studentId}}",
-      "originalPath": "/apigateway/connect-portal/api/studentprogramprogress/course-summary/6349e408-1096-483e-82d0-64587e70b025",
-      "method": "GET",
-      "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "CourseProgressSummery",
-        "CourseProgressSummery.ProgramName",
-        "CourseProgressSummery.ProgramType",
-        "CourseProgressSummery.MajorName",
-        "CourseProgressSummery.AcademicYear",
-        "CourseProgressSummery.Term",
-        "CourseProgressSummery.TermCode",
-        "CourseProgressSummery.CampusName",
-        "CourseProgressSummery.CampusCode",
-        "CourseProgressSummery.CGPA",
-        "CourseProgressSummery.TotalCreditsRequired",
-        "CourseProgressSummery.TotalCreditsEarned",
-        "CourseProgressSummery.CreditinProgress",
-        "CourseProgressSummery.TaggedSemesters",
-        "CourseProgressSummery.TaggedSchools",
-        "CourseProgressSummery.Status",
-        "CourseProgressSummery.CurrentTermId",
-        "CourseProgressSummery.ProgramCode",
-        "CourseProgressSummery.LevelId",
-        "CourseProgressSummery.LevelName",
-        "CourseProgressSummery.AdmissionBatchId",
-        "CourseProgressSummery.AdmissionBatch",
-        "CourseProgressSummery.IsCertificateProgram",
-        "TermWiseCourseProgress",
-        "TermWiseAllCourseDetails",
-        "MinorCourseProgress",
-        "SpecializationProgress",
-        "learningProgress",
-        "CGPA",
-        "SGPA"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentinformation/initialstudentdata",
-      "originalPath": "/apigateway/connect-portal/api/studentinformation/initialstudentdata",
-      "method": "POST",
-      "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-      "requestPayloadTemplate": {
-        "StudentId": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "FirstName",
-        "MiddleName",
-        "LastName",
-        "ProfilePicture",
-        "Status",
-        "MobileNumber"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/api/calendareventlist",
-      "originalPath": "/apigateway/api/calendareventlist",
-      "method": "POST",
-      "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-      "requestPayloadTemplate": {
-        "StudentUniqueId": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "Name",
-        "BatchName",
-        "Type",
-        "SubType",
-        "StartDate",
-        "EndDate",
-        "GradeId",
-        "BoardId",
-        "FacultyId",
-        "CourseId",
-        "BatchId"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/exam-api-golang/api/v1/auth/login",
-      "originalPath": "/exam-api-golang/api/v1/auth/login",
-      "method": "POST",
-      "pageContext": "Exam Registration | Connect Portal (/connectportal/user/student/integration/examination/exam-registration)",
-      "requestPayloadTemplate": {
-        "email": "string",
-        "password": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent"
-      ],
-      "responseSchemaKeys": [
-        "accessToken",
-        "expiresIn",
-        "refreshToken",
-        "user",
-        "user.user_id",
-        "user.tenant_id",
-        "user.child_id",
-        "user.child_type",
-        "user.employee_code",
-        "user.email",
-        "user.mobile",
-        "user.status",
-        "user.role",
-        "user.permissions"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/exam-api-golang/api/v1/registrations/students/{{globalId}}/cart",
-      "originalPath": "/exam-api-golang/api/v1/registrations/students/590039697/cart",
-      "method": "GET",
-      "pageContext": "Exam Registration | Connect Portal (/connectportal/user/student/integration/examination/exam-registration)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "user-agent",
-        "x-idempotency-key",
-        "x-roles",
-        "x-actor-id"
-      ],
-      "responseSchemaKeys": [
-        "student_id",
-        "cycles"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/exam-api-golang/api/v1/cycles",
-      "originalPath": "/exam-api-golang/api/v1/cycles",
-      "method": "GET",
-      "pageContext": "Exam Registration | Connect Portal (/connectportal/user/student/integration/examination/exam-registration)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "user-agent",
-        "x-idempotency-key",
-        "x-roles",
-        "x-actor-id"
-      ],
-      "responseSchemaKeys": [
-        "cycle_id",
-        "tenant_id",
-        "child_id",
-        "child_type",
-        "academic_year",
-        "cycle_code",
-        "cycle_name",
-        "cycle_type",
-        "status",
-        "activated_at",
-        "activated_by",
-        "created_at",
-        "created_by",
-        "version"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/exam-course-summary/{{studentId}}",
-      "originalPath": "/apigateway/connect-portal/api/studentprogramprogress/exam-course-summary/6349e408-1096-483e-82d0-64587e70b025",
-      "method": "GET",
-      "pageContext": "Exam Registration | Connect Portal (/connectportal/user/student/integration/examination/exam-registration)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "CourseProgressSummery",
-        "CourseProgressSummery.ProgramName",
-        "CourseProgressSummery.ProgramType",
-        "CourseProgressSummery.MajorName",
-        "CourseProgressSummery.AcademicYear",
-        "CourseProgressSummery.Term",
-        "CourseProgressSummery.TermCode",
-        "CourseProgressSummery.CampusName",
-        "CourseProgressSummery.CampusCode",
-        "CourseProgressSummery.CGPA",
-        "CourseProgressSummery.TotalCreditsRequired",
-        "CourseProgressSummery.TotalCreditsEarned",
-        "CourseProgressSummery.CreditinProgress",
-        "CourseProgressSummery.TaggedSemesters",
-        "CourseProgressSummery.TaggedSchools",
-        "CourseProgressSummery.Status",
-        "CourseProgressSummery.CurrentTermId",
-        "CourseProgressSummery.ProgramCode",
-        "CourseProgressSummery.LevelId",
-        "CourseProgressSummery.LevelName",
-        "CourseProgressSummery.AdmissionBatchId",
-        "CourseProgressSummery.AdmissionBatch",
-        "CourseProgressSummery.IsCertificateProgram",
-        "TermWiseCourseProgress",
-        "TermWiseAllCourseDetails",
-        "MinorCourseProgress",
-        "SpecializationProgress",
-        "learningProgress",
-        "CGPA",
-        "SGPA"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentinformation/{{studentId}}",
-      "originalPath": "/apigateway/connect-portal/api/studentinformation/6349e408-1096-483e-82d0-64587e70b025",
-      "method": "GET",
-      "pageContext": "Exam Registration | Connect Portal (/connectportal/user/student/integration/examination/exam-registration)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "StudentInfo",
-        "StudentAddress",
-        "StudentPreviousEducation",
-        "StudentProgramInfo",
-        "StudentGuardianInfo",
-        "StudentAuditLog"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprofileformconfiguration/{{studentId}}",
-      "originalPath": "/apigateway/connect-portal/api/studentprofileformconfiguration/6349e408-1096-483e-82d0-64587e70b025",
-      "method": "GET",
-      "pageContext": "Exam Registration | Connect Portal (/connectportal/user/student/integration/examination/exam-registration)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "Id",
-        "ParentId",
-        "IsChecked",
-        "IsDisabled",
-        "IsMandatory",
-        "ConfigId",
-        "DisplayName",
-        "AdmissionField",
-        "Validations",
-        "StudentProfileField",
-        "IsStudentProfileField",
-        "BrandId",
-        "Brand",
-        "Section",
-        "SectionCode",
-        "IsRegistrationConfig",
-        "Sequence",
-        "SectionSequence"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/specialization-course-progress/{{studentId}}",
-      "originalPath": "/apigateway/connect-portal/api/studentprogramprogress/specialization-course-progress/6349e408-1096-483e-82d0-64587e70b025",
-      "method": "GET",
-      "pageContext": "Student Profile | Connect Portal (/connectportal/user/student/collaboration/studentprofile)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "CourseProgressSummery",
-        "TermWiseCourseProgress",
-        "TermWiseAllCourseDetails",
-        "MinorCourseProgress",
-        "SpecializationProgress",
-        "learningProgress",
-        "CGPA",
-        "SGPA"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentprogramprogress/term-wise-course/{{studentId}}/1",
-      "originalPath": "/apigateway/connect-portal/api/studentprogramprogress/term-wise-course/6349e408-1096-483e-82d0-64587e70b025/1",
-      "method": "GET",
-      "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/collaboration/studentprofile/programprogress)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "CourseProgressSummery",
-        "TermWiseCourseProgress",
-        "TermWiseAllCourseDetails",
-        "MinorCourseProgress",
-        "SpecializationProgress",
-        "learningProgress",
-        "CGPA",
-        "SGPA"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/api/featureaccess/CONNECT-COLLAB-SER-REQ/109?studentId=%7B%7BstudentId%7D%7D",
-      "originalPath": "/apigateway/api/featureaccess/CONNECT-COLLAB-SER-REQ/109",
-      "method": "GET",
-      "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/collaboration/studentprofile/programprogress)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "FeatureId",
-        "FeatureName",
-        "FeatureCode",
-        "RoleId",
-        "Role",
-        "UserId",
-        "IsEditable",
-        "IsApproval",
-        "FullName",
-        "Sequence",
-        "FeatureComponent",
-        "FeatureIcon",
-        "FeatureDescription"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/communication/api/servicerequest",
-      "originalPath": "/apigateway/communication/api/servicerequest",
-      "method": "POST",
-      "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/collaboration/studentprofile/programprogress)",
-      "requestPayloadTemplate": {
-        "ServiceRequestId": "object",
-        "StudentUniqueId": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": []
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/communication/api/servicerequest/dropdowns",
-      "originalPath": "/apigateway/communication/api/servicerequest/dropdowns",
-      "method": "POST",
-      "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/collaboration/studentprofile/programprogress)",
-      "requestPayloadTemplate": {
-        "RequiredDropdown": "string",
-        "searchString": "string",
-        "studentUniqueId": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "ID",
-        "Name",
-        "Code",
-        "IsPrefilled"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/api/featureaccess/CONNECT-COLLAB-RCVD-CRLS/109?studentId=%7B%7BstudentId%7D%7D",
-      "originalPath": "/apigateway/api/featureaccess/CONNECT-COLLAB-RCVD-CRLS/109",
-      "method": "GET",
-      "pageContext": "Service Request Creation | Connect Portal (/connectportal/user/student/collaboration/servicerequest)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "FeatureId",
-        "FeatureName",
-        "FeatureCode",
-        "RoleId",
-        "Role",
-        "UserId",
-        "IsEditable",
-        "IsApproval",
-        "FullName",
-        "Sequence",
-        "FeatureComponent",
-        "FeatureIcon",
-        "FeatureDescription"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/communication/api/circular/getcirculardetailsbystudentid?studentId=%7B%7BstudentId%7D%7D&academicsYearId=135",
-      "originalPath": "/apigateway/communication/api/circular/getcirculardetailsbystudentid",
-      "method": "GET",
-      "pageContext": "Service Request Creation | Connect Portal (/connectportal/user/student/collaboration/servicerequest)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "StatusCode"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/communication/api/circular/getlist",
-      "originalPath": "/apigateway/communication/api/circular/getlist",
-      "method": "POST",
-      "pageContext": "Received Circulars | Connect Portal (/connectportal/user/student/collaboration/circulars)",
-      "requestPayloadTemplate": {
-        "SelectedStudentId": "string",
-        "AcademicYearId": "number",
-        "SearchString": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "StatusCode",
-        "Path",
-        "ErrorMessage",
-        "ErrorId",
-        "TechnicalDetails",
-        "DataReferenceError"
-      ],
-      "statusCode": 500
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/courseplanning/api/moduleselection/{{studentId}}",
-      "originalPath": "/apigateway/courseplanning/api/moduleselection/6349e408-1096-483e-82d0-64587e70b025",
-      "method": "GET",
-      "pageContext": "Received Circulars | Connect Portal (/connectportal/user/student/collaboration/circulars)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "StatusCode",
-        "Message",
-        "Item",
-        "Item.CourseFamilyCode",
-        "Item.CourseFamilyName",
-        "Item.AcademicYearName",
-        "Item.AdmissionBatchName",
-        "Item.TermCodeName",
-        "Item.RecommendedCredits",
-        "Item.EnrolledCredits",
-        "Item.RequiredCredits",
-        "Item.AdditionalCredits",
-        "Item.StudentSelections"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/api/featureaccess/STD-COURSE-SELECTION/109?studentId=%7B%7BstudentId%7D%7D",
-      "originalPath": "/apigateway/api/featureaccess/STD-COURSE-SELECTION/109",
-      "method": "GET",
-      "pageContext": "Course Selection | Connect Portal (/connectportal/user/student/course-selection)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "FeatureId",
-        "FeatureName",
-        "FeatureCode",
-        "RoleId",
-        "Role",
-        "UserId",
-        "IsEditable",
-        "IsApproval",
-        "FullName",
-        "Sequence",
-        "FeatureComponent",
-        "FeatureIcon",
-        "FeatureDescription"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/courseplanning/api/moduleselection",
-      "originalPath": "/apigateway/courseplanning/api/moduleselection",
-      "method": "POST",
-      "pageContext": "Course Selection | Connect Portal (/connectportal/user/student/course-selection)",
-      "requestPayloadTemplate": {
-        "StudentUniqueId": "string",
-        "SelectedCourseFamilyId": "number",
-        "ActivityCode": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "StatusCode",
-        "Message",
-        "Items"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/integratons/api/data/exam-pro",
-      "originalPath": "/apigateway/integratons/api/data/exam-pro",
-      "method": "POST",
-      "pageContext": "Course Selection | Connect Portal (/connectportal/user/student/course-selection)",
-      "requestPayloadTemplate": {
-        "StudentUniqueId": "string",
-        "ActivityCode": "string",
-        "TermCode": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "StatusCode",
-        "Message",
-        "Item",
-        "Item.GlobalId",
-        "Item.AttendanceData",
-        "Item.IsDisciplineIncidentPresent",
-        "Item.IsTQMQFeedbackCompleted",
-        "Item.IntegrationData"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/api/featureaccess/CONNECT-MY-FEED/109?studentId=%7B%7BstudentId%7D%7D",
-      "originalPath": "/apigateway/api/featureaccess/CONNECT-MY-FEED/109",
-      "method": "GET",
-      "pageContext": "Transcript | Connect Portal (/connectportal/user/student/integration/examination/transcript)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "FeatureId",
-        "FeatureName",
-        "FeatureCode",
-        "RoleId",
-        "Role",
-        "UserId",
-        "IsEditable",
-        "IsApproval",
-        "FullName",
-        "Sequence",
-        "FeatureComponent",
-        "FeatureIcon",
-        "FeatureDescription"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/feedback/api/sendtqmqfeedback/getalltqmqfeedbacks",
-      "originalPath": "/apigateway/feedback/api/sendtqmqfeedback/getalltqmqfeedbacks",
-      "method": "POST",
-      "pageContext": "Transcript | Connect Portal (/connectportal/user/student/integration/examination/transcript)",
-      "requestPayloadTemplate": {
-        "SelectedStudentId": "string",
-        "SearchString": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "StatusCode",
-        "Items"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/sso/user/oauth2/access-lms?uniqueId=%7B%7BstudentId%7D%7D",
-      "originalPath": "/sso/user/oauth2/access-lms",
-      "method": "POST",
-      "pageContext": "My Feedback | Connect Portal (/connectportal/user/student/feedback/myfeedback)",
-      "requestPayloadTemplate": {},
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "redirectUrl",
-        "statusCode"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=media_videojs_get_language&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22media_videojs_get_language%22%2C%22args%22%3A%7B%22lang%22%3A%22en%22%7D%7D%5D",
-      "originalPath": "/lib/ajax/service-nologin.php",
-      "method": "GET",
-      "pageContext": "My courses | UPES LMS (/my/courses.php)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "user-agent",
-        "x-requested-with"
-      ],
-      "responseSchemaKeys": [
-        "error",
-        "data"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_get_string&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_get_string%22%2C%22args%22%3A%7B%22stringid%22%3A%22changesmadereallygoaway%22%2C%22stringparams%22%3A%5B%5D%2C%22component%22%3A%22moodle%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-      "originalPath": "/lib/ajax/service-nologin.php",
-      "method": "GET",
-      "pageContext": "My courses | UPES LMS (/my/courses.php)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "user-agent",
-        "x-requested-with"
-      ],
-      "responseSchemaKeys": [
-        "error",
-        "data"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://lms.upes.ac.in/lib/ajax/service.php?sesskey=QuoSU66yO6&info=core_message_get_unsent_message",
-      "originalPath": "/lib/ajax/service.php",
-      "method": "POST",
-      "pageContext": "My courses | UPES LMS (/my/courses.php)",
-      "requestPayloadTemplate": [
-        {
-          "index": "number",
-          "methodname": "string",
-          "args": "object"
-        }
-      ],
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-requested-with"
-      ],
-      "responseSchemaKeys": [
-        "error",
-        "data"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_output_load_fontawesome_icon_system_map&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_output_load_fontawesome_icon_system_map%22%2C%22args%22%3A%7B%22themename%22%3A%22moove%22%7D%7D%5D",
-      "originalPath": "/lib/ajax/service-nologin.php",
-      "method": "GET",
-      "pageContext": "My courses | UPES LMS (/my/courses.php)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "user-agent",
-        "x-requested-with"
-      ],
-      "responseSchemaKeys": [
-        "error",
-        "data"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_output_load_template_with_dependencies&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22paged_content%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-      "originalPath": "/lib/ajax/service-nologin.php",
-      "method": "GET",
-      "pageContext": "My courses | UPES LMS (/my/courses.php)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "user-agent",
-        "x-requested-with"
-      ],
-      "responseSchemaKeys": [
-        "error",
-        "data",
-        "data.templates",
-        "data.strings"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_output_load_template_with_dependencies&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22pix_icon_fontawesome%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-      "originalPath": "/lib/ajax/service-nologin.php",
-      "method": "GET",
-      "pageContext": "My courses | UPES LMS (/my/courses.php)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "user-agent",
-        "x-requested-with"
-      ],
-      "responseSchemaKeys": [
-        "error",
-        "data",
-        "data.templates",
-        "data.strings"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_get_string&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_get_string%22%2C%22args%22%3A%7B%22stringparams%22%3A%5B%5D%2C%22component%22%3A%22core%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-      "originalPath": "/lib/ajax/service-nologin.php",
-      "method": "GET",
-      "pageContext": "My courses | UPES LMS (/my/courses.php)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "user-agent",
-        "x-requested-with"
-      ],
-      "responseSchemaKeys": [
-        "error",
-        "exception",
-        "exception.message",
-        "exception.errorcode",
-        "exception.link",
-        "exception.moreinfourl"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://lms.upes.ac.in/lib/ajax/service.php?sesskey=QuoSU66yO6&info=core_course_get_enrolled_courses_by_timeline_classification",
-      "originalPath": "/lib/ajax/service.php",
-      "method": "POST",
-      "pageContext": "My courses | UPES LMS (/my/courses.php)",
-      "requestPayloadTemplate": [
-        {
-          "index": "number",
-          "methodname": "string",
-          "args": "object"
-        }
-      ],
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-requested-with"
-      ],
-      "responseSchemaKeys": [
-        "error",
-        "data",
-        "data.courses",
-        "data.nextoffset"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_output_load_template_with_dependencies&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22overlay_loading%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-      "originalPath": "/lib/ajax/service-nologin.php",
-      "method": "GET",
-      "pageContext": "My courses | UPES LMS (/my/courses.php)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "user-agent",
-        "x-requested-with"
-      ],
-      "responseSchemaKeys": [
-        "error",
-        "data",
-        "data.templates",
-        "data.strings"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_output_load_template_with_dependencies&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22block_myoverview%22%2C%22template%22%3A%22view-cards%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-      "originalPath": "/lib/ajax/service-nologin.php",
-      "method": "GET",
-      "pageContext": "My courses | UPES LMS (/my/courses.php)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "user-agent",
-        "x-requested-with"
-      ],
-      "responseSchemaKeys": [
-        "error",
-        "data",
-        "data.templates",
-        "data.strings"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=core_get_string%2Ccore_get_string%2Ccore_get_string%2Ccore_get_string%2Ccore_get_string&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_get_string%22%2C%22args%22%3A%7B%22stringid%22%3A%22cancel%22%2C%22stringparams%22%3A%5B%5D%2C%22component%22%3A%22core%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A1%2C%22methodname%22%3A%22core_get_string%22%2C%22args%22%3A%7B%22stringid%22%3A%22closebuttontitle%22%2C%22stringparams%22%3A%5B%5D%2C%22component%22%3A%22core%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A2%2C%22methodname%22%3A%22core_get_string%22%2C%22args%22%3A%7B%22stringid%22%3A%22savechanges%22%2C%22stringparams%22%3A%5B%5D%2C%22component%22%3A%22core%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A3%2C%22methodname%22%3A%22core_get_string%22%2C%22args%22%3A%7B%22stringid%22%3A%22showless%22%2C%22stringparams%22%3A%5B%5D%2C%22component%22%3A%22core_form%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A4%2C%22methodname%22%3A%22core_get_string%22%2C%22args%22%3A%7B%22stringid%22%3A%22showmore%22%2C%22stringparams%22%3A%5B%5D%2C%22component%22%3A%22core_form%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-      "originalPath": "/lib/ajax/service-nologin.php",
-      "method": "GET",
-      "pageContext": "My courses | UPES LMS (/my/courses.php)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "user-agent",
-        "x-requested-with"
-      ],
-      "responseSchemaKeys": [
-        "error",
-        "data"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://lms.upes.ac.in/lib/ajax/service-nologin.php?info=6-method-calls&cachekey=%7B%7Bid%7D%7D&args=%5B%7B%22index%22%3A0%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22modal%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A1%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22modal_backdrop%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A2%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22modal_save_cancel%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A3%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22modal_delete_cancel%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A4%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22modal_cancel%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%2C%7B%22index%22%3A5%2C%22methodname%22%3A%22core_output_load_template_with_dependencies%22%2C%22args%22%3A%7B%22component%22%3A%22core%22%2C%22template%22%3A%22local%2Fmodal%2Falert%22%2C%22themename%22%3A%22moove%22%2C%22lang%22%3A%22en%22%7D%7D%5D",
-      "originalPath": "/lib/ajax/service-nologin.php",
-      "method": "GET",
-      "pageContext": "My courses | UPES LMS (/my/courses.php)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "content-type",
-        "accept",
-        "referer",
-        "user-agent",
-        "x-requested-with"
-      ],
-      "responseSchemaKeys": [
-        "error",
-        "data",
-        "data.templates",
-        "data.strings"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/sso/user/oauth2/refresh-token?q=wYyex0U8E6TkmxHmBiAG",
-      "originalPath": "/sso/user/oauth2/refresh-token",
-      "method": "POST",
-      "pageContext": "Connect Portal (/connectportal/user/student/home/dashboard)",
-      "requestPayloadTemplate": {
-        "ClientId": "number",
-        "ClientSecret": "string",
-        "RefreshToken": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "StatusCode",
-        "Item",
-        "Item.requestInfo",
-        "Item.tokenInfo",
-        "Message"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/commonapp/web/signalr/notification/negotiate?unique_token=lF9kH3pvmve9gPOEaNYv&application_name=connectportal&requestfrom=web&negotiateVersion=1",
-      "originalPath": "/commonapp/web/signalr/notification/negotiate",
-      "method": "POST",
-      "pageContext": "Connect Portal (/connectportal/user/student/home/dashboard)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "content-type",
-        "referer",
-        "accept",
-        "origin",
-        "user-agent",
-        "cache-control",
-        "x-requested-with",
-        "x-signalr-user-agent"
-      ],
-      "responseSchemaKeys": [
-        "negotiateVersion",
-        "connectionId",
-        "connectionToken",
-        "availableTransports"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/hostel/api/hostelnoticeboard?StudentId=%7B%7BstudentId%7D%7D",
-      "originalPath": "/apigateway/hostel/api/hostelnoticeboard",
-      "method": "GET",
-      "pageContext": "Dashboard | Connect Portal (/connectportal/user/student/home/dashboard)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "StatusCode",
-        "Items"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/hostel/api/studentdetails",
-      "originalPath": "/apigateway/hostel/api/studentdetails",
-      "method": "POST",
-      "pageContext": "Hostel Notice Board | Connect Portal (/connectportal/user/student/hostel/notice-board)",
-      "requestPayloadTemplate": {
-        "PageFeatureCode": "string",
-        "StudentUniqueID": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": []
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/hostel/api/pass",
-      "originalPath": "/apigateway/hostel/api/pass",
-      "method": "POST",
-      "pageContext": "Hostel Passes | Connect Portal (/connectportal/user/student/hostel/dayout-leavepass-requests)",
-      "requestPayloadTemplate": {
-        "PageFeatureCode": "string",
-        "StudentUniqueID": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/hostel/api/roomallocation/getstudentsallocation",
-      "originalPath": "/apigateway/hostel/api/roomallocation/getstudentsallocation",
-      "method": "POST",
-      "pageContext": "Hostel Passes | Connect Portal (/connectportal/user/student/hostel/dayout-leavepass-requests)",
-      "requestPayloadTemplate": {
-        "StudentId": "string",
-        "AcademicYearCode": "string",
-        "CenterCode": "string",
-        "BrandCode": "string",
-        "RequestedFor": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "StatusCode",
-        "Message",
-        "Items"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/api/usercontext",
-      "originalPath": "/apigateway/api/usercontext",
-      "method": "POST",
-      "pageContext": "Hostel Allocation | Connect Portal (/connectportal/user/student/hostel/room-allocation)",
-      "requestPayloadTemplate": {
-        "SelectedAcademicYearId": "object",
-        "SelectedBrandId": "object",
-        "SelectedClusterId": "object",
-        "SelectedCityId": "object",
-        "SelectedCenterLocationId": "object",
-        "SelectedCenterId": "object",
-        "SelectedCourseFamilyId": "object",
-        "SelectedCourseCodeId": "object",
-        "SelectedDivisionId": "object",
-        "SelectedTermCodeId": "object",
-        "SelectedModuleCodeId": "object",
-        "GroupId": "object",
-        "IsPublishedMode": "boolean",
-        "SelectedCourseFamilyAcademicYearId": "object",
-        "SPAGroupId": "object",
-        "IsEditable": "boolean",
-        "TimeZone": "string",
-        "SelectedFeatureActivityCode": "string",
-        "SelectedFlag": "string",
-        "RoleId": "object"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "IsBrandVisible",
-        "IsAcademicYearVisible",
-        "IsBrandLevelCourseFamilyVisible",
-        "IsBrandLevelCourseVisible",
-        "IsBrandLevelTermVisible",
-        "IsBrandLevelModuleVisible",
-        "IsClusterVisible",
-        "IsCenterLocationVisible",
-        "IsCenterVisible",
-        "IsCenterMasterVisible",
-        "IsCenterLevelCourseFamilyVisible",
-        "IsCenterLevelCourseVisible",
-        "IsCenterLevelTermVisible",
-        "IsCenterLevelModuleVisible",
-        "IsCenterLevelDivisionVisible",
-        "IsCenterLevelSPAGroupVisible",
-        "IsDatePickerVisible",
-        "IsSelectAllModulesWithoutTerm",
-        "Sequence",
-        "LastElement",
-        "IsHoldsCategoryVisible",
-        "IsAdmissionBatchVisible",
-        "IsStatusVisible",
-        "Id",
-        "Name",
-        "ParentId",
-        "ParentCode"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/hostel/api/studentrequestaccess?StudentId=%7B%7BglobalId%7D%7D&RequestType=REQ-RESRVED&AcademicYearId=19",
-      "originalPath": "/apigateway/hostel/api/studentrequestaccess",
-      "method": "GET",
-      "pageContext": "Request For Hostel | Connect Portal (/connectportal/user/student/hostel/hostel-request)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "StatusCode",
-        "Items"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/hostel/api/studentrequestaccess?StudentId=%7B%7BglobalId%7D%7D&RequestType=REQ-RESRVED&AcademicYearId=21",
-      "originalPath": "/apigateway/hostel/api/studentrequestaccess",
-      "method": "GET",
-      "pageContext": "Request For Hostel | Connect Portal (/connectportal/user/student/hostel/hostel-request)",
-      "requestPayloadTemplate": null,
-      "requiredHeaders": [
-        "accept",
-        "referer",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "StatusCode",
-        "Items"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/student-attendance/attendancedropdown",
-      "originalPath": "/apigateway/student-attendance/attendancedropdown",
-      "method": "POST",
-      "pageContext": "Request For Hostel | Connect Portal (/connectportal/user/student/hostel/hostel-request)",
-      "requestPayloadTemplate": {
-        "StudentUniqueID": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "CourseFamilyId",
-        "CourseFamilyName",
-        "TermDropdownDetailsList"
-      ],
-      "statusCode": 200
-    },
-    {
-      "url": "https://myupes-beta.upes.ac.in/apigateway/student-attendance/studentattendancesummary",
-      "originalPath": "/apigateway/student-attendance/studentattendancesummary",
-      "method": "POST",
-      "pageContext": "Student Attendance | Connect Portal (/connectportal/user/student/student-attendance)",
-      "requestPayloadTemplate": {
-        "StudentUniqueID": "string",
-        "CourseFamilyId": "number",
-        "TermCodeId": "number",
-        "CourseList": "object",
-        "StartDate": "string",
-        "EndDate": "string",
-        "TermStartDate": "string",
-        "TermEndDate": "string"
-      },
-      "requiredHeaders": [
-        "accept",
-        "content-type",
-        "referer",
-        "origin",
-        "user-agent",
-        "x-applicationname",
-        "x-requestfrom",
-        "x-appsecret",
-        "x-studentuniqueid"
-      ],
-      "responseSchemaKeys": [
-        "AttendanceInfo",
-        "AttendanceSummary",
-        "AttendanceSummary.TotalAttendance",
-        "AttendanceSummary.TotalSessionCount",
-        "AttendanceSummary.TotalCondonedAttendanceCount",
-        "AttendanceSummary.TotalPresentPercentage",
-        "AttendanceSummary.TotalPresentPercentageTermWise"
-      ],
-      "statusCode": 200
-    }
-  ]
+  }
 }
