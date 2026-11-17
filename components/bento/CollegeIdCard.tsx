@@ -82,7 +82,7 @@ export function CollegeIdCard({ profile, onOpenInspector }: CollegeIdCardProps) 
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline gap-2">
             <h2 className="text-xl font-extrabold text-white tracking-tight truncate">
-              {profile.FirstName} {profile.LastName || ""}
+              {[profile.FirstName, profile.LastName].filter(Boolean).join(" ")}
             </h2>
           </div>
 

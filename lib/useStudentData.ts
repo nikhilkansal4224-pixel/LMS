@@ -223,6 +223,11 @@ export function useStudentData() {
       const decodedEmail = emailCookie ? decodeURIComponent(emailCookie) : undefined;
 
       // Adapt live data
+      const emailPrefix = decodedEmail ? decodedEmail.split("@")[0].split(".")[0] : "";
+      const capitalizedFirst = emailPrefix
+        ? emailPrefix.charAt(0).toUpperCase() + emailPrefix.slice(1)
+        : "Nikhil";
+
       const adaptedProfile =
         profileRes?.data && profileRes.data.isConfigured !== false
           ? adaptProfilePayload(profileRes.data, decodedEmail)
@@ -230,7 +235,8 @@ export function useStudentData() {
           ? {
               ...defaultStudentData.profile,
               Email: decodedEmail,
-              FirstName: decodedEmail.split("@")[0].split(".")[0] || "Student",
+              FirstName: capitalizedFirst,
+              LastName: "",
             }
           : defaultStudentData.profile;
 

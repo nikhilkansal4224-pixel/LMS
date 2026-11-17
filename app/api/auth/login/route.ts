@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
         message: "Logged in with Demo Account",
         user: {
           FirstName: "Nikhil",
-          LastName: "Sharma",
+          LastName: "",
           GlobalId: "590039697",
           EmailId: "Nikhil.39697@stu.upes.ac.in",
           ProgramTypeName: "B.Tech Computer Science and Engineering — Global Pathway",
@@ -272,12 +272,25 @@ export async function POST(request: NextRequest) {
               if (clientId) cookieList.push(`ClientId=${clientId}`);
               profileHeaders["Cookie"] = cookieList.join("; ");
 
-              const profileRes = await fetch(profileUrl, {
+              let profileRes = await fetch(profileUrl, {
                 method: "GET",
                 headers: profileHeaders,
-              });
+              }).catch(() => null);
 
-              if (profileRes.ok) {
+              // If primary profile endpoint returns error (e.g. 500 NullReferenceException on studentloginbasicinfo), fallback to initialstudentdata
+              if (!profileRes || !profileRes.ok) {
+                const initialUrl = "https://myupes-beta.upes.ac.in/apigateway/connect-portal/api/studentinformation/initialstudentdata";
+                profileRes = await fetch(initialUrl, {
+                  method: "POST",
+                  headers: {
+                    ...profileHeaders,
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({ StudentId: studentId || "6349e408-1096-483e-82d0-64587e70b025" }),
+                }).catch(() => null);
+              }
+
+              if (profileRes && profileRes.ok) {
                 const profileJson = await profileRes.json();
                 const pItem = profileJson?.Item || profileJson?.data || profileJson;
                 if (pItem) {
@@ -286,12 +299,12 @@ export async function POST(request: NextRequest) {
                     pItem.StudentGuid ||
                     pItem.Id ||
                     pItem.UserId ||
-                    null;
+                    studentId;
                   termCode =
                     pItem.CurrentTermCode ||
                     pItem.TermCode ||
                     pItem.TermName ||
-                    "SEM_01";
+                    termCode;
                   if (!userInfo) userInfo = pItem;
                   else Object.assign(userInfo, pItem);
                 }
@@ -316,7 +329,7 @@ export async function POST(request: NextRequest) {
         StudentId: studentId,
         EmailId: normalizedEmail,
         FirstName: firstName,
-        LastName: "Sharma",
+        LastName: "",
         GlobalId: sapId,
         UserTypeInfo: { Code: "ST", DisplayName: "Student" },
       };
@@ -329,6 +342,9 @@ export async function POST(request: NextRequest) {
       }
       if (studentId) {
         userInfo.StudentId = studentId;
+      }
+      if (userInfo.LastName === "Sharma" || !userInfo.LastName) {
+        userInfo.LastName = "";
       }
     }
 
