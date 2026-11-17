@@ -51,6 +51,11 @@ export async function POST(request: NextRequest) {
         path: "/",
         maxAge: 60 * 60 * 24 * 7,
       });
+      response.cookies.set("sop_idp_session_info", "5699f070-39c3-4fdd-b0a8-0216c678e433", {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
       response.cookies.set("sop_client_id", "3", {
         httpOnly: false,
         path: "/",
@@ -120,6 +125,7 @@ export async function POST(request: NextRequest) {
     let termCode: string = "SEM_01";
     let uniqueHashKey: string | null = null;
     let clientId: string = "3";
+    let idpSessionInfo: string | null = null;
 
     if (upesAuthUrl) {
       const payload = mapLoginPayload({
@@ -200,25 +206,51 @@ export async function POST(request: NextRequest) {
             }
           }
 
+          // Extract idp_session_info from Set-Cookie or JWT session_id claim
+          let idpSessionInfo = "";
+          const setCookieHeader = authResponse.headers.get("set-cookie");
+          if (setCookieHeader) {
+            const match = setCookieHeader.match(/idp_session_info=([^;]+)/);
+            if (match) idpSessionInfo = match[1];
+          }
+          if (!idpSessionInfo && accessToken) {
+            try {
+              const parts = accessToken.split(".");
+              if (parts.length === 3) {
+                const jwtPayload = JSON.parse(Buffer.from(parts[1], "base64").toString("utf8"));
+                if (jwtPayload.session_id) idpSessionInfo = jwtPayload.session_id;
+              }
+            } catch {}
+          }
+
           // Step 1.5: Validate token with UPES Identity Server to obtain UniqueHashKey and ClientId
           if (accessToken && tokenExchangeUrl) {
             try {
+              const validateHeaders: Record<string, string> = {
+                "Content-Type": "application/json",
+                Accept: "application/json, text/plain, */*",
+                Authorization: `Bearer ${accessToken}`,
+                Origin: "https://myupes-beta.upes.ac.in",
+                Referer: "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
+                "x-applicationname": "connectportal",
+                "x-appsecret": appSecret,
+                "x-requestfrom": "web",
+                "User-Agent":
+                  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
+              };
+              if (idpSessionInfo) {
+                validateHeaders["Cookie"] = `idp_session_info=${idpSessionInfo}`;
+              }
+              if (studentId) {
+                validateHeaders["x-studentUniqueId"] = studentId;
+              }
+
               const validateRes = await fetch(tokenExchangeUrl, {
                 method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  Accept: "application/json, text/plain, */*",
-                  Origin: "https://myupes-beta.upes.ac.in",
-                  Referer: "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
-                  "x-applicationname": "connectportal",
-                  "x-appsecret": appSecret,
-                  "x-requestfrom": "web",
-                  "User-Agent":
-                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
-                },
+                headers: validateHeaders,
                 body: JSON.stringify({
                   AuthToken: accessToken,
-                  UniqueId: "",
+                  UniqueId: studentId || "3febe423-f955-4d3e-907e-2a1c81930be2",
                 }),
               });
 
@@ -243,13 +275,13 @@ export async function POST(request: NextRequest) {
             }
           }
 
-          // Step 2: Fetch Student Profile immediately using AccessToken + UniqueHashKey + ClientId
+          // Step 2: Fetch Student Profile immediately using AccessToken + idp_session_info cookie
           if (accessToken && profileUrl) {
             try {
               const profileHeaders: Record<string, string> = {
                 Authorization: `Bearer ${accessToken}`,
                 Origin: "https://myupes-beta.upes.ac.in",
-                Referer: "https://myupes-beta.upes.ac.in/connectportal/user/student/home/dashboard",
+                Referer: "https://myupes-beta.upes.ac.in/connectportal/user/student/home/studentsinfo",
                 Accept: "application/json, text/plain, */*",
                 "x-applicationname": "connectportal",
                 "x-appsecret": appSecret,
@@ -258,6 +290,9 @@ export async function POST(request: NextRequest) {
                   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
               };
 
+              if (studentId) {
+                profileHeaders["x-studentUniqueId"] = studentId;
+              }
               if (uniqueHashKey) {
                 profileHeaders["UniqueHashKey"] = uniqueHashKey;
                 profileHeaders["X-Unique-Hash-Key"] = uniqueHashKey;
@@ -267,7 +302,10 @@ export async function POST(request: NextRequest) {
                 profileHeaders["X-Client-Id"] = clientId;
               }
 
-              const cookieList = [`sop_session=${accessToken}`, `AuthToken=${accessToken}`];
+              const cookieList: string[] = [];
+              if (idpSessionInfo) cookieList.push(`idp_session_info=${idpSessionInfo}`);
+              cookieList.push(`sop_session=${accessToken}`);
+              cookieList.push(`AuthToken=${accessToken}`);
               if (uniqueHashKey) cookieList.push(`UniqueHashKey=${uniqueHashKey}`);
               if (clientId) cookieList.push(`ClientId=${clientId}`);
               profileHeaders["Cookie"] = cookieList.join("; ");
@@ -396,6 +434,14 @@ export async function POST(request: NextRequest) {
       path: "/",
       maxAge: 60 * 60 * 24 * 7,
     });
+
+    if (idpSessionInfo) {
+      response.cookies.set("sop_idp_session_info", idpSessionInfo, {
+        httpOnly: false,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+    }
 
     response.cookies.set("sop_sap_id", userInfo?.GlobalId || sapId, {
       httpOnly: false,

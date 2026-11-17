@@ -166,6 +166,18 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
   const levelId = Number(request.cookies.get("sop_level_id")?.value || 1);
   const userId = request.cookies.get("sop_user_id")?.value || sapId;
 
+  // Extract idp_session_info from cookie or decode from JWT session_id claim
+  let cookieIdpSession = request.cookies.get("sop_idp_session_info")?.value;
+  if (!cookieIdpSession && cookieSession) {
+    try {
+      const parts = cookieSession.split(".");
+      if (parts.length === 3) {
+        const p = JSON.parse(Buffer.from(parts[1], "base64").toString("utf8"));
+        if (p.session_id) cookieIdpSession = p.session_id;
+      }
+    } catch {}
+  }
+
   const now = new Date();
   const todayStr = now.toISOString().split("T")[0]; // "YYYY-MM-DD"
   const currentYear = now.getFullYear();
@@ -331,6 +343,9 @@ async function handleProxy(request: NextRequest, pathSegments: string[], incomin
 
   // Forward cookies for UPES microservices (connect-portal, attendance, timetable)
   const cookieJar: string[] = [];
+  if (cookieIdpSession) {
+    cookieJar.push(`idp_session_info=${cookieIdpSession}`);
+  }
   if (cookieSession) {
     cookieJar.push(`sop_session=${cookieSession}`);
     cookieJar.push(`AuthToken=${cookieSession}`);
